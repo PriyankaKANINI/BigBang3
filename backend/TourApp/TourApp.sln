@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tour_LoginRegister", "TourTravelers\Tour_LoginRegister.csproj", "{CF52A763-5108-455C-9538-184B9DE2AD4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tour_packages", "Tour_packages\Tour_packages.csproj", "{39871937-6CE7-4BB4-8555-D274D51A2551}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tour_packages", "Tour_packages\Tour_packages.csproj", "{39871937-6CE7-4BB4-8555-D274D51A2551}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tour_Booking", "Tour_Booking\Tour_Booking.csproj", "{356D19C9-CDBC-4013-B71A-E6CC859BF8E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{39871937-6CE7-4BB4-8555-D274D51A2551}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39871937-6CE7-4BB4-8555-D274D51A2551}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39871937-6CE7-4BB4-8555-D274D51A2551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{356D19C9-CDBC-4013-B71A-E6CC859BF8E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{356D19C9-CDBC-4013-B71A-E6CC859BF8E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{356D19C9-CDBC-4013-B71A-E6CC859BF8E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{356D19C9-CDBC-4013-B71A-E6CC859BF8E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

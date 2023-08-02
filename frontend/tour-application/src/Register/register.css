@@ -1,82 +1,82 @@
 
-  .register-item h2{
-    color: #ffffff;
-    font-size: 3em;
-    /* background-color: #8A33FF; */
+.register-item h2{
+  color: #ffffff;
+  font-size: 3em;
+  /* background-color: #8A33FF; */
 }
-  
+
 .register-leftright{
-    margin-top: 1em;
-    display: flex;
-    background-color: #ffffff;
-    justify-content: center;
-    text-align: center;
-    transform: scale(0.9);
-    box-shadow:  0 8px 16px rgba(0, 0, 0, 0.8);
-    width: 65em;
+  margin-top: 1em;
+  display: flex;
+  background-color: #ffffff;
+  justify-content: center;
+  text-align: center;
+  transform: scale(0.9);
+  box-shadow:  0 8px 16px rgba(0, 0, 0, 0.8);
+  width: 65em;
 }
 
-  .register-container {
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    /* background-color: thistle; */
-    /* background: linear-gradient(#ff1493,#ff69b4,#ffffff); */
-    /* background-color: rgba(216, 191, 216, 0.9); */
-    background: linear-gradient(to bottom right, thistle, #a96fa7); 
+.register-container {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* background-color: thistle; */
+  /* background: linear-gradient(#ff1493,#ff69b4,#ffffff); */
+  /* background-color: rgba(216, 191, 216, 0.9); */
+  background: linear-gradient(to bottom right, thistle, #a96fa7); 
 
-  }
-  
-  .register-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .register-item .register-image img {
-    width: 32.5em;
-    height: 35em;
-    margin-right: 20px;
-    object-fit: cover;
-  }
-  .register-inputs{
-    padding: 10px;
-  }
-  
-  #textarea-register {
-    resize: none;
-  }
+}
 
-  .register-leftright input,
+.register-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.register-item .register-image img {
+  width: 32.5em;
+  height: 35em;
+  margin-right: 20px;
+  object-fit: cover;
+}
+.register-inputs{
+  padding: 10px;
+}
+
+#textarea-register {
+  resize: none;
+}
+
+.register-leftright input,
 .register-leftright select,
 .register-leftright textarea {
-  width: 25em;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin: 0.5em 0; 
+width: 25em;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+margin: 0.5em 0; 
 }
-  
-  select {
-    appearance: none;
-  }
-  
-  .register-item-button {
-    padding: 10px 20px;
-    background-color: #ff69b4;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 15em;
-  }
-  
-  .register-item-button:hover {
-    background-color: #ff1493;
-  }
-  
-  #textarea-register{
-    resize: none;
-  }
+
+select {
+  appearance: none;
+}
+
+.register-item-button {
+  padding: 10px 20px;
+  background-color: #ff69b4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 15em;
+}
+
+.register-item-button:hover {
+  background-color: #ff1493;
+}
+
+#textarea-register{
+  resize: none;
+}
