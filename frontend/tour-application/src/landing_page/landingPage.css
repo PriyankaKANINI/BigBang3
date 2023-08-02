@@ -1,0 +1,394 @@
+
+.navbar {
+  position: fixed;
+  background-color: #ff69b4;
+  top: 0;
+  width: 100%;
+  z-index: 1000; 
+  animation: fadeInDown 0.4s ease-in-out; 
+}
+
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  font-size: 18px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.hero-section-container {
+  background-image: url('../images/young-woman-hiker-taking-photo-with-smartphone-mountains-peak-winter.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-section-container h2 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* ------------------------------ */
+
+      /* section-4 */
+
+.travel-packages-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+} 
+
+ .travel-package-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.travel-package-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.travel-package-card p {
+  font-size: 16px;
+} 
+
+.testimonials-section {
+  padding: 40px 0;
+}
+
+.testimonial-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card p {
+  font-size: 16px;
+}
+
+---------------------------------------------------------
+
+.contact-section {
+  background-color: #f0f0f0;
+  padding: 40px 0;
+}
+
+.contact-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+.row1,.row2{
+  background-color: thistle;
+  display: flex;
+  text-align: left;
+}
+
+.row1{
+  margin-top: 5em;
+  justify-content: center;
+  gap: 3em;
+}
+
+.single-package-item {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 10px;
+}
+
+.single-package-item img {
+  display: block;
+  width: 20em;
+  height: auto;
+  border-radius: 0;
+  margin-bottom: 10px;
+}
+
+.single-package-item button {
+  padding: 8px;
+  margin: 1em;
+  text-align: left;
+  background-color: thistle;
+  border: none;
+}
+
+.single-package-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.single-package-item button:hover {
+  background-color: #ff69b4;
+  color: #fff;
+}
+
+
+
+
+----------------------------------------------------
+
+.footer-section {
+  color: #fff;
+  background-color: #ff69b4;
+  padding: 20px 0;
+}
+
+.footer-section p {
+  font-size: 14px;
+}
+
+.service-counter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.single-service-box {
+  width: calc(33.33% - 20px);
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.service-img img,
+.statistics-img img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.service-content {
+  text-align: center;
+}
+
+.service-content h2 a {
+  color: #333;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.service-content p {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------- */
+/* section-3 */
+
+.gallery {
+  margin-top: 5em;
+  padding: 50px 0;
+}
+
+.gallery-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.gallery-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2em;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gallery-item {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  width: 300px; 
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  
+}
+
+.item-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  opacity: 0;
+  text-align: center;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.gallery-item:hover .item-title {
+  opacity: 1;
+}
+
+.item-title a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.item-title span {
+  display: block;
+}
+
+
+/* ------------------------------------------------------------ */
+/* section-5 */
+
+.client-review {
+  padding: 50px 0;
+}
+
+.review-container {
+  background-color: thistle;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.review-content {
+  overflow-x: hidden; 
+  white-space: nowrap;  
+  /* background-color: #ff69b4; */
+  background-color: #a97abf; 
+  display: flex;
+  overflow-y: hidden;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5em;
+}
+.carousel-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.carousel {
+  display: flex;
+  gap: 20px;
+}
+
+.review-item {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+}
+
+.review-item{
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.review-item-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 10px;
+}
+
+.review-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-item-text {
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

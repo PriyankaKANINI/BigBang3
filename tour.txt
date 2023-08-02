@@ -1,0 +1,35 @@
+Admin
+
+{
+  "userEmail": "priya@gmail.com",
+  "passwordClear": "priya123"
+}
+
+
+TravelerRegister
+
+{
+  "travelerName": "shalini",
+  "age": 26,
+  "dateOfBirth": "1995-05-10T16:47:09.912Z",
+  "gender": "Female",
+  "phone": "7766885566",
+  "email": "shalini@gmail.com",
+  "address": "123 ganapathy",
+  "nationality": "Indian",
+  "passwordClear": "shalini123"
+}
+
+
+AgentRegister
+
+{
+  "agentName": "varsha",
+  "email": "varsha@gmail.com",
+  "phoneNumber": "7766885566",
+  "address": "673 Chennai",
+  "isVerified": "Approved",
+  "companyName": "SRS Tours",
+  "companyRegistrationNumber": "SRS123",
+  "passwordClear": "varsh123"
+}
