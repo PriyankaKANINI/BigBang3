@@ -88,9 +88,9 @@ namespace Tour_packages.Services
                     existingDoctor.PackageName = item.PackageName;
                     existingDoctor.Description = item.Description;
                     existingDoctor.Rate = item.Rate;
+                    existingDoctor.Destination = item.Destination;
                     existingDoctor.DeparturePoint = item.DeparturePoint;
                     existingDoctor.ArrivalPoint = item.ArrivalPoint;
-                    existingDoctor.Images = item.Images;
                     existingDoctor.AvailablityCount = item.AvailablityCount;
                     existingDoctor.TotalDays = item.TotalDays;
                     existingDoctor.Transportation = item.Transportation;

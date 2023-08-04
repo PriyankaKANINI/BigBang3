@@ -55,7 +55,6 @@ namespace Tour_packages
                 opts.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
             });
 
-            builder.Services.AddScoped<IRepo<int, Hotel>, HotelRepo>();
             builder.Services.AddScoped<IRepo<int, Itinerary>, ItineraryRepo>();
             builder.Services.AddScoped<IRepo<int, Package>, PackageRepo>();
             builder.Services.AddScoped<IRepo<int, ContactDetails>, ContactDetailsRepo>();

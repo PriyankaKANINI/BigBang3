@@ -10,8 +10,6 @@ namespace Tour_Feedback.Models
         public int? TravelerID { get; set; }
         public int? TourPackageId { get; set; }
         public string? Comment { get; set; }
-        public int? AgentID { get; set; }
         public int? Ratings { get; set; }
-        public DateTime? FeedbackDate { get; set; }
     }
 }

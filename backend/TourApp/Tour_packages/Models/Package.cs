@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Tour_packages.Models
 {
@@ -16,17 +17,22 @@ namespace Tour_packages.Models
 
         [Required]
         public double Rate { get; set; }
+        public string? Destination { get; set; }
 
         [Required]
         public string? DeparturePoint { get; set; }
+        public string? StartDate { get; set; }
+        public string? EndDate { get; set; }
 
         [Required]
         public string? ArrivalPoint { get; set; }
-        public List<Image>? Images { get; set; }
         public int AvailablityCount { get; set; }
         public int TotalDays { get; set; }
 
         [Required]
         public string? Transportation { get; set; }
+        public ICollection<Image>? Image { get; set; }
+        public ICollection<Itinerary>? Itinerary { get; set; }
+        public ContactDetails? ContactDetails { get; set; }
     }
 }

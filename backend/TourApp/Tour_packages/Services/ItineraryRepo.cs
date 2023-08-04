@@ -85,12 +85,8 @@ namespace Tour_packages.Services
                 var existingDoctor = await _context.Itineraries.FindAsync(item.ItineraryId);
                 if (existingDoctor != null)
                 {
-                    existingDoctor.PackageName = item.PackageName;
-                    existingDoctor.Images = item.Images;
-                    existingDoctor.Hotels = item.Hotels;
-                    existingDoctor.FoodDetails = item.FoodDetails;
-                    existingDoctor.DestinationDescription = item.DestinationDescription;
                     existingDoctor.DayandVisit = item.DayandVisit;
+                    existingDoctor.DestinationName = item.DestinationName;
 
                     await _context.SaveChangesAsync();
 

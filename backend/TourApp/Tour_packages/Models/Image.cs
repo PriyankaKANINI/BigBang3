@@ -10,7 +10,7 @@ namespace Tour_packages.Models
 
         [ForeignKey("Package")]
         public int PackageId { get; set; }
-        public Package Package { get; set; }
-        public string? ImageUrl { get; set; }
+        public Package? Package { get; set; }
+        public string? PackageName { get; set; }
     }
 }

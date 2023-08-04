@@ -11,18 +11,14 @@ namespace Tour_packages.Models
         [ForeignKey("Package")]
         public int PackageId { get; set; }
 
-        public Package Package { get; set; }
+        public Package? Package { get; set; }
 
-        [Required]
-        public string? PackageName { get; set; }
         [Required]
         public string? DayandVisit { get; set; }
         [Required]
-        public string? DestinationDescription { get; set; }
+        public string? DestinationName { get; set; }
         [Required]
-        public string? FoodDetails { get; set; }
-
-        public List<Image> Images { get; set; }
-        public List<Hotel> Hotels { get; set; }
+        public string? DestinationDescription { get; set; }
+        public Image? Images { get; set; }
     }
 }

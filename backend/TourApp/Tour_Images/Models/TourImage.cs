@@ -12,6 +12,5 @@ namespace Tour_Images.Models
 
         [NotMapped]
         public IFormFile Image { get; set; }
-
     }
 }

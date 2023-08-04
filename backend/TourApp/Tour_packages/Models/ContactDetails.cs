@@ -8,9 +8,9 @@ namespace Tour_packages.Models
         [Key]
         public int ContactId { get; set; }
 
-        [ForeignKey("TourPackage")]
+        [ForeignKey("Package")]
         public int PackageId { get; set; }
-        public Package Package { get; set; }
+        public Package? Package { get; set; }
         public string? TravelAgentName { get; set; }
         public string? Phone { get; set; }
         public string? Email { get; set; }

@@ -85,11 +85,9 @@ namespace Tour_packages.Services
                 var existingDoctor = await _context.Contacts.FindAsync(item.ContactId);
                 if (existingDoctor != null)
                 {
-                    existingDoctor.Package = item.Package;
                     existingDoctor.TravelAgentName = item.TravelAgentName;
                     existingDoctor.Email = item.Email;
                     existingDoctor.Phone = item.Phone;
-                    existingDoctor.Email = item.Email;
 
 
                     await _context.SaveChangesAsync();

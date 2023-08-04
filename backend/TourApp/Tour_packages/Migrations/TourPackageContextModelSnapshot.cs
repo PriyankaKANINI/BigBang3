@@ -44,41 +44,10 @@ namespace Tour_packages.Migrations
 
                     b.HasKey("ContactId");
 
-                    b.HasIndex("PackageId");
+                    b.HasIndex("PackageId")
+                        .IsUnique();
 
                     b.ToTable("Contacts");
-                });
-
-            modelBuilder.Entity("Tour_packages.Models.Hotel", b =>
-                {
-                    b.Property<int>("HotelId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HotelId"), 1L, 1);
-
-                    b.Property<string>("HotelFood")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HotelName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("HotelRating")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ItineraryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RoomType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("HotelId");
-
-                    b.HasIndex("ItineraryId");
-
-                    b.ToTable("Hotels");
                 });
 
             modelBuilder.Entity("Tour_packages.Models.Image", b =>
@@ -89,18 +58,13 @@ namespace Tour_packages.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageId"), 1L, 1);
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ItineraryId")
-                        .HasColumnType("int");
-
                     b.Property<int>("PackageId")
                         .HasColumnType("int");
 
-                    b.HasKey("ImageId");
+                    b.Property<string>("PackageName")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("ItineraryId");
+                    b.HasKey("ImageId");
 
                     b.HasIndex("PackageId");
 
@@ -123,18 +87,19 @@ namespace Tour_packages.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FoodDetails")
+                    b.Property<string>("DestinationName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ImagesImageId")
+                        .HasColumnType("int");
 
                     b.Property<int>("PackageId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PackageName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("ItineraryId");
+
+                    b.HasIndex("ImagesImageId");
 
                     b.HasIndex("PackageId");
 
@@ -163,12 +128,21 @@ namespace Tour_packages.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Destination")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EndDate")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PackageName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Rate")
                         .HasColumnType("float");
+
+                    b.Property<string>("StartDate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TotalDays")
                         .HasColumnType("int");
@@ -189,33 +163,18 @@ namespace Tour_packages.Migrations
             modelBuilder.Entity("Tour_packages.Models.ContactDetails", b =>
                 {
                     b.HasOne("Tour_packages.Models.Package", "Package")
-                        .WithMany()
-                        .HasForeignKey("PackageId")
+                        .WithOne("ContactDetails")
+                        .HasForeignKey("Tour_packages.Models.ContactDetails", "PackageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Package");
-                });
-
-            modelBuilder.Entity("Tour_packages.Models.Hotel", b =>
-                {
-                    b.HasOne("Tour_packages.Models.Itinerary", "Itinerary")
-                        .WithMany("Hotels")
-                        .HasForeignKey("ItineraryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Itinerary");
                 });
 
             modelBuilder.Entity("Tour_packages.Models.Image", b =>
                 {
-                    b.HasOne("Tour_packages.Models.Itinerary", null)
-                        .WithMany("Images")
-                        .HasForeignKey("ItineraryId");
-
                     b.HasOne("Tour_packages.Models.Package", "Package")
-                        .WithMany("Images")
+                        .WithMany("Image")
                         .HasForeignKey("PackageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -225,25 +184,28 @@ namespace Tour_packages.Migrations
 
             modelBuilder.Entity("Tour_packages.Models.Itinerary", b =>
                 {
-                    b.HasOne("Tour_packages.Models.Package", "Package")
+                    b.HasOne("Tour_packages.Models.Image", "Images")
                         .WithMany()
+                        .HasForeignKey("ImagesImageId");
+
+                    b.HasOne("Tour_packages.Models.Package", "Package")
+                        .WithMany("Itinerary")
                         .HasForeignKey("PackageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Package");
-                });
-
-            modelBuilder.Entity("Tour_packages.Models.Itinerary", b =>
-                {
-                    b.Navigation("Hotels");
 
                     b.Navigation("Images");
+
+                    b.Navigation("Package");
                 });
 
             modelBuilder.Entity("Tour_packages.Models.Package", b =>
                 {
-                    b.Navigation("Images");
+                    b.Navigation("ContactDetails");
+
+                    b.Navigation("Image");
+
+                    b.Navigation("Itinerary");
                 });
 #pragma warning restore 612, 618
         }

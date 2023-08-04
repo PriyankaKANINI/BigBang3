@@ -21,7 +21,7 @@ namespace Tour_Feedback
                 opts.UseSqlServer(builder.Configuration.GetConnectionString("Conn"));
             });
 
-            //builder.Services.AddScoped<IRepo<string, User>, UserRepo>();
+            builder.Services.AddScoped<IRepo<string, User>, UserRepo>();
             
             var app = builder.Build();
 
