@@ -9,6 +9,7 @@ import Login from "./Login/login";
 import RegisterTraveler from "./Register/register_traveler";
 import ImageGallery from "./imageGallery";
 import About from "./about/about";
+import Feedback from "./feedback/feedback";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="register_traveler" element={<RegisterTraveler />} />
         <Route path="login" element={<Login />} />
         <Route path="about" element={<About />} />
+        <Route path="feedback" element={<Feedback />} />
       </Routes>
     </BrowserRouter>
   );

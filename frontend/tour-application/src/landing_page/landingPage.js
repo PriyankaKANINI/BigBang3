@@ -14,6 +14,7 @@ import imageSrc6 from "../images/woman-walking-big-entrance-gate-bali-indonesia.
 import imageSrc7 from "../images/photographer-hand-holding-camera-standing-viewpoint-clouds-panorama-viewpoint-sunrise.jpg";
 import About from "../about/about";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import Feedback from "../feedback/feedback";
 
 const LandingPage = () => {
   const scrollToTop = () => {
@@ -86,6 +87,11 @@ const LandingPage = () => {
               <li className="nav-item">
                 <Link to="#reviews" className="nav-link">
                   Testimonials
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="feedback" className="nav-link">
+                  Feedback
                 </Link>
               </li>
               <li className="nav-item">
