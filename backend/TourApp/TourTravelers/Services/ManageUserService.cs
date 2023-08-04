@@ -2,10 +2,9 @@
 using System.Security.Cryptography;
 using System.Text;
 using Tour_LoginRegister.Interfaces;
-using TourUsers.Interfaces;
-using TourUsers.Models;
-using TourUsers.Models.DTOs;
-using TourUsers.Services;
+using Tour_LoginRegister.Models;
+using Tour_LoginRegister.Models.DTOs;
+using Tour_LoginRegister.Services;
 
 namespace Tour_LoginRegister.Services
 {
@@ -34,7 +33,7 @@ namespace Tour_LoginRegister.Services
             agent.User.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(agent.PasswordClear));
             agent.User.PasswordKey = hmac.Key;
             agent.User.UserEmail = agent.Email;
-            agent.User.UserRole = "Admin";
+            agent.User.UserRole = "Agent";
             agent.IsVerified = "Not Approved";
 
             var userResult = await _userRepo.Add(agent.User);
@@ -95,7 +94,6 @@ namespace Tour_LoginRegister.Services
                 user.UserRole = userResult.UserRole;
                 user.Token = _tokenService.TokenGenerate(user);
             }
-
             return user;
         }
     }

@@ -1,136 +1,102 @@
-﻿//using Tour_Booking.Models;
+﻿using Tour_Booking.Models;
 //using Tour_packages.Models;
-//using TourUsers.Models;
-//using System;
-//using System.Collections.Generic;
-//using System.ComponentModel.DataAnnotations;
-//using System.ComponentModel.DataAnnotations.Schema;
-//using Tour_Booking.Interfaces;
+//using Tour_LoginRegister.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Tour_Booking.Interfaces;
+//using Tour_packages.Services;
 
-//namespace Tour_Booking.Services
-//{
-//    public class ManageBookingService
-//    {
-//        private readonly IRepo<int, Booking> _bookingRepo;
-//        private readonly IRepo<int, Customer> _customerRepo;
-//        private readonly IRepo<int, Package> _packageRepo;
-//        private readonly IRepo<int, Agent> _agentRepo;
-//        private readonly IRepo<int, Traveler> _travelerRepo;
+namespace Tour_Booking.Services
+{
+    public class ManageBookingService : IManageBooking
+    {
+        private readonly IRepo<int, Booking> _bookingRepo;
+        private readonly IRepo<int, AdditionalTraveler> _additionalTravelersRepo;
 
-//        public ManageBookingService(
-//            IRepo<int, Booking> bookingRepo,
-//            IRepo<int, Customer> customerRepo,
-//            IRepo<int, Package> packageRepo,
-//            IRepo<int, Agent> agentRepo,
-//            IRepo<int, Traveler> travelerRepo)
-//        {
-//            _bookingRepo = bookingRepo;
-//            _customerRepo = customerRepo;
-//            _packageRepo = packageRepo;
-//            _agentRepo = agentRepo;
-//            _travelerRepo = travelerRepo;
-//        }
+        public ManageBookingService(IRepo<int, Booking> bookingRepo, IRepo<int, AdditionalTraveler> additionalTravelersRepo)
+        {
+            _bookingRepo = bookingRepo;
+            _additionalTravelersRepo = additionalTravelersRepo;
+        }
 
-//        public async Task<Booking?> AddBooking(int packageId, int customerId, int agentId, int travelerId, List<Customer> guests)
-//        {
-//            try
-//            {
-//                var package = await _packageRepo.Get(packageId);
-//                var customer = await _customerRepo.Get(customerId);
-//                var agent = await _agentRepo.Get(agentId);
-//                var traveler = await _travelerRepo.Get(travelerId);
+        public async Task<Booking> AddBooking(Booking booking)
+        {
+            booking.TotalAmount = booking.Amount * booking.AddTravelerCount;
+            booking = await _bookingRepo.Add(booking);
 
-//                if (package == null || customer == null || agent == null || traveler == null)
-//                {
-//                    return null;
-//                }
+            if (booking != null && booking.AdditionalTravelers != null)
+            {
+                foreach (var traveler in booking.AdditionalTravelers)
+                {
+                    traveler.BookingId = booking.BookingId;
+                    await _additionalTravelersRepo.Add(traveler);
+                }
+            }
+            return booking;
+        }
 
-//                var booking = new Booking
-//                {
-//                    PackageId = packageId,
-//                    CustomerId = customerId,
-//                    AgentId = agentId,
-//                    TravelerId = travelerId,
-//                    Guests = guests,
-//                    BookingDate = DateTime.Now,
-//                    StartDate = DateTime.Now.Date,
-//                    EndDate = DateTime.Now.Date.AddDays(7)
-//                };
 
-//                booking.CalculateTotalAmount();
+        public async Task<Booking> DeleteBooking(int bookingId)
+        {
+            var booking = await _bookingRepo.Get(bookingId);
+            if (booking != null)
+            {
+                return await _bookingRepo.Delete(bookingId);
+            }
+            return null;
+        }
 
-//                return await _bookingRepo.Add(booking);
-//            }
-//            catch (Exception ex)
-//            {
-//                Console.WriteLine(ex.Message);
-//            }
-//            return null;
-//        }
+        public async Task<ICollection<Booking>> GetAll()
+        {
+            return await _bookingRepo.GetAll();
+        }
 
-//        public async Task<Booking?> GetBooking(int bookingId)
-//        {
-//            try
-//            {
-//                return await _bookingRepo.Get(bookingId);
-//            }
-//            catch (Exception ex)
-//            {
-//                Console.WriteLine(ex.Message);
-//            }
-//            return null;
-//        }
+        public async Task<Booking> GetById(int bookingId)
+        {
+            return await _bookingRepo.Get(bookingId);
+        }
 
-//        public async Task<Booking?> UpdateBooking(Booking updatedBooking)
-//        {
-//            try
-//            {
-//                var existingBooking = await _bookingRepo.Get(updatedBooking.BookingId);
-//                if (existingBooking == null)
-//                {
-//                    return null;
-//                }
-//                updatedBooking.CalculateTotalAmount();
+        public async Task<Booking> UpdateBooking(Booking booking)
+        {
+            var existingBooking = await _bookingRepo.Get(booking.BookingId);
+            if (existingBooking != null)
+            {
+                if (existingBooking.Amount != booking.Amount || existingBooking.AddTravelerCount != booking.AddTravelerCount)
+                {
+                    int totalTravelersCount = booking.AddTravelerCount + 1;
+                    booking.TotalAmount = booking.Amount * totalTravelersCount;
+                }
 
-//                return await _bookingRepo.Update(updatedBooking);
-//            }
-//            catch (Exception ex)
-//            {
-//                Console.WriteLine(ex.Message);
-//            }
-//            return null;
-//        }
+                existingBooking.Amount = booking.Amount;
+                existingBooking.AddTravelerCount = booking.AddTravelerCount;
+                existingBooking.TotalAmount = booking.TotalAmount;
 
-//        public async Task<Booking?> DeleteBooking(int bookingId)
-//        {
-//            try
-//            {
-//                var booking = await _bookingRepo.Get(bookingId);
-//                if (booking == null)
-//                {
-//                    return null;
-//                }
+                await _bookingRepo.Update(existingBooking);
 
-//                return await _bookingRepo.Delete(bookingId);
-//            }
-//            catch (Exception ex)
-//            {
-//                Console.WriteLine(ex.Message);
-//            }
-//            return null;
-//        }
-
-//        public async Task<ICollection<Booking>?> GetAllBookings()
-//        {
-//            try
-//            {
-//                return await _bookingRepo.GetAll();
-//            }
-//            catch (Exception ex)
-//            {
-//                Console.WriteLine(ex.Message);
-//            }
-//            return null;
-//        }
-//    }
-//}
+                if (booking.AdditionalTravelers != null)
+                {
+                    foreach (var traveler in booking.AdditionalTravelers)
+                    {
+                        var existingTraveler = await _additionalTravelersRepo.Get(traveler.AdditionalTravelerId);
+                        if (existingTraveler != null)
+                        {
+                            existingTraveler.AdditionalTravelerName = traveler.AdditionalTravelerName;
+                            existingTraveler.AdditionalTravelerAge = traveler.AdditionalTravelerAge;
+                            existingTraveler.AdditionalTravelerPhone = traveler.AdditionalTravelerPhone;
+                        
+                            await _additionalTravelersRepo.Update(existingTraveler);
+                        }
+                        else
+                        {
+                            traveler.BookingId = booking.BookingId;
+                            await _additionalTravelersRepo.Add(traveler);
+                        }
+                    }
+                }
+            }
+            return existingBooking;
+        }
+    }
+}

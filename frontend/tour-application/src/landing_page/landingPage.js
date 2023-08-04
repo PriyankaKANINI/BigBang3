@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { animateScroll as scroll } from "react-scroll";
+import axios from "axios";
 import "../landing_page/landingPage.css";
 import Register from "../Register/register";
+import RegisterTraveler from "../Register/register_traveler";
 import imageSrc1 from "../images/backpacker-standing-sunrise-viewpoint-ja-bo-village-mae-hong-son-province-thailand.jpg";
 import imageSrc2 from "../images/young-woman-hiker-taking-photo-with-smartphone-mountains-peak-winter.jpg";
 import imageSrc3 from "../images/beautiful-girl-standing-boat-looking-mountains-ratchaprapha-dam-khao-sok-national-park-surat-thani-province-thailand.jpg";
@@ -9,10 +12,41 @@ import imageSrc4 from "../images/couple-together-kayaking-river.jpg";
 import imageSrc5 from "../images/couple-tourists-with-backpacks-mountain.jpg";
 import imageSrc6 from "../images/woman-walking-big-entrance-gate-bali-indonesia.jpg";
 import imageSrc7 from "../images/photographer-hand-holding-camera-standing-viewpoint-clouds-panorama-viewpoint-sunrise.jpg";
-
+import About from "../about/about";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const LandingPage = () => {
+  const scrollToTop = () => {
+    scroll.scrollToTop();
+  };
+
+  const scrollToBottom = () => {
+    scroll.scrollToBottom();
+  };
+
+  const handleNavLinkClick = (sectionId) => {
+    scroll.scrollTo(sectionId, {
+      smooth: true,
+      offset: -80,
+    });
+  };
+
+  const [images, setImages] = useState([]);
+  const apiBaseUrl = "http://localhost:5234/api/TourImage";
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await axios.get(apiBaseUrl);
+        console.log(response.data);
+        setImages(response.data);
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+    fetchImages();
+  }, []);
+
   return (
     <div className="landing-page">
       <nav className="navbar navbar-expand-lg navbar-dark">
@@ -40,28 +74,78 @@ const LandingPage = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="#travel-packages" className="nav-link">
+                <Link to="#gallery" className="nav-link">
+                  Destinations
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="#packages" className="nav-link">
                   Travel Packages
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="#testimonials" className="nav-link">
+                <Link to="#reviews" className="nav-link">
                   Testimonials
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="#contact" className="nav-link">
-                  Contact
+                <Link to="#footer-section" className="nav-link">
+                  Contact Us
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="register" className="nav-link">
+              <li className="nav-tem dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   Register
-                </Link>
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <Link to="register" className="dropdown-item">
+                      Register as Agent
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="register_traveler" className="dropdown-item">
+                      Register as Traveler
+                    </Link>
+                  </li>
+                </ul>
               </li>
+
+              <li className="nav-tem dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  More
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <Link to="about" className="dropdown-item">
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="blogs" className="dropdown-item">
+                      Blogs
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
               <li className="nav-item">
-                <Link to="login" className="nav-link">
-                  Login/SignIn
+                <Link to="logout" className="nav-link">
+                  Logout
                 </Link>
               </li>
             </ul>
@@ -74,6 +158,11 @@ const LandingPage = () => {
           <h2>Explore the Beauty of the Beautiful World</h2>
           <div className="hero-title-button">
             <button className="explore-now">explore now</button>
+            <button className="explore-now-login">
+              <Link to="login" className="nav-link">
+                Sign-In
+              </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -376,11 +465,6 @@ const LandingPage = () => {
           </div>
           <div className="review-content">
             <div className="carousel-wrapper">
-              <input checked type="radio" name="slider" id="slide1" />
-              <input type="radio" name="slider" id="slide2" />
-              <input type="radio" name="slider" id="slide3" />
-              <input type="radio" name="slider" id="slide4" />
-              <input type="radio" name="slider" id="slide5" />
               <div className="carousel">
                 <div className="review-item">
                   <div className="review-item-img">
@@ -458,10 +542,64 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* {section footer} */}
-      <footer className="footer-section bg-dark text-white py-3 text-center">
-        <div className="container"></div>
-      </footer>
+      {/* {footer section} */}
+      <button id="scroll-top-button" onClick={scrollToTop}>
+        Top
+      </button>
+      <br />
+      <br />
+      <section id="footer-section">
+        <footer className="footer-section bg-dark text-white py-3 text-center">
+          <div className="container">
+            <ul className="list-inline mb-3">
+              <li className="list-inline-item">
+                <Link
+                  to="https://www.facebook.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="bi bi-facebook"></i>{" "}
+                </Link>
+              </li>
+              <li className="list-inline-item">
+                <Link
+                  to="https://twitter.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="bi bi-twitter"></i>{" "}
+                </Link>
+              </li>
+              <li className="list-inline-item">
+                <Link
+                  to="https://www.instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="bi bi-instagram"></i>{" "}
+                </Link>
+              </li>
+            </ul>
+
+            <p>
+              © {new Date().getFullYear()} Your Company Name. All rights
+              reserved.
+            </p>
+            <p>Contact: contact@Dreamers.com</p>
+            <p>Address: 1234 Main Street, City, Country </p>
+          </div>
+        </footer>
+      </section>
+      <div>
+        {images.map((tourImage) => (
+          <div key={tourImage.Id}>
+            <h2>{tourImage.Name}</h2>
+            {tourImage.ImagePath && (
+              <img src={tourImage.ImagePath} alt={tourImage.Name} />
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

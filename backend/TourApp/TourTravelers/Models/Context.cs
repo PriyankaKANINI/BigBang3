@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace TourUsers.Models
+namespace Tour_LoginRegister.Models
 {
     public class Context : DbContext
     {

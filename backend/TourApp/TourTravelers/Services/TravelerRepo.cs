@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TourUsers.Interfaces;
-using TourUsers.Models;
+using Tour_LoginRegister.Interfaces;
+using Tour_LoginRegister.Models;
 
-namespace TourUsers.Services
+namespace Tour_LoginRegister.Services
 {
     public class TravelerRepo : IRepo<int, Traveler>
     {

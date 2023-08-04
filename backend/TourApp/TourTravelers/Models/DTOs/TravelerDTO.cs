@@ -1,4 +1,4 @@
-﻿namespace TourUsers.Models.DTOs
+﻿namespace Tour_LoginRegister.Models.DTOs
 {
     public class TravelerDTO : Traveler
     {

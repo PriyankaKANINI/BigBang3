@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
-using TourUsers.Models;
-using TourUsers.Models.DTOs;
+using Tour_LoginRegister.Models;
+using Tour_LoginRegister.Models.DTOs;
 
 namespace Tour_LoginRegister.Interfaces
 {

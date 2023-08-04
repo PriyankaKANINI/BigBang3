@@ -6,6 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Register from "./Register/register";
 import Login from "./Login/login";
+import RegisterTraveler from "./Register/register_traveler";
+import ImageGallery from "./imageGallery";
+import About from "./about/about";
 
 function App() {
   return (
@@ -13,8 +16,9 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="register" element={<Register />} />
+        <Route path="register_traveler" element={<RegisterTraveler />} />
         <Route path="login" element={<Login />} />
-        {/* Add more routes here if needed */}
+        <Route path="about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );

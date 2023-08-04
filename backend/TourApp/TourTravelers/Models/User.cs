@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TourUsers.Models
+namespace Tour_LoginRegister.Models
 {
     public class User
     {

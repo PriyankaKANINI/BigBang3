@@ -2,10 +2,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using TourUsers.Interfaces;
-using TourUsers.Models.DTOs;
+using Tour_LoginRegister.Interfaces;
+using Tour_LoginRegister.Models.DTOs;
 
-namespace TourUsers.Services
+namespace Tour_LoginRegister.Services
 {
     public class GenerateTokenService : ITokenGenerate
     {

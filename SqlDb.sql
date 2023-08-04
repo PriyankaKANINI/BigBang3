@@ -1,7 +1,11 @@
-use dbBigBang3
+use dbBigBang3_Booking
 
 use master
-drop database dbBigBang3
+use dbBigBang3
+
+use dbBigBang3_Packages
+
+use dbBigBang3_Booking
 
 select * from Users
 
@@ -9,5 +13,6 @@ select * from Travelers
 
 select * from Agents
 
-delete Users
+
+
 

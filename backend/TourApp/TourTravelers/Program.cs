@@ -4,10 +4,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using Tour_LoginRegister.Interfaces;
+using Tour_LoginRegister.Models;
 using Tour_LoginRegister.Services;
-using TourUsers.Interfaces;
-using TourUsers.Models;
-using TourUsers.Services;
 
 namespace TourTravelers
 {

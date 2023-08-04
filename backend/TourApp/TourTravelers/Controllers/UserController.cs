@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Tour_LoginRegister.Interfaces;
-using TourUsers.Interfaces;
-using TourUsers.Models;
-using TourUsers.Models.DTOs;
+using Tour_LoginRegister.Models;
+using Tour_LoginRegister.Models.DTOs;
 
 namespace Tour_LoginRegister.Controllers
 {

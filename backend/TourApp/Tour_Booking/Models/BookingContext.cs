@@ -8,8 +8,7 @@ namespace Tour_Booking.Models
         {
         
         }
-
         public DbSet<Booking>? Bookings { get; set; }
-        public DbSet<Customer>? Customers { get; set; }
+        public DbSet<AdditionalTraveler>? AdditionalTravelers { get; set;}
     }
 }

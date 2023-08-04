@@ -43,6 +43,7 @@
 }
 .register-inputs{
   padding: 10px;
+  margin-top: 2em;
 }
 
 #textarea-register {
@@ -71,6 +72,9 @@ select {
   border-radius: 4px;
   cursor: pointer;
   width: 15em;
+  font-weight: 600;
+  margin-top:2em ;
+  transition: background-color 0.3s, color 0.1s;
 }
 
 .register-item-button:hover {
@@ -79,4 +83,38 @@ select {
 
 #textarea-register{
   resize: none;
+}
+ /* Add media queries for responsive design */
+ @media (max-width: 1024px) {
+  .register-leftright {
+    flex-direction: column;
+    max-width: 100%; /* Take full width on medium-sized screens */
+  }
+
+  .register-item .register-image img {
+    margin-right: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    height: auto;
+  }
+
+  .register-leftright input,
+  .register-leftright select,
+  .register-leftright textarea {
+    width: 90%;
+  }
+
+  .register-item-button {
+    width: 90%;
+  }
+
+  .register-item h2 {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-item h2 {
+    font-size: 1.5em;
+  }
 }

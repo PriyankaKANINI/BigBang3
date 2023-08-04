@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TourUsers.Interfaces;
-using TourUsers.Models;
+using Tour_LoginRegister.Interfaces;
+using Tour_LoginRegister.Models;
 
 namespace Tour_LoginRegister.Services
 {

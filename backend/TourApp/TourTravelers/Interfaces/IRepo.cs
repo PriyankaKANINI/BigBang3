@@ -1,4 +1,4 @@
-﻿namespace TourUsers.Interfaces
+﻿namespace Tour_LoginRegister.Interfaces
 {
     public interface IRepo<K,T>
     {

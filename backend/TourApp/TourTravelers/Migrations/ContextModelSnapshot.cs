@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TourUsers.Models;
+using Tour_LoginRegister.Models;
 
 #nullable disable
 
@@ -22,7 +22,7 @@ namespace Tour_LoginRegister.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("TourUsers.Models.Agent", b =>
+            modelBuilder.Entity("Tour_LoginRegister.Models.Agent", b =>
                 {
                     b.Property<int>("AgentID")
                         .HasColumnType("int");
@@ -53,7 +53,7 @@ namespace Tour_LoginRegister.Migrations
                     b.ToTable("Agents");
                 });
 
-            modelBuilder.Entity("TourUsers.Models.Traveler", b =>
+            modelBuilder.Entity("Tour_LoginRegister.Models.Traveler", b =>
                 {
                     b.Property<int>("TravelerID")
                         .HasColumnType("int");
@@ -87,7 +87,7 @@ namespace Tour_LoginRegister.Migrations
                     b.ToTable("Travelers");
                 });
 
-            modelBuilder.Entity("TourUsers.Models.User", b =>
+            modelBuilder.Entity("Tour_LoginRegister.Models.User", b =>
                 {
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
@@ -112,9 +112,9 @@ namespace Tour_LoginRegister.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("TourUsers.Models.Agent", b =>
+            modelBuilder.Entity("Tour_LoginRegister.Models.Agent", b =>
                 {
-                    b.HasOne("TourUsers.Models.User", "User")
+                    b.HasOne("Tour_LoginRegister.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("AgentID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -123,9 +123,9 @@ namespace Tour_LoginRegister.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("TourUsers.Models.Traveler", b =>
+            modelBuilder.Entity("Tour_LoginRegister.Models.Traveler", b =>
                 {
-                    b.HasOne("TourUsers.Models.User", "User")
+                    b.HasOne("Tour_LoginRegister.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("TravelerID")
                         .OnDelete(DeleteBehavior.Cascade)

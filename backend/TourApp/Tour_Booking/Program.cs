@@ -3,12 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Tour_Booking.Interfaces;
 using Tour_Booking.Models;
-using Tour_LoginRegister.Interfaces;
-using Tour_LoginRegister.Services;
-using TourUsers.Interfaces;
-using TourUsers.Models;
-using TourUsers.Services;
+using Tour_Booking.Services;
+//using Tour_packages.Services;
 
 namespace Tour_Booking
 {
@@ -25,63 +23,64 @@ namespace Tour_Booking
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            //builder.Services.AddSwaggerGen(c =>
-            //{
-            //    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-            //    {
-            //        Name = "Authorization",
-            //        Type = SecuritySchemeType.Http,
-            //        Scheme = "Bearer",
-            //        BearerFormat = "JWT",
-            //        In = ParameterLocation.Header,
-            //        Description = "JWT Authorization header using the Bearer scheme."
-            //    });
-            //    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-            //     {
-            //         {
-            //               new OpenApiSecurityScheme
-            //                 {
-            //                     Reference = new OpenApiReference
-            //                     {
-            //                         Type = ReferenceType.SecurityScheme,
-            //                         Id = "Bearer"
-            //                     }
-            //                 },
-            //                 new string[] {}
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization header using the Bearer scheme."
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                 {
+                     {
+                           new OpenApiSecurityScheme
+                             {
+                                 Reference = new OpenApiReference
+                                 {
+                                     Type = ReferenceType.SecurityScheme,
+                                     Id = "Bearer"
+                                 }
+                             },
+                             new string[] {}
 
-            //         }
-            //     });
-            //});
+                     }
+                 });
+            });
 
             builder.Services.AddDbContext<BookingContext>(opts =>
             {
                 opts.UseSqlServer(builder.Configuration.GetConnectionString("Conn"));
             });
 
-            //builder.Services.AddScoped<IRepo<int, Booking>, Bookings>();
-            //builder.Services.AddScoped<IRepo<int, Customer>, Customers>();
+            builder.Services.AddScoped<IManageBooking, ManageBookingService>();
+            builder.Services.AddScoped<IRepo<int, Booking>, BookingRepo>();
+            builder.Services.AddScoped<IRepo<int, AdditionalTraveler>, AdditionalTravelerRepo>();
 
 
-            //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            //  .AddJwtBearer(options =>
-            //  {
-            //      options.TokenValidationParameters = new TokenValidationParameters
-            //      {
-            //          ValidateIssuerSigningKey = true,
-            //          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["TokenKey"])),
-            //          ValidateIssuer = false,
-            //          ValidateAudience = false
-            //      };
-            //  });
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+              .AddJwtBearer(options =>
+              {
+                  options.TokenValidationParameters = new TokenValidationParameters
+                  {
+                      ValidateIssuerSigningKey = true,
+                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["TokenKey"])),
+                      ValidateIssuer = false,
+                      ValidateAudience = false
+                  };
+              });
 
 
-            //builder.Services.AddCors(opts =>
-            //{
-            //    opts.AddPolicy("AngularCORS", options =>
-            //    {
-            //        options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
-            //    });
-            //});
+            builder.Services.AddCors(opts =>
+            {
+                opts.AddPolicy("AngularCORS", options =>
+                {
+                    options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                });
+            });
 
             var app = builder.Build();
 
@@ -92,8 +91,8 @@ namespace Tour_Booking
                 app.UseSwaggerUI();
             }
             app.UseAuthentication();
-            //app.UseCors("AngularCORS");
-            //app.UseAuthorization();
+            app.UseCors("AngularCORS");
+            app.UseAuthorization();
             app.MapControllers();
 
             app.Run();
