@@ -1,0 +1,141 @@
+.bookingMain-container {
+    width: 100%;
+    max-width: 80em;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .bookingMain-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bookingMain-card-content {
+    margin-bottom: 20px;
+  }
+  
+  /* Add this CSS to your existing bookingMain.css */
+.bookingMain-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Add the classes for visibility */
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+  
+  .bookingMain-card-column {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  #booking-main {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .bookingMain-card-items {
+    cursor: pointer;
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .bookingMain-card-items:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .booking-card-images img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  .bookingMain-card-items,
+  .card {
+    margin-bottom: 10px;
+  }
+  
+  .bookingMain-card-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .bookingMain-card-button button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .bookingMain-card-button button:hover {
+    background-color: #0056b3;
+  }
+
+  .bookingMain-card-row-ad{
+    display: flex;
+    gap: 10em;
+}
+
+.booking-main-date-ad{
+  margin-top: 1em;
+}
+
+.carousel .slide {
+  background: #fff; 
+  border: 1px solid #ddd;
+  height: 300px; 
+  width: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel .control-prev.control-arrow:before,
+.carousel .control-next.control-arrow:before {
+  color: #333; 
+  font-size: 24px; 
+}
+
+.carousel .control-arrow {
+  background-color: transparent;
+}
+
+.carousel .control-arrow:before {
+  color: #333;
+  font-size: 24px;
+}
+
+.carousel .control-arrow:hover:before {
+  color: transparent;
+}
+
+.carousel .slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+
+
+
+
+
+

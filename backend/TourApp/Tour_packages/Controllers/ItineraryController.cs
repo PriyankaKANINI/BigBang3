@@ -15,7 +15,7 @@ namespace Tour_packages.Controllers
         {
             _itineraryRepo = itineraryRepo;
         }
-        [HttpPost]
+        [HttpPost("createItinerary")]
         public async Task<ActionResult<Itinerary>> AddItinerary(Itinerary itinerary)
         {
             var addedItinerary = await _itineraryRepo.Add(itinerary);
@@ -25,7 +25,7 @@ namespace Tour_packages.Controllers
             }
             return BadRequest("Failed to add itinerary.");
         }
-        [HttpPut("{id}")]
+        [HttpPut("updateItinerary")]
         public async Task<ActionResult<Itinerary>> UpdateItinerary(int id, Itinerary itinerary)
         {
             if (id != itinerary.ItineraryId)
@@ -40,7 +40,7 @@ namespace Tour_packages.Controllers
             }
             return NotFound("Itinerary not found.");
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("deleteItinerary")]
         public async Task<ActionResult<Itinerary>> DeleteItinerary(int id)
         {
             var deletedItinerary = await _itineraryRepo.Delete(id);
@@ -51,7 +51,7 @@ namespace Tour_packages.Controllers
             return NotFound("Itinerary not found.");
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("getItineraryById")]
         public async Task<ActionResult<Itinerary>> GetItinerary(int id)
         {
             var itinerary = await _itineraryRepo.Get(id);
@@ -62,7 +62,7 @@ namespace Tour_packages.Controllers
             return NotFound("Itinerary not found.");
         }
 
-        [HttpGet]
+        [HttpGet("getAllItinerary")]
         public async Task<ActionResult<IEnumerable<Itinerary>>> GetAllItineraries()
         {
             var itineraries = await _itineraryRepo.GetAll();

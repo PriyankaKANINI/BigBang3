@@ -1,52 +1,262 @@
-/* feedbackForm.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open-sans', sans-serif;
+}
 
-.feedback-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f0f0f0;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.wrapper-feedback {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-feedback {
+  padding: 20px;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  position: relative;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-feedback,
+.rating-feedback,
+.feedback-box,
+.user-options,
+.cta {
+  position: relative;
+  z-index: 2; 
+}
+
+.card-feedback::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/backpacker-standing-sunrise-viewpoint-ja-bo-village-mae-hong-son-province-thailand.jpg");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  opacity: 0.9; 
+  border-radius: 8px;
+}
+
+.title-feedback {
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 1em;
+  font-size: 22px;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.rating-feedback ul {
+  display: flex; 
+  padding: 0;
+  gap: 10px;
+  margin: 2em;
+  list-style-type: none;
+}
+
+.rating-feedback li {
+  display: flex; 
+  opacity: 0.9;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  font-size: 36px; 
+  font-weight: 500;
+  width: 20em;
+  height: 3em;
+  background: #ffffff;
+  border: 2px solid #a3b8e8;
+  border-radius: 5px;
+  animation: bounceEmoji 1s infinite;
+  color: #ff1493;
+  transition: background-color 0.3s ease-in-out, font-size 0.2s ease-in-out; 
+}
+
+.rating-feedback li  {
+  margin-bottom: 10px;
+}
+
+.rating-feedback li:hover {
+  color: white; 
+  border: none;
+  background-color: #ff71a4;
+  font-size: 30px;
+}
+
+.feedback-page {
+  min-height: 100vh;
+  position: relative;
+}
+
+.background-image {
+  background-image: url("../images/backpacker-standing-sunrise-viewpoint-ja-bo-village-mae-hong-son-province-thailand.jpg");
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7; 
+}
+
+@keyframes bounceEmoji {
+  0% {
+    transform: translateY(0);
   }
-  
-  .feedback-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+  50% {
+    transform: translateY(-5px);
   }
-  
-  .feedback-form label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
+  100% {
+    transform: translateY(0);
   }
-  
-  .feedback-form textarea {
-    width: 100%;
-    height: 120px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .feedback-form button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .feedback-form button:hover {
-    background-color: #0056b3;
-  }
-  
-  .feedback-form p {
-    text-align: center;
-    color: #333;
-  }
-  
+}
+
+#selected {
+  color: #121c51;
+  background: #ffffff;
+  border: 2px solid #f2f6ff;
+  box-shadow: 0px 4px 4px rgba(164, 121, 255, 0.25), 0px 4px 17px rgba(255, 40, 40, 0.25);
+  border-radius: 5px;
+}
+
+.feedback-title {
+  padding: 0px 0px 10px 38px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.box-feedback-main {
+  margin-bottom: 8em;
+}
+
+.box-feedback {
+  background: #ffffff;
+  opacity: 0.8;
+  border: 1px solid #a3b8e8;
+  border-radius: 5px;
+  width: 30em;
+  position: fixed;
+  height: 82px;
+  margin: 0px 0px 20px 38px;
+  resize: none;
+  overflow-y: auto;
+  color: black;
+  font-weight: 600;
+}
+
+.user-options {
+  padding-left: 38px;
+  margin-top: 1em;
+  font-size: 14px;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.user-options label {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.user-options input[type="checkbox"] {
+  margin-right: 10px; 
+}
+
+.user-options a {
+  color: var(--link-col);
+  text-decoration: none;
+}
+
+.privacy-policy {
+  color: #ffffff;
+  padding-bottom: 16px;
+}
+
+.research-group {
+  color: #ffffff;
+}
+
+.checkbox {
+  background: #ffffff;
+  border: 2px solid #a3b8e8;
+  border-radius: 5px;
+  width: 21px;
+  height: 21px;
+  margin-right: 10px;
+}
+
+#ticked {
+  background: #ff71a4;
+  border: none;
+}
+
+.cta {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  text-align: center;
+  opacity: 0.9;
+
+}
+
+.submit-feedback {
+  padding: 1em;
+  width: 8em;
+  background-color: #ff71a4;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 2em;
+}
+
+.cancel-feedback {
+  padding: 1em;
+  width: 8em;
+  background: #ffffff;
+  border-radius: 5px;
+  color: #60699a;
+  border: 2px solid #a3b8e8;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 2em;
+}
+
+.checkbox:hover {
+  cursor: pointer;
+}
+
+.rating-feedback li:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.box-feedback:hover {
+  cursor: text;
+}
+
+.cancel-feedback:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  background-color: #ff71a4;
+  color: #ffffff;
+  border: none;
+}
+
+.submit-feedback:hover {
+  cursor: pointer;
+  background-color: #f8c87c;
+  color: #60699a;
+}

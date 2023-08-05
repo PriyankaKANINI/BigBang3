@@ -9,8 +9,9 @@ namespace Tour_Images.Models
         public int Id { get; set; }
         public string? Name { get; set; }
         public string? ImagePath { get; set; }
-
+        public int PackageId { get; set; }
         [NotMapped]
-        public IFormFile Image { get; set; }
+        public List<IFormFile> Image { get; set; }
+
     }
 }

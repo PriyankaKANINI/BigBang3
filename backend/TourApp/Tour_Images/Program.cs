@@ -21,6 +21,14 @@ namespace Tour_Images
                 opts.UseSqlServer(builder.Configuration.GetConnectionString("Conn"));
             });
 
+            builder.Services.AddCors(opts =>
+            {
+                opts.AddPolicy("AngularCORS", options =>
+                {
+                    options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -29,13 +37,13 @@ namespace Tour_Images
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseAuthentication();
+            app.UseCors("AngularCORS");
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();
         }
     }
 }
+

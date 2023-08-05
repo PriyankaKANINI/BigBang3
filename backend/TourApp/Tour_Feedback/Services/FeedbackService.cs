@@ -1,11 +1,12 @@
-﻿using Tour_Feedback.Models;
+﻿using Tour_Feedback.Interfaces;
+using Tour_Feedback.Models;
 
 namespace Tour_Feedback.Services
 {
     public class FeedbackService : IFeedback
     {
-        private readonly IRepo<Feedback, int> _repo;
-        public FeedbackService(IRepo<Feedback, int> repo)
+        private readonly IRepo<int, Feedback> _repo;
+        public FeedbackService(IRepo<int, Feedback> repo)
         {
             _repo = repo;
         }

@@ -11,7 +11,7 @@ namespace Tour_packages.Models
         }
         public DbSet<Itinerary> Itineraries { get; set; }
         public DbSet<Package> Packages { get; set; }
-        public DbSet<Image> Images { get; set; }
+        //public DbSet<Image> Images { get; set; }
         public DbSet<ContactDetails> Contacts { get; set; }
     }
 }

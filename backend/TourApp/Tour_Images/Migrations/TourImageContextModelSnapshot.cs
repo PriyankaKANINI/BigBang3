@@ -35,6 +35,9 @@ namespace Tour_Images.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PackageId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("TourImages");

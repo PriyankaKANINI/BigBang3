@@ -16,7 +16,7 @@ namespace Tour_packages.Controllers
             _packageRepo = packagRepo;
         }
 
-        [HttpPost]
+        [HttpPost("packageCreate")]
         public async Task<ActionResult<Package>> AddTourPackage(Package tourPackage)
         {
             var result = await _packageRepo.Add(tourPackage);
@@ -27,7 +27,7 @@ namespace Tour_packages.Controllers
             return BadRequest("Failed to add tour package.");
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("updatePackage")]
         public async Task<ActionResult<Package>> UpdateTourPackage(int id, Package tourPackage)
         {
             if (id != tourPackage.PackageId)
@@ -43,7 +43,7 @@ namespace Tour_packages.Controllers
             return NotFound("TourPackage not found.");
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("deletePackage")]
         public async Task<ActionResult<Package>> DeleteTourPackage(int id)
         {
             var result = await _packageRepo.Delete(id);
@@ -54,7 +54,7 @@ namespace Tour_packages.Controllers
             return NotFound("TourPackage not found.");
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("getPackageById")]
         public async Task<ActionResult<Package>> GetTourPackage(int id)
         {
             var result = await _packageRepo.Get(id);
@@ -65,7 +65,7 @@ namespace Tour_packages.Controllers
             return NotFound("TourPackage not found.");
         }
 
-        [HttpGet]
+        [HttpGet("getAllPackages")]
         public async Task<ActionResult<IEnumerable<Package>>> GetAllTourPackages()
         {
             var result = await _packageRepo.GetAll();

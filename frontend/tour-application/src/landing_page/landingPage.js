@@ -15,6 +15,7 @@ import imageSrc7 from "../images/photographer-hand-holding-camera-standing-viewp
 import About from "../about/about";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Feedback from "../feedback/feedback";
+import BookingMain from "../booking/bookingMain";
 
 const LandingPage = () => {
   const scrollToTop = () => {
@@ -97,6 +98,11 @@ const LandingPage = () => {
               <li className="nav-item">
                 <Link to="#footer-section" className="nav-link">
                   Contact Us
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="bookingMain" className="nav-link">
+                  Book Now
                 </Link>
               </li>
               <li className="nav-tem dropdown">

@@ -2,39 +2,146 @@ import React, { useState } from "react";
 import "../feedback/feedback.css";
 
 const Feedback = () => {
-  const [feedback, setFeedback] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [rating, setRating] = useState(4);
+  const [privacyChecked, setPrivacyChecked] = useState(false);
+  const [researchGroupChecked, setResearchGroupChecked] = useState(false);
 
-  const handleChange = (e) => {
-    setFeedback(e.target.value);
+  const handleRatingChange = (selectedRating) => {
+    switch (selectedRating) {
+      case "terrible":
+        setRating(1);
+        break;
+      case "bad":
+        setRating(2);
+        break;
+      case "okay":
+        setRating(3);
+        break;
+      case "good":
+        setRating(4);
+        break;
+      case "amazing":
+        setRating(5);
+        break;
+      default:
+        setRating(4);
+    }
+  };
+  const [feedbackText, setFeedbackText] = useState("");
+
+  const handleFeedbackTextChange = (event) => {
+    setFeedbackText(event.target.value);
+  };
+  const handlePrivacyCheckbox = () => {
+    setPrivacyChecked(!privacyChecked);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can implement the logic here to submit the feedback to your backend or store it in a database.
-    // For this example, we'll just set the submitted flag to true.
-    setSubmitted(true);
+  const handleResearchGroupCheckbox = () => {
+    setResearchGroupChecked(!researchGroupChecked);
+  };
+
+  const handleSubmit = () => {
+    // Add your submit logic here
+  };
+
+  const handleCancel = () => {
+    // Add your cancel logic here
   };
 
   return (
-    <div>
-      {submitted ? (
-        <p>Thank you for your feedback!</p>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <h2>Feedback Form</h2>
-          <div>
-            <label htmlFor="feedback">Your Feedback:</label>
-            <textarea
-              id="feedback"
-              value={feedback}
-              onChange={handleChange}
-              required
-            />
+    <div className="feedback-page">
+      <div className="background-image"></div>
+      <div className="wrapper-feedback">
+        <div className="card-feedback">
+          <div className="title-feedback">
+            Kindly give us your valuable feedback
           </div>
-          <button type="submit">Submit Feedback</button>
-        </form>
-      )}
+          <div className="rating-feedback">
+            <ul>
+              <li
+                onClick={() => handleRatingChange("terrible")}
+                className={rating === 1 ? "selected" : ""}
+              >
+                <i class="bi bi-emoji-angry"></i>
+              </li>
+              <li
+                onClick={() => handleRatingChange("bad")}
+                className={rating === 2 ? "selected" : ""}
+              >
+                <i class="bi bi-emoji-frown"></i>
+              </li>
+              <li
+                onClick={() => handleRatingChange("okay")}
+                className={rating === 3 ? "selected" : ""}
+              >
+                <i class="bi bi-emoji-neutral"></i>
+              </li>
+              <li
+                onClick={() => handleRatingChange("good")}
+                className={rating === 4 ? "selected" : ""}
+              >
+                <i class="bi bi-emoji-smile"></i>{" "}
+              </li>
+              <li
+                onClick={() => handleRatingChange("amazing")}
+                className={rating === 5 ? "selected" : ""}
+              >
+                <i class="bi bi-emoji-laughing"></i>{" "}
+              </li>
+            </ul>
+          </div>
+          <div className="feedback-box">
+            <div className="feedback-title">
+              What are the main reasons for your rating?
+            </div>
+            <div className="box-feedback-main">
+              <textarea
+                className="box-feedback"
+                value={feedbackText}
+                onChange={handleFeedbackTextChange}
+                rows={5}
+              />
+            </div>
+          </div>
+          <div className="user-options">
+            <label className="privacy-policy" onClick={handlePrivacyCheckbox}>
+              <input
+                type="checkbox"
+                className="checkbox"
+                checked={privacyChecked}
+                onChange={handlePrivacyCheckbox}
+              />
+              <div className="policy-agreement">
+                I may be contacted about this feedback.{" "}
+                <a href="#">Privacy Policy</a>
+              </div>
+            </label>
+            <label
+              className="research-group"
+              onClick={handleResearchGroupCheckbox}
+            >
+              <input
+                type="checkbox"
+                className="checkbox"
+                checked={researchGroupChecked}
+                onChange={handleResearchGroupCheckbox}
+              />
+              <div className="research-improvements">
+                I’d like to help improve by joining the{" "}
+                <a href="#">Research Group</a>
+              </div>
+            </label>
+          </div>
+          <div className="cta">
+            <div className="cancel-feedback" onClick={handleCancel}>
+              Cancel
+            </div>
+            <div className="submit-feedback" onClick={handleSubmit}>
+              Submit
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

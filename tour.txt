@@ -55,6 +55,53 @@ already exists user should not enter
 
 Packages
 
+Get
+http://localhost:5202/api/Package/getPackageById?id=1
+
+Post
+http://localhost:5202/api/Package/packageCreate
+
+GetAll
+http://localhost:5202/api/Package/getAllPackages
+
+Delete
+http://localhost:5202/api/Package/deletePackage?id=1
+
+Put
+
+-------------------------------------------
+Contact Details
+
+Get
+http://localhost:5202/api/ContactDetails/getItineraryById?id=1
+
+Post
+http://localhost:5202/api/ContactDetails/createContact
+
+GetAll
+http://localhost:5202/api/ContactDetails/getAllItinerary
+
+Delete
+
+Put
+
+------------------------------------------
+
+Itinerary
+
+Get
+http://localhost:5202/api/Itinerary/getItineraryById?id=2
+
+Post
+http://localhost:5202/api/Itinerary/createItinerary
+
+GetAll
+http://localhost:5202/api/Itinerary/getAllItinerary
+
+Delete
+http://localhost:5202/api/Itinerary/deleteItinerary?id=2
+
+Put
 
 
 

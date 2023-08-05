@@ -1,54 +1,65 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Tour_Feedback.Interfaces;
 using Tour_Feedback.Models;
 
 namespace Tour_Feedback.Services
 {
-    public class FeedbackRepo : IRepo<Feedback, int>
+    public class FeedbackRepo : IRepo<int, Feedback>
     {
-        private readonly FeedbackContext _context;
-        public FeedbackRepo(FeedbackContext context)
+        private readonly FeedbackContext _dbContext;
+
+        public FeedbackRepo(FeedbackContext dbContext)
         {
-            _context = context;
+            _dbContext = dbContext;
         }
+
         public async Task<Feedback?> Add(Feedback item)
         {
-
-            var fb = _context.Feedbacks.SingleOrDefault(f => f.FeedbackID == item.FeedbackID);
-            if (fb == null)
+            try
             {
-                try
-                {
-                    _context.Feedbacks.Add(item);
-                    await _context.SaveChangesAsync();
-                    return item;
-                }
-                catch (Exception)
-                {
-                    throw new Exception();
-                }
-
+                _dbContext.Feedbacks.Add(item);
+                await _dbContext.SaveChangesAsync();
+                return item;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<Feedback?> Update(Feedback item)
+        {
+            try
+            {
+                _dbContext.Entry(item).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
+                return item;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public async Task<Feedback?> Delete(int id)
         {
             try
             {
-                var fb = await Get(id);
-                if (fb != null)
-                {
-                    _context.Feedbacks.Remove(fb);
-                    await _context.SaveChangesAsync();
-                    return fb;
-                }
-                return null;
+                var feedback = await _dbContext.Feedbacks.FindAsync(id);
+                if (feedback == null)
+                    return null;
 
+                _dbContext.Feedbacks.Remove(feedback);
+                await _dbContext.SaveChangesAsync();
+                return feedback;
             }
-            catch (Exception)
+            catch
             {
-                throw new Exception();
+                return null;
             }
         }
 
@@ -56,16 +67,11 @@ namespace Tour_Feedback.Services
         {
             try
             {
-                var user = await _context.Feedbacks.SingleOrDefaultAsync(f => f.FeedbackID == id);
-                if (user == null)
-                {
-                    return null;
-                }
-                return user;
+                return await _dbContext.Feedbacks.FindAsync(id);
             }
-            catch (Exception)
+            catch
             {
-                throw new Exception();
+                return null;
             }
         }
 
@@ -73,39 +79,12 @@ namespace Tour_Feedback.Services
         {
             try
             {
-                var fb = await _context.Feedbacks.ToListAsync();
-                if (fb != null)
-                {
-                    return fb;
-                }
+                return await _dbContext.Feedbacks.ToListAsync();
+            }
+            catch
+            {
                 return null;
             }
-            catch (Exception)
-            {
-                throw new Exception();
-            }
-        }
-
-        public async Task<Feedback?> Update(Feedback item)
-        {
-            var fb = _context.Feedbacks.SingleOrDefault(f => f.FeedbackID == item.FeedbackID);
-            if (fb != null)
-            {
-                try
-                {
-                    fb.TravelerID = item.TravelerID;
-                    fb.TourPackageId = item.TourPackageId;
-                    fb.Ratings = item.Ratings;
-                    fb.Comment = item.Comment;
-                    await _context.SaveChangesAsync();
-                    return fb;
-                }
-                catch (Exception)
-                {
-                    throw new Exception();
-                }
-            }
-            return null;
         }
     }
 }

@@ -17,8 +17,8 @@ namespace Tour_Feedback.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(Feedback), StatusCodes.Status201Created)]//Success Response
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]//Failure Response
+        [ProducesResponseType(typeof(Feedback), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Feedback?>> AddFeedback(Feedback review)
         {
             try
@@ -35,9 +35,9 @@ namespace Tour_Feedback.Controllers
                 return BadRequest("Backend error :(");
             }
         }
-        [HttpGet]
-        [ProducesResponseType(typeof(List<Feedback>), StatusCodes.Status200OK)]//Success Response
-        [ProducesResponseType(StatusCodes.Status404NotFound)]//Failure Response
+        [HttpGet("GetAll")]
+        [ProducesResponseType(typeof(List<Feedback>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
         public async Task<ActionResult<ICollection<Feedback>>> GetAllReviews()
@@ -58,8 +58,8 @@ namespace Tour_Feedback.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(Feedback), StatusCodes.Status200OK)]//Success Response
-        [ProducesResponseType(StatusCodes.Status404NotFound)]//Failure Response
+        [ProducesResponseType(typeof(Feedback), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
         public async Task<ActionResult<Feedback>> GetReview(int id)
@@ -80,8 +80,8 @@ namespace Tour_Feedback.Controllers
         }
 
         [HttpDelete]
-        [ProducesResponseType(typeof(Feedback), StatusCodes.Status200OK)]//Success Response
-        [ProducesResponseType(StatusCodes.Status404NotFound)]//Failure Response
+        [ProducesResponseType(typeof(Feedback), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
         public async Task<ActionResult<Feedback>> DeleteReview(int id)

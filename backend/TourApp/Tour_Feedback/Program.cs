@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Tour_Feedback.Interfaces;
 using Tour_Feedback.Models;
+using Tour_Feedback.Services;
 
 namespace Tour_Feedback
 {
@@ -21,8 +23,8 @@ namespace Tour_Feedback
                 opts.UseSqlServer(builder.Configuration.GetConnectionString("Conn"));
             });
 
-            builder.Services.AddScoped<IRepo<string, User>, UserRepo>();
-            
+            builder.Services.AddScoped<IRepo<int, Feedback>, FeedbackRepo>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

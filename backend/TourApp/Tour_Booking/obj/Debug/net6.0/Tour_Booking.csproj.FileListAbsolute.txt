@@ -3,7 +3,6 @@ D:\TourWebsite\backend\TourApp\Tour_Booking\obj\Debug\net6.0\Tour_Booking.Genera
 D:\TourWebsite\backend\TourApp\Tour_Booking\obj\Debug\net6.0\Tour_Booking.AssemblyInfoInputs.cache
 D:\TourWebsite\backend\TourApp\Tour_Booking\obj\Debug\net6.0\Tour_Booking.AssemblyInfo.cs
 D:\TourWebsite\backend\TourApp\Tour_Booking\obj\Debug\net6.0\Tour_Booking.csproj.CoreCompileInputs.cache
-D:\TourWebsite\backend\TourApp\Tour_Booking\obj\Debug\net6.0\Tour_Booking.MvcApplicationPartsAssemblyInfo.cs
 D:\TourWebsite\backend\TourApp\Tour_Booking\obj\Debug\net6.0\Tour_Booking.MvcApplicationPartsAssemblyInfo.cache
 D:\TourWebsite\backend\TourApp\Tour_Booking\bin\Debug\net6.0\Tour_LoginRegister.deps.json
 D:\TourWebsite\backend\TourApp\Tour_Booking\bin\Debug\net6.0\Tour_LoginRegister.runtimeconfig.json

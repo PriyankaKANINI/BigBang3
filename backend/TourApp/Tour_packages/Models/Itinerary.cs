@@ -19,6 +19,5 @@ namespace Tour_packages.Models
         public string? DestinationName { get; set; }
         [Required]
         public string? DestinationDescription { get; set; }
-        public Image? Images { get; set; }
     }
 }

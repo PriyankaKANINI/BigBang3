@@ -16,7 +16,7 @@ namespace Tour_packages.Controllers
             _contactDetailsRepo = contactDetailsRepo;
 
         }
-        [HttpPost]
+        [HttpPost("createContact")]
         public async Task<ActionResult<ContactDetails>> AddContactDetails(ContactDetails contactDetails)
         {
             var result = await _contactDetailsRepo.Add(contactDetails);
@@ -27,7 +27,7 @@ namespace Tour_packages.Controllers
             return BadRequest("Failed to add contact details.");
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("updateItinerary")]
         public async Task<ActionResult<ContactDetails>> UpdateContactDetails(int id, ContactDetails contactDetails)
         {
             if (id != contactDetails.ContactId)
@@ -43,7 +43,7 @@ namespace Tour_packages.Controllers
             return NotFound("ContactDetails not found.");
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("deleteItinerary")]
         public async Task<ActionResult<ContactDetails>> DeleteContactDetails(int id)
         {
             var result = await _contactDetailsRepo.Delete(id);
@@ -54,7 +54,7 @@ namespace Tour_packages.Controllers
             return NotFound("ContactDetails not found.");
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("getItineraryById")]
         public async Task<ActionResult<ContactDetails>> GetContactDetails(int id)
         {
             var result = await _contactDetailsRepo.Get(id);
@@ -65,7 +65,7 @@ namespace Tour_packages.Controllers
             return NotFound("ContactDetails not found.");
         }
 
-        [HttpGet]
+        [HttpGet("getAllItinerary")]
         public async Task<ActionResult<IEnumerable<ContactDetails>>> GetAllContactDetails()
         {
             var result = await _contactDetailsRepo.GetAll();

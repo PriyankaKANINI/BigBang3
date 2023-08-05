@@ -31,7 +31,7 @@ namespace Tour_packages.Models
 
         [Required]
         public string? Transportation { get; set; }
-        public ICollection<Image>? Image { get; set; }
+        //public ICollection<Image>? Image { get; set; }
         public ICollection<Itinerary>? Itinerary { get; set; }
         public ContactDetails? ContactDetails { get; set; }
     }

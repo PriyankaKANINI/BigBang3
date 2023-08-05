@@ -1,3 +1,4 @@
+D:\TourWebsite\backend\TourApp\Tour_Feedback\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\TourWebsite\backend\TourApp\Tour_Feedback\bin\Debug\net6.0\appsettings.Development.json
 D:\TourWebsite\backend\TourApp\Tour_Feedback\bin\Debug\net6.0\appsettings.json
 D:\TourWebsite\backend\TourApp\Tour_Feedback\bin\Debug\net6.0\Tour_Feedback.exe
@@ -25,7 +26,6 @@ D:\TourWebsite\backend\TourApp\Tour_Feedback\bin\Debug\net6.0\Microsoft.OpenApi.
 D:\TourWebsite\backend\TourApp\Tour_Feedback\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 D:\TourWebsite\backend\TourApp\Tour_Feedback\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\TourWebsite\backend\TourApp\Tour_Feedback\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\TourWebsite\backend\TourApp\Tour_Feedback\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\TourWebsite\backend\TourApp\Tour_Feedback\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 D:\TourWebsite\backend\TourApp\Tour_Feedback\bin\Debug\net6.0\System.Drawing.Common.dll
 D:\TourWebsite\backend\TourApp\Tour_Feedback\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
