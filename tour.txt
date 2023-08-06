@@ -103,8 +103,38 @@ http://localhost:5202/api/Itinerary/deleteItinerary?id=2
 
 Put
 
+--------------------------------------------
 
+Feedback
 
+Post
+http://localhost:5045/api/FeedBack/CreateFeedback
+
+Get
+
+GetAll
+
+Delete
+
+------------------------------------------------------------
+Images
+
+Post
+http://localhost:5234/api/TourImage/PostingImages?packageId=2
+
+Get
+http://localhost:5234/api/TourImage/GettingImages
+
+------------------------------------------------------------
+
+Validations in front end and backend
+Booking
+Package
+PDF
+Responsiveness
+Testing
+Feedback connect
+OTP,email,forgot password
 
 
 

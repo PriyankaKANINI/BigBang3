@@ -11,6 +11,7 @@ import ImageGallery from "./imageGallery";
 import About from "./about/about";
 import Feedback from "./feedback/feedback";
 import BookingMain from "./booking/bookingMain";
+import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   return (

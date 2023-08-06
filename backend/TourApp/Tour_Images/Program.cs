@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Tour_Images.Interfaces;
 using Tour_Images.Models;
+using Tour_Images.Services;
 
 namespace Tour_Images
 {
@@ -20,6 +22,11 @@ namespace Tour_Images
             {
                 opts.UseSqlServer(builder.Configuration.GetConnectionString("Conn"));
             });
+
+            builder.Services.AddScoped<IRepo<int, TourImage>, TourImageRepo>();
+            builder.Services.AddScoped<ITourImageService, TourImageService>();
+
+
 
             builder.Services.AddCors(opts =>
             {

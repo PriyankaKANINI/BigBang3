@@ -1,8 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 
 .register-item h2{
   color: #ffffff;
   font-size: 3em;
-  /* background-color: #8A33FF; */
 }
 
 .register-leftright{
@@ -19,12 +22,8 @@
 .register-container {
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  /* background-color: thistle; */
-  /* background: linear-gradient(#ff1493,#ff69b4,#ffffff); */
-  /* background-color: rgba(216, 191, 216, 0.9); */
-  background: linear-gradient(to bottom right, thistle, #a96fa7); 
-
+  background: linear-gradient( thistle, #a96fa7); 
+  min-height: 100vh;
 }
 
 .register-item {
@@ -44,10 +43,6 @@
 .register-inputs{
   padding: 10px;
   margin-top: 2em;
-}
-
-#textarea-register {
-  resize: none;
 }
 
 .register-leftright input,
@@ -84,11 +79,10 @@ select {
 #textarea-register{
   resize: none;
 }
- /* Add media queries for responsive design */
  @media (max-width: 1024px) {
   .register-leftright {
     flex-direction: column;
-    max-width: 100%; /* Take full width on medium-sized screens */
+    max-width: 100%;
   }
 
   .register-item .register-image img {
@@ -101,11 +95,11 @@ select {
   .register-leftright input,
   .register-leftright select,
   .register-leftright textarea {
-    width: 90%;
+    width: 100%;
   }
 
   .register-item-button {
-    width: 90%;
+    width: 100%;
   }
 
   .register-item h2 {

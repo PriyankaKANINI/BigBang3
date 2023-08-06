@@ -1,8 +1,7 @@
 .login-container {
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(to bottom right, thistle, #a96fa7);
+  background: linear-gradient(thistle, #a96fa7);
   background-attachment: fixed; /* Keep the background fixed in the viewport */
   padding: 20px;
 }

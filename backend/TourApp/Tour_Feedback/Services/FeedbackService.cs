@@ -3,21 +3,22 @@ using Tour_Feedback.Models;
 
 namespace Tour_Feedback.Services
 {
-    public class FeedbackService : IFeedback
+    public class FeedbackService : IFeedbackService
     {
         private readonly IRepo<int, Feedback> _repo;
         public FeedbackService(IRepo<int, Feedback> repo)
         {
             _repo = repo;
         }
-        public async Task<Feedback?> AddReview(Feedback item)
-        {
+
+        public async Task<Feedback> AddFeedback(Feedback item)
+        { 
             try
             {
-                var FB = await _repo.Add(item);
-                if (FB != null)
+                var feedback = await _repo.Add(item);
+                if (feedback != null)
                 {
-                    return FB;
+                    return feedback;
                 }
                 return null;
             }
@@ -27,14 +28,14 @@ namespace Tour_Feedback.Services
             }
         }
 
-        public async Task<Feedback?> DeleteReview(int id)
+        public async Task<Feedback> DeleteFeedback(int id)
         {
             try
             {
-                var fb = await _repo.Delete(id);
-                if (fb != null)
+                var feedback = await _repo.Delete(id);
+                if (feedback != null)
                 {
-                    return fb;
+                    return feedback;
                 }
                 return null;
             }
@@ -44,14 +45,14 @@ namespace Tour_Feedback.Services
             }
         }
 
-        public async Task<ICollection<Feedback>?> GetAllReviews()
+        public async Task<ICollection<Feedback>?> GetAllFeedback()
         {
             try
             {
-                var reviews = await _repo.GetAll();
-                if (reviews != null)
+                var feedback = await _repo.GetAll();
+                if (feedback != null)
                 {
-                    return reviews;
+                    return feedback;
                 }
                 return null;
             }
@@ -61,14 +62,14 @@ namespace Tour_Feedback.Services
             }
         }
 
-        public async Task<Feedback?> GetReview(int id)
+        public async Task<Feedback> GetFeedback(int id)
         {
             try
             {
-                var review = await _repo.Get(id);
-                if (review != null)
+                var feedback = await _repo.Get(id);
+                if (feedback != null)
                 {
-                    return review;
+                    return feedback;
                 }
                 return null;
             }
@@ -76,6 +77,11 @@ namespace Tour_Feedback.Services
             {
                 throw new Exception();
             }
+        }
+
+        public Task<Feedback> UpdateFeedback(Feedback feedback)
+        {
+            throw new NotImplementedException();
         }
     }
 }

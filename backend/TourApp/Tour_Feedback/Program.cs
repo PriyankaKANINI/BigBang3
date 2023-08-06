@@ -24,6 +24,7 @@ namespace Tour_Feedback
             });
 
             builder.Services.AddScoped<IRepo<int, Feedback>, FeedbackRepo>();
+            builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 
             var app = builder.Build();
 

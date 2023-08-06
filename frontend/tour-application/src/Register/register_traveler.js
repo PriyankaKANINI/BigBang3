@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./register_traveler.css";
 import imageSrc1 from "../images/impressed-by-views-town_329181-13895.avif";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RegisterTraveler = () => {
   const [travelerData, setTravelerData] = useState({
@@ -47,18 +49,20 @@ const RegisterTraveler = () => {
       .then(async (response) => {
         const responseData = await response.json();
         if (response.ok) {
-          alert("Traveler registered successfully");
+          toast.success("Traveler registered successfully"); // Show success toast
           console.log(responseData);
         } else {
           if (responseData.message === "Email already registered") {
-            alert("This email is already registered as a traveler.");
+            toast.error("This email is already registered as a traveler."); // Show error toast for existing email
           } else {
             console.log("Registration failed:", responseData.message);
+            toast.error("Traveler registration failed. Please try again."); // Show generic error toast for other failures
           }
         }
       })
       .catch((error) => {
         console.error("An error occurred during registration:", error);
+        toast.error("An error occurred during registration."); // Show error toast for catch block
       });
   };
 
@@ -70,88 +74,105 @@ const RegisterTraveler = () => {
             <img src={imageSrc1} alt="Your Image" />
           </div>
           <div className="register-inputs">
-            <input
-              type="text"
-              placeholder="Name"
-              name="travelerName"
-              value={travelerData.travelerName}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="number"
-              placeholder="Age"
-              name="age"
-              value={travelerData.age}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="date"
-              placeholder="DOB"
-              name="dateOfBirth"
-              value={travelerData.dateOfBirth}
-              onChange={handleChange}
-              required
-            />
-            <select
-              name="gender"
-              value={travelerData.gender}
-              onChange={handleChange}
-              defaultValue="select"
-              required
-            >
-              <option disabled value="select">
-                Select
-              </option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
-            </select>
-            <input
-              type="number"
-              placeholder="Phone Number"
-              name="phone"
-              value={travelerData.phone}
-              onChange={handleChange}
-            />
-            <textarea
-              placeholder="Address"
-              name="address"
-              value={travelerData.address}
-              onChange={handleChange}
-            ></textarea>
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={travelerData.email}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              placeholder="Nationality"
-              name="nationality"
-              value={travelerData.nationality}
-              onChange={handleChange}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              name="passwordClear"
-              value={travelerData.passwordClear}
-              onChange={handleChange}
-              required
-            />
+            <div className="input-row">
+              <input
+                type="text"
+                placeholder="Name"
+                name="travelerName"
+                value={travelerData.travelerName}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="number"
+                placeholder="Age"
+                name="age"
+                value={travelerData.age}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-row">
+              <input
+                type="date"
+                placeholder="DOB"
+                name="dateOfBirth"
+                value={travelerData.dateOfBirth}
+                onChange={handleChange}
+                required
+              />
+              <select
+                name="gender"
+                value={travelerData.gender}
+                onChange={handleChange}
+                defaultValue="select"
+                required
+              >
+                <option disabled value="select">
+                  Select
+                </option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div className="input-row">
+              <input
+                type="number"
+                placeholder="Phone Number"
+                name="phone"
+                value={travelerData.phone}
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                placeholder="Nationality"
+                name="nationality"
+                value={travelerData.nationality}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-row-next">
+              <textarea
+                placeholder="Address"
+                name="address"
+                value={travelerData.address}
+                onChange={handleChange}
+              ></textarea>
+            </div>
+            <div className="input-row-next">
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={travelerData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-row-next">
+              <input
+                type="password"
+                placeholder="Password"
+                name="passwordClear"
+                value={travelerData.passwordClear}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
             <div className="register-button">
               <button className="register-item-button" onClick={handleSubmit}>
                 Register
               </button>
             </div>
+            <div className="signin-section">
+              <p>Already have an account? Sign in</p>
+            </div>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

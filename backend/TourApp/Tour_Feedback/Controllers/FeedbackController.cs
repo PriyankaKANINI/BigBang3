@@ -9,47 +9,47 @@ namespace Tour_Feedback.Controllers
     [ApiController]
     public class FeedBackController : ControllerBase
     {
-        private readonly IFeedback _feedbackrepo;
+        private readonly IFeedbackService _feedbackservice;
 
-        public FeedBackController(IFeedback feedbackrepo)
+        public FeedBackController(IFeedbackService feedbackservice)
         {
-            _feedbackrepo = feedbackrepo;
+            _feedbackservice = feedbackservice;
         }
 
-        [HttpPost]
+        [HttpPost("CreateFeedback")]
         [ProducesResponseType(typeof(Feedback), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Feedback?>> AddFeedback(Feedback review)
+        public async Task<ActionResult<Feedback?>> AddFeedbacks(Feedback review)
         {
             try
             {
-                var FB = await _feedbackrepo.AddReview(review);
-                if (FB != null)
+                var feedback = await _feedbackservice.AddFeedback(review);
+                if (feedback != null)
                 {
-                    return Created("Added!", FB);
+                    return Created("Added!", feedback);
                 }
                 return BadRequest("Unable to add");
             }
             catch (Exception)
             {
-                return BadRequest("Backend error :(");
+                return BadRequest("Backend error");
             }
         }
-        [HttpGet("GetAll")]
+        [HttpGet("GetAllFeedback")]
         [ProducesResponseType(typeof(List<Feedback>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        public async Task<ActionResult<ICollection<Feedback>>> GetAllReviews()
+        public async Task<ActionResult<ICollection<Feedback>>> GetAllFeedbacks()
         {
             try
             {
-                var reviews = await _feedbackrepo.GetAllReviews();
-                if (reviews != null)
+                var feedback = await _feedbackservice.GetAllFeedback();
+                if (feedback != null)
                 {
-                    return Ok(reviews);
+                    return Ok(feedback);
                 }
-                return BadRequest("No reviews available :(");
+                return BadRequest("No reviews available");
             }
             catch (Exception)
             {
@@ -57,21 +57,21 @@ namespace Tour_Feedback.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("GetFeedbackById")]
         [ProducesResponseType(typeof(Feedback), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        public async Task<ActionResult<Feedback>> GetReview(int id)
+        public async Task<ActionResult<Feedback>> GetFeedbacks(int id)
         {
             try
             {
-                var review = await _feedbackrepo.GetReview(id);
-                if (review != null)
+                var feedback = await _feedbackservice.GetFeedback(id);
+                if (feedback != null)
                 {
-                    return Ok(review);
+                    return Ok(feedback);
                 }
-                return BadRequest("No agent found :(");
+                return BadRequest("No agent found");
             }
             catch (Exception)
             {
@@ -79,19 +79,19 @@ namespace Tour_Feedback.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("DeleteFeedback")]
         [ProducesResponseType(typeof(Feedback), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        public async Task<ActionResult<Feedback>> DeleteReview(int id)
+        public async Task<ActionResult<Feedback>> DeleteFeedbacks(int id)
         {
             try
             {
-                var review = await _feedbackrepo.DeleteReview(id);
-                if (review != null)
+                var feedback = await _feedbackservice.GetFeedback(id);
+                if (feedback != null)
                 {
-                    return Ok(review);
+                    return Ok(feedback);
                 }
                 return BadRequest("Not deleted");
             }

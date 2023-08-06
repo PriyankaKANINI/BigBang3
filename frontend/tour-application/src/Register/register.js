@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./register.css";
 import imageSrc1 from "../images/impressed-by-views-town_329181-13895.avif";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = ({ onRegistrationSuccess }) => {
   const navigate = useNavigate();
@@ -41,29 +43,27 @@ const Register = ({ onRegistrationSuccess }) => {
 
   const handleSubmit = () => {
     fetch("http://localhost:5170/api/User/AgentRegister/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(agentData),
+      // ...your fetch and API call code
     })
       .then(async (response) => {
         const responseData = await response.json();
         if (response.ok) {
-          alert("Agent registered successfully");
+          toast.success("Agent registered successfully"); // Show success toast
           console.log(responseData);
           onRegistrationSuccess();
           navigate("/");
         } else {
           if (responseData.message === "User already registered") {
-            alert("You are already registered as an agent.");
+            toast.error("You are already registered as an agent."); // Show error toast
           } else {
             console.log("Registration failed:", responseData.message);
+            toast.error("Agent registration failed. Please try again."); // Show error toast for other failures
           }
         }
       })
       .catch((error) => {
         console.error("An error occurred during registration:", error);
+        toast.error("An error occurred during registration."); // Show error toast for catch block
       });
   };
 
@@ -142,6 +142,7 @@ const Register = ({ onRegistrationSuccess }) => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

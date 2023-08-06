@@ -40,13 +40,9 @@ const Feedback = () => {
     setResearchGroupChecked(!researchGroupChecked);
   };
 
-  const handleSubmit = () => {
-    // Add your submit logic here
-  };
+  const handleSubmit = () => {};
 
-  const handleCancel = () => {
-    // Add your cancel logic here
-  };
+  const handleCancel = () => {};
 
   return (
     <div className="feedback-page">

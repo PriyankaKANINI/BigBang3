@@ -51,7 +51,9 @@ const BookingMain = () => {
 
   const fetchImages = async (packageId) => {
     try {
-      const response = await fetch("http://localhost:5234/api/TourImage");
+      const response = await fetch(
+        "http://localhost:5234/api/TourImage/GettingImages"
+      );
       if (!response.ok) {
         throw new Error("Network response for images was not ok");
       }

@@ -8,7 +8,9 @@ namespace Tour_Feedback.Models
         public int FeedbackID { get; set; }
         public int TravelerID { get; set; }
         public int PackageId { get; set; }
+        [Required]
         public string? Comment { get; set; }
-        public int Ratings { get; set; }
+        [Required]
+        public double? Ratings { get; set; }
     }
 }

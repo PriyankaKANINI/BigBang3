@@ -1,6 +1,5 @@
 ﻿namespace Tour_Feedback.Interfaces
 {
-
     public interface IRepo<K, T>
     {
         public Task<T?> Add(T item);
