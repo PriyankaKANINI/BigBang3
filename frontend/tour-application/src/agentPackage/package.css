@@ -45,7 +45,7 @@
   .package-form-button-cancel button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #4caf50;
+    background-color: #767776;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -54,7 +54,8 @@
   }
   
   .package-form-button-cancel button:hover {
-    background-color: #45a049;
+    background-color: #ccc;
+    color: #767776;
   }
   
   .package-form-button-submit button:hover {

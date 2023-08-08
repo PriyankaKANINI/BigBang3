@@ -134,10 +134,9 @@ http://localhost:5234/api/TourImage/GettingImages
 Validations in front end and backend
 Booking
 Package
-PDF(Bill)
-Responsiveness - main page
+Responsiveness
 Feedback connect
-OTP,email,forgot password,cancel,toast
+OTP,email,forgot password,cancel
 
 ----------------------------------------------------------------
 
@@ -166,6 +165,8 @@ Booking
 POST
 http://localhost:5085/api/ManageBooking
 
+logger- repo controller
+try catch - all three
  
 
 

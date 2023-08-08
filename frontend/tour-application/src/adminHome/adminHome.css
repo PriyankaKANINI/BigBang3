@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #3751b5;
+    background-color: #ff69b4;
     padding: 20px 20px;
   }
   
@@ -25,7 +25,7 @@
   
   .adminPabeNav-nav a:hover {
     /* text-decoration: none; */
-    background-color: #59046a;
+    background-color: #e078da;
     padding: 10px;
   }
   .adminPabeNav-nav li:last-child {

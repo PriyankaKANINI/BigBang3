@@ -74,7 +74,7 @@ const Request = () => {
         <div className="agents-listApproval">
           {agents.map((agent) => (
             <div key={agent.agentID} className="agent-card">
-              <h3 className="TravelAgentsNameInCard">{agent.agentName}</h3>
+              <h4 className="TravelAgentsNameInCard">{agent.agentName}</h4>
               <p>
                 <strong>Email:</strong> {agent.email}
               </p>

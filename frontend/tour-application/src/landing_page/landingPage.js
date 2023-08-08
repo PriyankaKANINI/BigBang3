@@ -76,32 +76,23 @@ const LandingPage = () => {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link to="adminhome" className="nav-link">
+                  Admin
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link to="package" className="nav-link">
                   Package
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="adminhome" className="nav-link">
-                  Admin
-                </Link>
-              </li>
-              {/* <li className="nav-item">
-                <Link to="" className="nav-link">
-                </Link>
-              </li> */}
-              <li className="nav-item">
-                <Link to="feedback" className="nav-link">
-                  Feedback
+                <Link to="bookingMain" className="nav-link">
+                  Book Now
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="#footer-section" className="nav-link">
                   Contact Us
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="bookingMain" className="nav-link">
-                  Book Now
                 </Link>
               </li>
               <li className="nav-tem dropdown">
@@ -144,11 +135,6 @@ const LandingPage = () => {
                   <li>
                     <Link to="about" className="dropdown-item">
                       About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="blogs" className="dropdown-item">
-                      Blogs
                     </Link>
                   </li>
                 </ul>

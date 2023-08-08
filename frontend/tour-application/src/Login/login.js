@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
+import { toast } from "react-toastify"; // Import the toast function
+
 import { Link, useNavigate } from "react-router-dom";
 import imageSrc1 from "../images/impressed-by-views-town_329181-13895.avif";
 
@@ -24,17 +26,30 @@ const Login = () => {
       body: JSON.stringify({ ...loginData }),
     })
       .then(async (response) => {
-        if (response.status == 200) {
-          alert("Logged In Successfully");
-          const data = await response.json();
-          console.log(data);
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("email", data.userEmail);
+        if (response.status === 200) {
+          // ...
+          toast.success("Logged In Successfully", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
 
-          setLoginData((prevLoginData) => ({
-            ...prevLoginData,
-            userRole: data.userRole,
-          }));
+          // .then(async (response) => {
+          //   if (response.status == 200) {
+          //     alert("Logged In Successfully");
+          const data = await response.json();
+          //     console.log(data);
+          //     localStorage.setItem("token", data.token);
+          //     localStorage.setItem("email", data.userEmail);
+
+          //     setLoginData((prevLoginData) => ({
+          //       ...prevLoginData,
+          //       userRole: data.userRole,
+          //     }));
 
           // Redirect based on user role
           if (data.userRole === "Admin") {
@@ -48,9 +63,9 @@ const Login = () => {
           // Handle unsuccessful login
           const errorData = await response.json();
           if (response.status === 401) {
-            alert(`Unauthorized: ${errorData.message}`);
+            toast.error(`Unauthorized: ${errorData.message}`);
           } else {
-            alert(`Login failed: ${errorData.message}`);
+            toast.error(`Login failed: ${errorData.message}`);
           }
         }
       })

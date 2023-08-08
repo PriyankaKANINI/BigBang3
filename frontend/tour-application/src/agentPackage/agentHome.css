@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #59046a;
+    background-color: #ff69b4;
     padding: 20px 20px;
     margin-bottom: 3em;
   }
@@ -26,7 +26,7 @@
   
   .agentPabeNav-nav a:hover {
     /* text-decoration: none; */
-    background-color: #59046a;
+    background-color: #c781c5;
     padding: 10px;
   }
   .agentPabeNav-nav li:last-child {

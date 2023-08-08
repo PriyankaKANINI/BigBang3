@@ -1,13 +1,24 @@
 import React from "react";
 import "../agentPackage/agentHome.css";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify"; // Import the toast function
 
 const AgentHome = () => {
   const navigate = useNavigate(); // Add parentheses here
   const handleLogout = () => {
     localStorage.clear();
     navigate("/");
+    toast.info("Logged out successfully", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
+
   return (
     <nav className="agentPabeNav-nav">
       <ul>
