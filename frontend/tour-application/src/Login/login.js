@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
 import { toast } from "react-toastify"; // Import the toast function
-
+import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import imageSrc1 from "../images/impressed-by-views-town_329181-13895.avif";
 
@@ -11,6 +11,32 @@ const Login = () => {
     userEmail: "",
     passwordClear: "",
   });
+
+  var fetchTravelAgentStatus = async (userID) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5170/api/User/GetAllAgents/allAgents`
+      );
+      const travelAgents = await response.json();
+
+      const matchingAgent = travelAgents.find(
+        (agent) => agent.user.userID === userID
+      );
+
+      if (matchingAgent) {
+        if (matchingAgent.isVerified === "Not Approved") {
+          return "Not Approved";
+        } else {
+          return "Approved";
+        }
+      } else {
+        return "Invalid Credentials";
+      }
+    } catch (error) {
+      console.log(error);
+      return "Error";
+    }
+  };
 
   const handleLogin = () => {
     // Check if email and password are not empty
@@ -52,13 +78,18 @@ const Login = () => {
           //     }));
 
           // Redirect based on user role
+
           if (data.userRole === "Admin") {
             navigate("/adminHome");
           } else if (data.userRole === "Agent") {
-            navigate("/package");
+            navigate("/agentHome");
           } else if (data.userRole === "Traveler") {
             navigate("/bookingMain");
           }
+          localStorage.setItem("userId", data.userID);
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("email", data.userEmail);
+          localStorage.setItem("role", data.userRole);
         } else {
           // Handle unsuccessful login
           const errorData = await response.json();

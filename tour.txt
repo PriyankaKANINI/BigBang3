@@ -133,10 +133,10 @@ http://localhost:5234/api/TourImage/GettingImages
 
 Validations in front end and backend
 Booking
-Package
 Responsiveness
 Feedback connect
-OTP,email,forgot password,cancel
+logger- repo controller
+try catch - all three
 
 ----------------------------------------------------------------
 
@@ -160,16 +160,12 @@ http://localhost:5170/api/User/DisapproveAgent/disapprove
 GetAllAgents
 http://localhost:5170/api/User/GetAllAgents/allAgents
 
-
+---------------------------------------------------------------
 Booking
 POST
 http://localhost:5085/api/ManageBooking
 
-logger- repo controller
-try catch - all three
- 
-
-
-
+------------------------------------------
+/adminHome vs adminHome
 
 

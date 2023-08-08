@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 import axios from "axios";
 import "../landing_page/landingPage.css";
 import Register from "../Register/register";
+import { toast } from "react-toastify";
 import RegisterTraveler from "../Register/register_traveler";
 import imageSrc1 from "../images/backpacker-standing-sunrise-viewpoint-ja-bo-village-mae-hong-son-province-thailand.jpg";
 import imageSrc2 from "../images/young-woman-hiker-taking-photo-with-smartphone-mountains-peak-winter.jpg";
@@ -31,6 +32,22 @@ const LandingPage = () => {
       smooth: true,
       offset: -80,
     });
+  };
+  const navigate = useNavigate();
+  const userRole = localStorage.getItem("userRole");
+
+  const handleLogout = () => {
+    localStorage.clear();
+    toast.success("Successfully Logged Out", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    navigate("");
   };
 
   const [images, setImages] = useState([]);
@@ -75,21 +92,27 @@ const LandingPage = () => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="adminhome" className="nav-link">
-                  Admin
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="package" className="nav-link">
-                  Package
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="bookingMain" className="nav-link">
-                  Book Now
-                </Link>
-              </li>
+              {userRole === "Admin" && (
+                <li className="nav-item">
+                  <Link to="adminhome" className="nav-link">
+                    Admin
+                  </Link>
+                </li>
+              )}
+              {userRole === "Agent" && (
+                <li className="nav-item">
+                  <Link to="package" className="nav-link">
+                    Package
+                  </Link>
+                </li>
+              )}
+              {userRole === "Traveler" && (
+                <li className="nav-item">
+                  <Link to="bookingMain" className="nav-link">
+                    Book Now
+                  </Link>
+                </li>
+              )}
               <li className="nav-item">
                 <Link to="#footer-section" className="nav-link">
                   Contact Us
@@ -141,7 +164,7 @@ const LandingPage = () => {
               </li>
 
               <li className="nav-item">
-                <Link to="logout" className="nav-link">
+                <Link to="logout" className="nav-link" onClick={handleLogout}>
                   Logout
                 </Link>
               </li>

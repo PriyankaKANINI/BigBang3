@@ -1,47 +1,32 @@
-﻿using Tour_Feedback.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Tour_Feedback.Interfaces;
 using Tour_Feedback.Models;
 
 namespace Tour_Feedback.Services
 {
     public class FeedbackService : IFeedbackService
     {
-        private readonly IRepo<int, Feedback> _repo;
-        public FeedbackService(IRepo<int, Feedback> repo)
+        private readonly FeedbackContext _dbContext;
+
+        public FeedbackService(FeedbackContext dbContext)
         {
-            _repo = repo;
+            _dbContext = dbContext;
         }
 
         public async Task<Feedback> AddFeedback(Feedback item)
-        { 
-            try
-            {
-                var feedback = await _repo.Add(item);
-                if (feedback != null)
-                {
-                    return feedback;
-                }
-                return null;
-            }
-            catch (Exception)
-            {
-                throw new Exception();
-            }
-        }
-
-        public async Task<Feedback> DeleteFeedback(int id)
         {
             try
             {
-                var feedback = await _repo.Delete(id);
-                if (feedback != null)
-                {
-                    return feedback;
-                }
-                return null;
+                _dbContext.Feedbacks.Add(item);
+                await _dbContext.SaveChangesAsync();
+                return item;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception();
+                throw new Exception("Error adding feedback: " + ex.Message);
             }
         }
 
@@ -49,16 +34,12 @@ namespace Tour_Feedback.Services
         {
             try
             {
-                var feedback = await _repo.GetAll();
-                if (feedback != null)
-                {
-                    return feedback;
-                }
-                return null;
+                var feedback = await _dbContext.Feedbacks.ToListAsync();
+                return feedback;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception();
+                throw new Exception("Error retrieving feedback: " + ex.Message);
             }
         }
 
@@ -66,22 +47,13 @@ namespace Tour_Feedback.Services
         {
             try
             {
-                var feedback = await _repo.Get(id);
-                if (feedback != null)
-                {
-                    return feedback;
-                }
-                return null;
+                var feedback = await _dbContext.Feedbacks.FindAsync(id);
+                return feedback;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception();
+                throw new Exception("Error retrieving feedback: " + ex.Message);
             }
-        }
-
-        public Task<Feedback> UpdateFeedback(Feedback feedback)
-        {
-            throw new NotImplementedException();
         }
     }
 }

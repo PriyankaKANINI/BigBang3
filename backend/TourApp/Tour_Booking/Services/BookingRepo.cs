@@ -92,14 +92,12 @@ namespace Tour_Booking.Services
                 {
                     existingBooking.PackageId = item.PackageId;
                     existingBooking.AddTravelerCount = item.AddTravelerCount;
-                    existingBooking.AgentID = item.AgentID;
-                    existingBooking.TravelerID = item.TravelerID;
                     existingBooking.Amount = item.Amount;
                     existingBooking.TotalAmount = item.TotalAmount;
                     existingBooking.BookingMail = item.BookingMail;
                     existingBooking.BookingName = item.BookingName;
 
-        await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
 
                     return existingBooking;
                 }

@@ -78,27 +78,5 @@ namespace Tour_Feedback.Controllers
                 return BadRequest("Database error");
             }
         }
-
-        [HttpDelete("DeleteFeedback")]
-        [ProducesResponseType(typeof(Feedback), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-
-        public async Task<ActionResult<Feedback>> DeleteFeedbacks(int id)
-        {
-            try
-            {
-                var feedback = await _feedbackservice.GetFeedback(id);
-                if (feedback != null)
-                {
-                    return Ok(feedback);
-                }
-                return BadRequest("Not deleted");
-            }
-            catch (Exception)
-            {
-                return BadRequest("Backend error");
-            }
-        }
     }
 }

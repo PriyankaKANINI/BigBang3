@@ -140,5 +140,22 @@ namespace Tour_LoginRegister.Controllers
                 return BadRequest($"An error occurred while fetching agents: {ex.Message}");
             }
         }
+
+        //[HttpGet("GetAllAgents")]
+        //public async Task<ActionResult<ICollection<Agent>>> GetAllTravelAgents()
+        //{
+        //    try
+        //    {
+        //        var travelAgents = await _agentRepo.GetAll();
+        //        if (travelAgents != null)
+        //            return Ok(travelAgents);
+        //        else
+        //            return NotFound();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500);
+        //    }
+        //}
     }
 }

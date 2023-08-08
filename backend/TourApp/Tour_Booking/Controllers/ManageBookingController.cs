@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging; 
+using Microsoft.Extensions.Logging;
 using Tour_Booking.Models;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace Tour_Booking.Controllers
     public class ManageBookingController : ControllerBase
     {
         private readonly IManageBooking _manageBookingService;
-        private readonly ILogger<ManageBookingController> _logger; 
+        private readonly ILogger<ManageBookingController> _logger;
 
         public ManageBookingController(IManageBooking manageBookingService, ILogger<ManageBookingController> logger)
         {

@@ -53,44 +53,50 @@ const Feedback = () => {
   };
 
   const handleSubmit = async () => {
-    const storedSmiley = localStorage.getItem("feedbackSmiley");
+    if (feedbackText.trim() !== "") {
+      const storedSmiley = localStorage.getItem("feedbackSmiley");
+      const storedUserId = localStorage.getItem("userId"); // Assuming user ID is stored as "userId"
 
-    if (storedSmiley !== null && feedbackText.trim() !== "") {
-      const feedbackData = {
-        smiley: parseInt(storedSmiley),
-        feedbackText: feedbackText,
-      };
+      if (storedSmiley !== null && storedUserId !== null) {
+        const feedbackData = {
+          userId: parseInt(storedUserId),
+          smiley: parseInt(storedSmiley),
+          feedbackText: feedbackText,
+        };
 
-      try {
-        const response = await fetch(
-          "http://localhost:5045/api/FeedBack/CreateFeedback",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(feedbackData),
+        try {
+          const response = await fetch(
+            "http://localhost:5045/api/FeedBack/CreateFeedback",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(feedbackData),
+            }
+          );
+
+          if (response.status === 201) {
+            showThanksModal();
+
+            localStorage.removeItem("feedbackSmiley");
+            setRating(4);
+            setFeedbackText("");
+            setPrivacyChecked(false);
+            setResearchGroupChecked(false);
+          } else {
+            alert("Failed to store feedback in the database");
+            localStorage.removeItem("feedbackSmiley");
           }
-        );
-
-        if (response.status === 201) {
-          showThanksModal();
-
-          localStorage.removeItem("feedbackSmiley");
-          setRating(4);
-          setFeedbackText("");
-          setPrivacyChecked(false);
-          setResearchGroupChecked(false);
-        } else {
-          alert("Failed to store feedback in the database");
+        } catch (error) {
+          alert("Error submitting feedback: " + error.message);
           localStorage.removeItem("feedbackSmiley");
         }
-      } catch (error) {
-        alert("Error submitting feedback: " + error.message);
-        localStorage.removeItem("feedbackSmiley");
+      } else {
+        alert("Please provide both a smiley rating and feedback text");
       }
     } else {
-      alert("Please provide both a smiley rating and feedback text");
+      alert("Please provide feedback text");
     }
   };
 
@@ -157,35 +163,6 @@ const Feedback = () => {
                 rows={5}
               />
             </div>
-          </div>
-          <div className="user-options">
-            <label className="privacy-policy" onClick={handlePrivacyCheckbox}>
-              <input
-                type="checkbox"
-                className="checkbox"
-                checked={privacyChecked}
-                onChange={handlePrivacyCheckbox}
-              />
-              <div className="policy-agreement">
-                I may be contacted about this feedback.{" "}
-                <a href="#">Privacy Policy</a>
-              </div>
-            </label>
-            <label
-              className="research-group"
-              onClick={handleResearchGroupCheckbox}
-            >
-              <input
-                type="checkbox"
-                className="checkbox"
-                checked={researchGroupChecked}
-                onChange={handleResearchGroupCheckbox}
-              />
-              <div className="research-improvements">
-                I’d like to help improve by joining the{" "}
-                <a href="#">Research Group</a>
-              </div>
-            </label>
           </div>
           <div className="cta">
             <div className="cancel-feedback" onClick={handleCancel}>

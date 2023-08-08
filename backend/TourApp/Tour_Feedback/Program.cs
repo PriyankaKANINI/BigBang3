@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Tour_Feedback.Interfaces;
 using Tour_Feedback.Models;
 using Tour_Feedback.Services;
-
 namespace Tour_Feedback
 {
     public class Program
@@ -14,7 +14,6 @@ namespace Tour_Feedback
             // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -25,6 +24,14 @@ namespace Tour_Feedback
 
             builder.Services.AddScoped<IRepo<int, Feedback>, FeedbackRepo>();
             builder.Services.AddScoped<IFeedbackService, FeedbackService>();
+            // Configure CORS
+            builder.Services.AddCors(opts =>
+            {
+                opts.AddPolicy("AngularCORS", options =>
+                {
+                    options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                });
+            });
 
             var app = builder.Build();
 
@@ -35,9 +42,10 @@ namespace Tour_Feedback
                 app.UseSwaggerUI();
             }
 
+            // Use CORS middleware
+            app.UseCors("AngularCORS");
+
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();

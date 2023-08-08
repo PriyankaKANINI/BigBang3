@@ -27,12 +27,12 @@ const AgentHome = () => {
             Home
           </Link>
         </li>
-        {/* <li>
+        <li>
           <Link to="/request">Request</Link>
         </li>
         <li>
           <Link to="/status">Status</Link>
-        </li> */}
+        </li>
         <li>
           <a href="#" onClick={handleLogout}>
             Log Out

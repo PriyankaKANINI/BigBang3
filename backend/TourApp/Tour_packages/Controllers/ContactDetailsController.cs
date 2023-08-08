@@ -77,6 +77,5 @@ namespace Tour_packages.Controllers
             }
             return NotFound("No contact details found.");
         }
-
     }
 }

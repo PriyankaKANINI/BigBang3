@@ -9,6 +9,6 @@ namespace Tour_Feedback.Models
         {
 
         }
-        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<Feedback>? Feedbacks { get; set; }
     }
 }

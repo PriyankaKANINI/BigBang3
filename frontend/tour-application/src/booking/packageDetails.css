@@ -1,0 +1,37 @@
+/* PackageDetails.css */
+
+.package-details-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .card-package-content {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px);
+    min-width: 300px;
+    margin-bottom: 20px;
+  }
+  
+  .card-package-content img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .card-title-package {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .package-details-container {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  /* You can customize the styling further based on your design */
+  

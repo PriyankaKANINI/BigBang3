@@ -33,9 +33,6 @@ namespace Tour_Booking.Migrations
                     b.Property<int?>("AddTravelerCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("AgentID")
-                        .HasColumnType("int");
-
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
@@ -45,14 +42,11 @@ namespace Tour_Booking.Migrations
                     b.Property<string>("BookingName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PackageId")
+                    b.Property<int?>("PackageId")
                         .HasColumnType("int");
 
                     b.Property<double>("TotalAmount")
                         .HasColumnType("float");
-
-                    b.Property<int>("TravelerID")
-                        .HasColumnType("int");
 
                     b.HasKey("BookingId");
 

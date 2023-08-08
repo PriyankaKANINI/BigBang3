@@ -10,10 +10,11 @@
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
   }
   
   .bookingMain-card-content {
-    margin-bottom: 20px;
+    margin-bottom: 3.5em;
   }
   
   /* Add this CSS to your existing bookingMain.css */
@@ -21,7 +22,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+
 }
 
 /* Add the classes for visibility */
@@ -71,11 +72,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    float: right;
   }
   
   .bookingMain-card-button button {
     padding: 12px 20px;
-    background-color: #007bff;
+    background-color: pink;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -85,7 +87,8 @@
   }
   
   .bookingMain-card-button button:hover {
-    background-color: #0056b3;
+    background-color: yellow;
+    color: #fff;
   }
 
   .bookingMain-card-row-ad{
@@ -133,7 +136,46 @@
   border-radius: 8px;
 }
 
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .bookingMain-card-row {
+    flex-direction: column;
+  }
 
+  .bookingMain-card-column {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .bookingMain-card-row-ad {
+    flex-direction: column;
+    gap: 2em;
+  }
+
+  .booking-main-date-ad {
+    margin-top: 1em;
+  }
+
+  .carousel .slide {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .bookingMain-card {
+    padding: 10px;
+  }
+
+  .bookingMain-card-items {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .bookingMain-card-button button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
 
 
 

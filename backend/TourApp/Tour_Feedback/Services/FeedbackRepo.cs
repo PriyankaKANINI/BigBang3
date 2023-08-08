@@ -11,10 +11,12 @@ namespace Tour_Feedback.Services
     public class FeedbackRepo : IRepo<int, Feedback>
     {
         private readonly FeedbackContext _dbContext;
+        private readonly ILogger<FeedbackRepo> _logger;
 
-        public FeedbackRepo(FeedbackContext dbContext)
+        public FeedbackRepo(FeedbackContext dbContext, ILogger<FeedbackRepo> logger)
         {
             _dbContext = dbContext;
+            _logger = logger;
         }
 
         public async Task<Feedback?> Add(Feedback item)
@@ -25,43 +27,13 @@ namespace Tour_Feedback.Services
                 await _dbContext.SaveChangesAsync();
                 return item;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                _logger.LogError(ex.Message);
             }
+            return null;
         }
 
-        public async Task<Feedback?> Update(Feedback item)
-        {
-            try
-            {
-                _dbContext.Entry(item).State = EntityState.Modified;
-                await _dbContext.SaveChangesAsync();
-                return item;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public async Task<Feedback?> Delete(int id)
-        {
-            try
-            {
-                var feedback = await _dbContext.Feedbacks.FindAsync(id);
-                if (feedback == null)
-                    return null;
-
-                _dbContext.Feedbacks.Remove(feedback);
-                await _dbContext.SaveChangesAsync();
-                return feedback;
-            }
-            catch
-            {
-                return null;
-            }
-        }
 
         public async Task<Feedback?> Get(int id)
         {
@@ -69,10 +41,11 @@ namespace Tour_Feedback.Services
             {
                 return await _dbContext.Feedbacks.FindAsync(id);
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                _logger.LogError(ex.Message);
             }
+            return null;
         }
 
         public async Task<ICollection<Feedback>?> GetAll()
@@ -81,10 +54,11 @@ namespace Tour_Feedback.Services
             {
                 return await _dbContext.Feedbacks.ToListAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                _logger.LogError(ex.Message);
             }
+            return null;
         }
     }
 }

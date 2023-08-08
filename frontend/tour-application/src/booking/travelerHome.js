@@ -19,6 +19,9 @@ const TravelerHome = () => {
           </Link>
         </li>
         <li>
+          <Link to="/bookingMain">Book Now</Link>
+        </li>
+        <li>
           <Link to="/feedback">Feedback</Link>
         </li>
         <li>

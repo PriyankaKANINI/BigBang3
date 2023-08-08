@@ -3,14 +3,19 @@ import "../booking/bookingMain.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
-import BookNow from "../bookNow/bookNow";
+import BookNow from "./bookNow";
 import TravelerHome from "./travelerHome";
+import PackageDetails from "./packageDetails";
 
 const BookingMain = () => {
   const [bookings, setBookings] = useState([]);
 
   const [selectedItem, setSelectedItem] = useState({ type: "", id: null });
+  const selectedPackageId =
+    parseInt(localStorage.getItem("selectedPackageId")) || 0;
+
   const bookingMainContainerRef = useRef(null);
+  const userID = parseInt(localStorage.getItem("userId")) || 0;
 
   const handleItemClick = (type, id) => {
     setSelectedItem((prevSelectedItem) => {
@@ -21,52 +26,52 @@ const BookingMain = () => {
       return { type, id };
     });
   };
-  const fetchContactDetails = async (packageId) => {
-    try {
-      const response = await fetch(
-        "http://localhost:5202/api/ContactDetails/getAllContact"
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error fetching contact details:", error);
-      return [];
-    }
-  };
-  const fetchItinerary = async (packageId) => {
-    try {
-      const response = await fetch(
-        "http://localhost:5202/api/Itinerary/getAllItinerary"
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error fetching itinerary data:", error);
-      return [];
-    }
-  };
+  // const fetchContactDetails = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:5202/api/ContactDetails/getAllContact"
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok");
+  //     }
+  //     const data = await response.json();
+  //     return data;
+  //   } catch (error) {
+  //     console.error("Error fetching contact details:", error);
+  //     return [];
+  //   }
+  // };
+  // const fetchItinerary = async (packageId) => {
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:5202/api/Itinerary/getAllItinerary"
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok");
+  //     }
+  //     const data = await response.json();
+  //     return data;
+  //   } catch (error) {
+  //     console.error("Error fetching itinerary data:", error);
+  //     return [];
+  //   }
+  // };
 
-  const fetchImages = async (packageId) => {
-    try {
-      const response = await fetch(
-        "http://localhost:5234/api/TourImage/GettingImages"
-      );
-      if (!response.ok) {
-        throw new Error("Network response for images was not ok");
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error fetching image data:", error);
-      return [];
-    }
-  };
+  // const fetchImages = async (packageId) => {
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:5234/api/TourImage/GettingImages"
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Network response for images was not ok");
+  //     }
+  //     const data = await response.json();
+  //     return data;
+  //   } catch (error) {
+  //     console.error("Error fetching image data:", error);
+  //     return [];
+  //   }
+  // };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,21 +85,21 @@ const BookingMain = () => {
         const data = await response.json();
         setBookings(data);
 
-        const bookingsWithData = await Promise.all(
-          data.map(async (booking) => {
-            const itineraryData = await fetchItinerary(booking.packageId);
-            const contactDetails = await fetchContactDetails(booking.packageId);
-            const imageData = await fetchImages(booking.packageId);
-            return {
-              ...booking,
-              itinerary: itineraryData,
-              contactDetails: contactDetails,
-              images: imageData,
-            };
-          })
-        );
+        // const bookingsWithData = await Promise.all(
+        //   data.map(async (booking) => {
+        //     const itineraryData = await fetchItinerary(booking.packageId);
+        //     const contactDetails = await fetchContactDetails(booking.packageId);
+        //     const imageData = await fetchImages(booking.packageId);
+        //     return {
+        //       ...booking,
+        //       itinerary: itineraryData,
+        //       contactDetails: contactDetails,
+        //       images: imageData,
+        //     };
+        //   })
+        // );
 
-        setBookings(bookingsWithData);
+        // setBookings(bookingsWithData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -103,25 +108,55 @@ const BookingMain = () => {
     fetchData();
   }, []);
 
+  const [images, setImages] = useState([]);
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (
-        selectedItem.type !== "" &&
-        !bookingMainContainerRef.current.contains(e.target)
-      ) {
-        setSelectedItem({ type: "", id: null });
+    const fetchImages = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5234/api/TourImage/GettingImages"
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        // Assuming data is an array of image objects with imagePath property
+        const imageUrls = data.map((image) => image.imagePath);
+        setImages(imageUrls);
+      } catch (error) {
+        console.error("Error fetching images:", error);
       }
     };
 
-    window.addEventListener("click", handleClickOutside);
-    return () => {
-      window.removeEventListener("click", handleClickOutside);
-    };
-  }, [selectedItem]);
+    fetchImages();
+  }, []);
+  // useEffect(() => {
+  //   const handleClickOutside = (e) => {
+  //     if (
+  //       selectedItem.type !== "" &&
+  //       !bookingMainContainerRef.current.contains(e.target)
+  //     ) {
+  //       setSelectedItem({ type: "", id: null });
+  //     }
+  //   };
+
+  //   window.addEventListener("click", handleClickOutside);
+  //   return () => {
+  //     window.removeEventListener("click", handleClickOutside);
+  //   };
+  // }, [selectedItem]);
 
   return (
     <div className="bookingMain-container" ref={bookingMainContainerRef}>
       <TravelerHome />
+      <div>
+        <Carousel showArrows={true} showThumbs={false}>
+          {images.map((image, index) => (
+            <div key={index}>
+              <img src={image} alt={`Tour ${index}`} />
+            </div>
+          ))}
+        </Carousel>
+      </div>
       <div className="bookingMain-item">
         {bookings !== null &&
           bookings.map((booking) => (
@@ -153,10 +188,28 @@ const BookingMain = () => {
                     Availability - {booking.availablityCount}
                   </h3>
                 </div>
+
+                <div className="bookingMain-card-button">
+                  <button className="bookingMain-card-button">
+                    <Link
+                      to={`/bookNow/${booking.packageId}`} // Include the packageId parameter in the URL
+                      onClick={() => {
+                        localStorage.setItem(
+                          "selectedPackageId",
+                          booking.packageId
+                        );
+                        localStorage.setItem("userId", userID); // Store the userId
+                      }}
+                      className="book-now-link"
+                    >
+                      Book Now
+                    </Link>
+                  </button>
+                </div>
               </div>
 
-              <div className="bookingMain-card-row">
-                <div className="bookingMain-card-column">
+              {/* <div className="bookingMain-card-row"> */}
+              {/* <div className="bookingMain-card-column">
                   <div
                     className="bookingMain-card-items"
                     onClick={() => handleItemClick("image", booking.packageId)}
@@ -184,9 +237,9 @@ const BookingMain = () => {
                         )}
                       </div>
                     )}
-                </div>
+                </div> */}
 
-                <div className="bookingMain-card-column">
+              {/* <div className="bookingMain-card-column">
                   <div
                     className="bookingMain-card-items"
                     onClick={() =>
@@ -214,8 +267,8 @@ const BookingMain = () => {
                         )}
                       </div>
                     )}
-                </div>
-                <div className="bookingMain-card-column">
+                </div> */}
+              {/* <div className="bookingMain-card-column">
                   <div
                     className="bookingMain-card-items"
                     onClick={() =>
@@ -241,16 +294,7 @@ const BookingMain = () => {
                         )}
                       </div>
                     )}
-                </div>
-
-                <div className="bookingMain-card-button">
-                  <button className="bookingMain-card-button">
-                    <Link to="/bookNow" className="book-now-link">
-                      Book Now
-                    </Link>
-                  </button>
-                </div>
-              </div>
+                </div> */}
             </div>
           ))}
       </div>
