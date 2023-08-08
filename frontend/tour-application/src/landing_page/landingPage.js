@@ -163,63 +163,6 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      {/* section-2 */}
-      {/* <section id="service" className="service">
-        <div className="container">
-          <div className="service-counter text-center">
-            <div className="col-md-4 col-sm-4">
-              <div className="single-service-box">
-                <div className="service-img">
-                  <img src={imageSrc} alt="service-icon" />
-                </div>
-                <div className="service-content">
-                  <h2>
-                    <a href="#">amazing tour packages</a>
-                  </h2>
-                  <p>
-                    Duis aute irure dolor in velit esse cillum dolore eu fugiat
-                    nulla.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-4 col-sm-4">
-              <div className="single-service-box">
-                <div className="service-img">
-                  <img src={imageSrc} alt="service-icon" />
-                </div>
-                <div className="service-content">
-                  <h2>
-                    <a href="#">book top class hotel</a>
-                  </h2>
-                  <p>
-                    Duis aute irure dolor in velit esse cillum dolore eu fugiat
-                    nulla.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-4 col-sm-4">
-              <div className="single-service-box">
-                <div className="statistics-img">
-                  <img src={imageSrc} alt="service-icon" />
-                </div>
-                <div className="service-content">
-                  <h2>
-                    <a href="#">online flight booking</a>
-                  </h2>
-                  <p>
-                    Duis aute irure dolor in velit esse cillum dolore eu fugiat
-                    nulla.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       {/* section-3 */}
       <section id="gallery" class="gallery">
@@ -279,16 +222,6 @@ const LandingPage = () => {
                     </p>
                   </div>
                 </div>
-                {/* <div class="gallery-item item-small">
-                  <img src={imageSrc5} alt="Netherlands" />
-                  <div class="item-title">
-                    <a href="#">Netherlands</a>
-                    <p>
-                      <span>14 tours</span>
-                      <span>12 places</span>
-                    </p>
-                  </div>
-                </div> */}
               </div>
 
               {/* <!-- For gallery-container-3 --> */}
@@ -463,28 +396,7 @@ const LandingPage = () => {
                 </p>
               </div>
             </div>
-            {/* <div className="review-item">
-                  <div className="review-item-img">
-                    <img src={imageSrc1} alt="profile-image" />
-                  </div>
-                  <div className="review-item-text">
-                    <p>
-                      Duis aute irure dolor in velit esse cillum dolore eu
-                      fugiat nulla.
-                    </p>
-                  </div>
-                </div> */}
-            {/* <div className="review-item">
-              <div className="review-item-img">
-                <img src={imageSrc1} alt="profile-image" />
-              </div>
-              <div className="review-item-text">
-                <p>
-                  Duis aute irure dolor in velit esse cillum dolore eu fugiat
-                  nulla.
-                </p>
-              </div>
-            </div> */}
+
             <div className="review-item">
               <div className="review-item-img">
                 <img src={imageSrc1} alt="profile-image" />

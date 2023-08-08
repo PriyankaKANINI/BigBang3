@@ -25,6 +25,13 @@ import Status from "./adminHome/status";
 import TravelerHome from "./booking/travelerHome";
 import AgentHome from "./agentPackage/agentHome";
 import AdminHomeProtected from "./protectedRouting/adminHomeProtected";
+import RequestProtected from "./protectedRouting/requestProtected";
+import StatusProtected from "./protectedRouting/statusProtected";
+import FeedbackProtected from "./protectedRouting/feedbackProtected";
+import BookingMainProtected from "./protectedRouting/bookingMainProtected";
+import BookNowProtected from "./protectedRouting/bookNowProtected";
+import TravelerHomeProtected from "./protectedRouting/travelerHomeProtected";
+import AgentHomeProtected from "./protectedRouting/agentHomeProtected";
 
 function App() {
   var token;
@@ -48,10 +55,30 @@ function App() {
           <Route path="register_traveler" element={<RegisterTraveler />} />
           <Route path="login" element={<Login />} />
           <Route path="about" element={<About />} />
-          <Route path="feedback" element={<Feedback />} />
-          <Route path="bookingMain" element={<BookingMain />} />
-          <Route path="/bookNow" element={<BookNow />} />
-          {/* <Route path="imagecheck" element={<ImageCheck />} /> */}
+          <Route
+            path="feedback"
+            element={
+              <FeedbackProtected token={token}>
+                <Feedback />
+              </FeedbackProtected>
+            }
+          />
+          <Route
+            path="bookingMain"
+            element={
+              <BookingMainProtected token={token}>
+                <BookingMain />
+              </BookingMainProtected>
+            }
+          />
+          <Route
+            path="/bookNow"
+            element={
+              <BookNowProtected token={token}>
+                <BookNow />
+              </BookNowProtected>
+            }
+          />
           <Route path="package" element={<Package />} />
           <Route
             path="/contactDetailsForm/:packageId"
@@ -69,12 +96,39 @@ function App() {
             }
           />
 
+          <Route
+            path="request"
+            element={
+              <RequestProtected token={token}>
+                <Request />
+              </RequestProtected>
+            }
+          />
+          <Route
+            path="status"
+            element={
+              <StatusProtected token={token}>
+                <Status />
+              </StatusProtected>
+            }
+          />
 
-
-          <Route path="request" element={<Request />} />
-          <Route path="status" element={<Status />} />
-          <Route path="travelerHome" element={<TravelerHome />} />
-          <Route path="agentHome" element={<AgentHome />} />
+          <Route
+            path="travelerHome"
+            element={
+              <TravelerHomeProtected token={token}>
+                <TravelerHome />
+              </TravelerHomeProtected>
+            }
+          />
+          <Route
+            path="agentHome"
+            element={
+              <AgentHomeProtected token={token}>
+                <AgentHome />
+              </AgentHomeProtected>
+            }
+          />
         </Routes>
       </Router>
       <ToastContainer />
