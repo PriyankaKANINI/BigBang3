@@ -11,40 +11,51 @@ const Login = () => {
   });
 
   const handleLogin = () => {
+    // Check if email and password are not empty
+    if (!loginData.userEmail || !loginData.passwordClear) {
+      alert("Please enter your email and password");
+      return;
+    }
     fetch("http://localhost:5170/api/User/Login/Login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(loginData),
+      body: JSON.stringify({ ...loginData }),
     })
       .then(async (response) => {
-        if (response.ok) {
+        if (response.status == 200) {
           alert("Logged In Successfully");
           const data = await response.json();
           console.log(data);
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("email", data.userEmail);
 
-          switch (data.userRole) {
-            case "admin":
-              navigate("/admin");
-              break;
-            case "agent":
-              navigate("/agent");
-              break;
-            case "traveler":
-              navigate("/traveler");
-              break;
-            default:
-              navigate("/");
-              break;
+          setLoginData((prevLoginData) => ({
+            ...prevLoginData,
+            userRole: data.userRole,
+          }));
+
+          // Redirect based on user role
+          if (data.userRole === "Admin") {
+            navigate("/adminHome");
+          } else if (data.userRole === "Agent") {
+            navigate("/package");
+          } else if (data.userRole === "Traveler") {
+            navigate("/bookingMain");
           }
         } else {
+          // Handle unsuccessful login
           const errorData = await response.json();
-          alert(`Login failed: ${errorData.message}`);
+          if (response.status === 401) {
+            alert(`Unauthorized: ${errorData.message}`);
+          } else {
+            alert(`Login failed: ${errorData.message}`);
+          }
         }
       })
-      .catch((error) => {
-        console.error("An error occurred during login:", error);
+      .catch((err) => {
+        console.log(err);
         alert("An error occurred during login");
       });
   };

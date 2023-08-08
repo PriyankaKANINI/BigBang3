@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import "../booking/bookingMain.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Link } from "react-router-dom";
+import BookNow from "../bookNow/bookNow";
+import TravelerHome from "./travelerHome";
 
 const BookingMain = () => {
   const [bookings, setBookings] = useState([]);
@@ -21,7 +24,7 @@ const BookingMain = () => {
   const fetchContactDetails = async (packageId) => {
     try {
       const response = await fetch(
-        "http://localhost:5202/api/ContactDetails/getAllItinerary"
+        "http://localhost:5202/api/ContactDetails/getAllContact"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -118,6 +121,7 @@ const BookingMain = () => {
 
   return (
     <div className="bookingMain-container" ref={bookingMainContainerRef}>
+      <TravelerHome />
       <div className="bookingMain-item">
         {bookings !== null &&
           bookings.map((booking) => (
@@ -149,7 +153,6 @@ const BookingMain = () => {
                     Availability - {booking.availablityCount}
                   </h3>
                 </div>
-                {/* Add more content as needed */}
               </div>
 
               <div className="bookingMain-card-row">
@@ -241,7 +244,11 @@ const BookingMain = () => {
                 </div>
 
                 <div className="bookingMain-card-button">
-                  <button className="bookingMain-card-button">Book Now</button>
+                  <button className="bookingMain-card-button">
+                    <Link to="/bookNow" className="book-now-link">
+                      Book Now
+                    </Link>
+                  </button>
                 </div>
               </div>
             </div>

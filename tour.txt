@@ -111,13 +111,17 @@ Post
 http://localhost:5045/api/FeedBack/CreateFeedback
 
 Get
+http://localhost:5045/api/FeedBack/GetFeedbackById?id=1
 
 GetAll
+http://localhost:5045/api/FeedBack/GetAllFeedback
 
 Delete
 
 ------------------------------------------------------------
 Images
+
+azurite --blobPort 8888 --queuePort 8889
 
 Post
 http://localhost:5234/api/TourImage/PostingImages?packageId=2
@@ -130,38 +134,39 @@ http://localhost:5234/api/TourImage/GettingImages
 Validations in front end and backend
 Booking
 Package
-PDF
-Responsiveness
-Testing
+PDF(Bill)
+Responsiveness - main page
 Feedback connect
-OTP,email,forgot password
+OTP,email,forgot password,cancel,toast
+
+----------------------------------------------------------------
+
+{
+  /* <i class="bi bi-house-door"></i>&nbsp;&nbsp;&nbsp;&nbsp; */
+}
+{
+  /* <i class="bi bi-box-seam"></i>&nbsp;&nbsp;&nbsp;&nbsp; */
+}
+{
+  /* <i class="bi bi-box-arrow-left"></i>&nbsp;&nbsp;&nbsp;&nbsp; */
+}
 
 
+Approve
+http://localhost:5170/api/User/ApproveAgent/approve
+
+Disapprove
+http://localhost:5170/api/User/DisapproveAgent/disapprove
+
+GetAllAgents
+http://localhost:5170/api/User/GetAllAgents/allAgents
 
 
+Booking
+POST
+http://localhost:5085/api/ManageBooking
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 

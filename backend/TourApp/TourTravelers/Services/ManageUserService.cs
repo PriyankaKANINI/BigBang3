@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Collections.Generic;
+using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
 using Tour_LoginRegister.Interfaces;
@@ -28,13 +29,13 @@ namespace Tour_LoginRegister.Services
             UserDTO user = null;
             var hmac = new HMACSHA512();
 
-            agent.User = new User(); 
+            agent.User = new User();
 
             agent.User.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(agent.PasswordClear));
             agent.User.PasswordKey = hmac.Key;
             agent.User.UserEmail = agent.Email;
             agent.User.UserRole = "Agent";
-            agent.IsVerified = "Not Approved";
+            agent.IsVerified = "Pending";
 
             var userResult = await _userRepo.Add(agent.User);
             var travelAgentResult = await _agentRepo.Add(agent);
@@ -49,7 +50,6 @@ namespace Tour_LoginRegister.Services
                 user.UserRole = userResult.UserRole;
                 user.Token = _tokenService.TokenGenerate(user);
             }
-
             return user;
         }
 
@@ -65,8 +65,9 @@ namespace Tour_LoginRegister.Services
                 user.UserEmail = userData.UserEmail;
                 user.UserRole = userData.UserRole;
                 user.Token = _tokenService.TokenGenerate(user);
+                return user;
             }
-            return user;
+            return null;
         }
 
         public async Task<UserDTO> TravelerRegister(TravelerDTO traveler)
@@ -74,7 +75,7 @@ namespace Tour_LoginRegister.Services
             UserDTO user = null;
             var hmac = new HMACSHA512();
 
-            traveler.User = new User(); 
+            traveler.User = new User();
 
             traveler.User.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(traveler.PasswordClear));
             traveler.User.PasswordKey = hmac.Key;
@@ -96,5 +97,47 @@ namespace Tour_LoginRegister.Services
             }
             return user;
         }
+
+        public async Task<AgentDTO> ApprovedAgent(AgentDTO agentStatus)
+        {
+            var agent = await _agentRepo.Get(agentStatus.AgentID);
+
+            if (agent != null)
+            {
+                agent.IsVerified = "Approved";
+                await _agentRepo.Update(agent); 
+                return new AgentDTO
+                {
+                    AgentID = agent.AgentID,
+                    IsVerified = agent.IsVerified
+                };
+            }
+            return null;
+        }
+
+        public async Task<AgentDTO> DisapproveAgent(AgentDTO agentStatus)
+        {
+            var agent = await _agentRepo.Get(agentStatus.AgentID);
+
+            if (agent != null)
+            {
+                agent.IsVerified = "Not Approved";
+                await _agentRepo.Update(agent); 
+                return new AgentDTO
+                {
+                    AgentID = agent.AgentID,
+                    IsVerified = agent.IsVerified
+                };
+            }
+            return null;
+        }
+ 
+        public async Task<ICollection<Agent>> GetAllAgents()
+        {
+            return await _agentRepo.GetAll(); 
+        }
     }
 }
+
+  
+

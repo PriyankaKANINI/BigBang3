@@ -58,7 +58,6 @@ namespace Tour_Booking
 
             builder.Services.AddScoped<IManageBooking, ManageBookingService>();
             builder.Services.AddScoped<IRepo<int, Booking>, BookingRepo>();
-            builder.Services.AddScoped<IRepo<int, AdditionalTraveler>, AdditionalTravelerRepo>();
 
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

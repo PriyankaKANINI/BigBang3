@@ -34,12 +34,12 @@ namespace Tour_packages.Services
         {
             try
             {
-                var doc = await Get(key);
-                if (doc != null)
+                var pack = await Get(key);
+                if (pack != null)
                 {
-                    _context.Itineraries.Remove(doc);
+                    _context.Itineraries.Remove(pack);
                     await _context.SaveChangesAsync();
-                    return doc;
+                    return pack;
                 }
             }
             catch (Exception ex)
@@ -53,8 +53,8 @@ namespace Tour_packages.Services
         {
             try
             {
-                var doc = await _context.Itineraries.FirstOrDefaultAsync(i => i.ItineraryId == key);
-                return doc;
+                var pack = await _context.Itineraries.FirstOrDefaultAsync(i => i.ItineraryId == key);
+                return pack;
             }
             catch (Exception ex)
             {
@@ -67,9 +67,9 @@ namespace Tour_packages.Services
         {
             try
             {
-                var doc = await _context.Itineraries.ToListAsync();
-                if (doc.Count > 0)
-                    return doc;
+                var pack = await _context.Itineraries.ToListAsync();
+                if (pack.Count > 0)
+                    return pack;
             }
             catch (Exception ex)
             {
@@ -82,15 +82,15 @@ namespace Tour_packages.Services
         {
             try
             {
-                var existingDoctor = await _context.Itineraries.FindAsync(item.ItineraryId);
-                if (existingDoctor != null)
+                var existingItinerary = await _context.Itineraries.FindAsync(item.ItineraryId);
+                if (existingItinerary != null)
                 {
-                    existingDoctor.DayandVisit = item.DayandVisit;
-                    existingDoctor.DestinationName = item.DestinationName;
+                    existingItinerary.DayandVisit = item.DayandVisit;
+                    existingItinerary.DestinationName = item.DestinationName;
 
                     await _context.SaveChangesAsync();
 
-                    return existingDoctor;
+                    return existingItinerary;
                 }
             }
             catch (Exception ex)
@@ -99,5 +99,6 @@ namespace Tour_packages.Services
             }
             return null;
         }
+
     }
 }

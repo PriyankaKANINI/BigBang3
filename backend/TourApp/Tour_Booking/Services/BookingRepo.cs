@@ -58,9 +58,7 @@ namespace Tour_Booking.Services
         {
             try
             {
-                var booking = await _context.Bookings
-                    .Include(b => b.AdditionalTravelers)
-                    .FirstOrDefaultAsync(b => b.BookingId == key);
+                var booking = await _context.Bookings.FirstOrDefaultAsync(b => b.BookingId == key);
                 return booking;
             }
             catch (Exception ex)
@@ -74,9 +72,7 @@ namespace Tour_Booking.Services
         {
             try
             {
-                var bookings = await _context.Bookings
-                    .Include(b => b.AdditionalTravelers)
-                    .ToListAsync();
+                var bookings = await _context.Bookings.ToListAsync();
                 if (bookings.Count > 0)
                     return bookings;
             }
@@ -100,9 +96,10 @@ namespace Tour_Booking.Services
                     existingBooking.TravelerID = item.TravelerID;
                     existingBooking.Amount = item.Amount;
                     existingBooking.TotalAmount = item.TotalAmount;
-                    // You may need to handle AdditionalTravelers updates here as well.
+                    existingBooking.BookingMail = item.BookingMail;
+                    existingBooking.BookingName = item.BookingName;
 
-                    await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync();
 
                     return existingBooking;
                 }

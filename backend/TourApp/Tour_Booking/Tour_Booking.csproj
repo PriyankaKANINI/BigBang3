@@ -17,13 +17,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\DTOs\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\TourTravelers\Tour_LoginRegister.csproj" />
-    <ProjectReference Include="..\Tour_packages\Tour_packages.csproj" />
-  </ItemGroup>
-
 </Project>

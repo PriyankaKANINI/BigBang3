@@ -1,0 +1,153 @@
+/* Package.css */
+.package-form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .package-form-container h2 {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-group.required label::after {
+    content: "*";
+    color: red;
+  }
+  
+  .form-group.required input:invalid {
+    border-color: red;
+  }
+  
+  .form-group.required input:valid {
+    border-color: green;
+  }
+  
+  .form-group.required input:invalid + label::after {
+    content: "*";
+    color: red;
+  }
+  
+  /* ContactDetailsForm.css */
+  .contact-form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .contact-form-container h2 {
+    text-align: center;
+  }
+  
+  .contact-form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-group.required label::after {
+    content: "*";
+    color: red;
+  }
+  
+  .form-group.required input:invalid {
+    border-color: red;
+  }
+  
+  .form-group.required input:valid {
+    border-color: green;
+  }
+  
+  .form-group.required input:invalid + label::after {
+    content: "*";
+    color: red;
+  }
+  
+  /* Itinerary.css */
+  .itinerary-form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .itinerary-form-container h2 {
+    text-align: center;
+  }
+  
+  .itinerary-form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-group.required label::after {
+    content: "*";
+    color: red;
+  }
+  
+  .form-group.required input:invalid {
+    border-color: red;
+  }
+  
+  .form-group.required input:valid {
+    border-color: green;
+  }
+  
+  .form-group.required input:invalid + label::after {
+    content: "*";
+    color: red;
+  }

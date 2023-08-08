@@ -1,0 +1,248 @@
+.package-form-container {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin: 20px auto;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  .input-error {
+    border-color: red;
+  }
+
+  .package-form-button-submit button,
+  .package-form-button-cancel button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    width: 12.8em;
+    cursor: pointer;
+  }
+  
+  .package-form-button-cancel button:hover {
+    background-color: #45a049;
+  }
+  
+  .package-form-button-submit button:hover {
+    background-color: #45a049;
+  }
+
+  .required label:after {
+    content: "*";
+    color: red;
+  }
+  .package-form-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 2em; 
+  }
+  /* ContactDetailsForm.css */
+  .contact-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .package-details {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .package-details h3 {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .package-details p {
+    margin: 5px 0;
+  }
+  
+  .package-details strong {
+    font-weight: bold;
+  }
+  
+  .contact-form-container form {
+    margin-top: 20px;
+  }
+  
+  .package-form-content-6,
+  .package-form-content-5,
+  .package-form-content-4,
+  .package-form-content-3,
+  .package-form-content-2,
+  .package-form-content-1{
+    display: flex;
+    gap: 2em;
+  }
+  .package-form-content-4 input{
+    width: 50%;
+  }
+.package-form-content-5,
+.package-form-content-6 {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 2em;
+  justify-content: space-between; 
+}
+
+.package-form-content-5 input,
+.package-form-content-6 input {
+  width: 48%;
+}
+
+.package-form-content-4 label,
+.package-form-content-5 label,
+.package-form-content-6 label {
+  width: 100%; 
+}
+.package-form-content-4 input[type="date"]
+{
+  width: 12.8em;
+}
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+    .package-form-content-2,
+    .package-form-content-3,
+    .package-form-content-4,
+    .package-form-content-1,
+    .package-form-content-5,
+    .package-form-content-6,
+    .package-form-buttons {
+      flex-direction: column;
+    }
+  
+    /* Reset width for date inputs in mobile view */
+    .package-form-content-4 input[type="date"],
+     .package-form-content-2 input,
+  .package-form-content-3 input,
+  .package-form-content-1 input,
+  .package-form-content-5 input,
+  .package-form-content-6 input,
+  .package-form-buttons button  {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 600px){
+   .package-form-buttons button {
+    width: 13em;
+  }
+}
+@media screen and (max-width: 250px){
+  .package-form-buttons button {
+   width: 12em;
+ }
+}
+@media screen and (max-width: 200px){
+  .package-form-buttons button {
+   width: 10em;
+ }
+}
+@media screen and (max-width: 160px){
+  .package-form-buttons button {
+   width: 7.5em;
+ }
+}
+
+@media screen and (max-width: 120px){
+  .package-form-buttons button {
+   width: 5em;
+ }
+}
+@media screen and (max-width: 100px){
+  .package-form-buttons button {
+   width: 1em;
+ }
+}
+
+/* package.css */
+/* Add modal styles */
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.ReactModal__Content {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  height: auto; /* Auto height */
+  max-height: 30vh; /* Maximum 30% of the viewport height */
+  position: relative;
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+  display: flex;
+  margin-left: 33em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: aquamarine;
+}
+
+.ReactModal__Content h2 {
+  margin-top: 0;
+}
+
+.ReactModal__Content p {
+  margin-bottom: 20px;
+}
+
+.ReactModal__Content button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.ReactModal__Content button:hover {
+  background-color: #0056b3;
+}

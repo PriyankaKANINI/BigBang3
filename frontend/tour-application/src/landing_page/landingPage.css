@@ -74,7 +74,7 @@
   background-image: url('../images/young-woman-hiker-taking-photo-with-smartphone-mountains-peak-winter.jpg');
   background-size: cover;
   background-position: center;
-  min-height: 43em;
+  min-height: 47em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,7 +98,7 @@
   text-align: center;
   position: relative;
   z-index: 1;
-  margin-bottom: 2em; /* Adjust this value to move the button up */
+  margin-bottom: 2em; 
 }
 
 .explore-now-login{
@@ -191,7 +191,7 @@
 }
 
 /* --------------------------------------------------------- */
-
+/* Contact Section */
 .contact-section {
   background-color: #f0f0f0;
   padding: 40px 0;
@@ -228,26 +228,41 @@
 .contact-form button:hover {
   background-color: #0056b3;
 }
-
-.row1,.row2{
+/* ----------------------------------------------section -4--------------- */
+/* Package Section */
+/* Package Section */
+.row1 {
   background-color: thistle;
   display: flex;
-  text-align: left;
-}
-
-.row1{
-  margin-top: 5em;
   justify-content: center;
-  gap: 3em;
+  gap: 20px; /* Increase the gap between items */
+  flex-wrap: wrap; /* Allow items to wrap to the next row on smaller screens */
+  margin: 2em 0; /* Add some top margin to create spacing */
 }
 
 .single-package-item {
   background-color: #fff;
   padding: 10px;
-  transform: scale(1.08);
-  transition: transform 0.3s, box-shadow 0.3s;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  flex-basis: calc(25% - 40px); /* Each item takes 25% of the container's width, minus the margin */
+  margin: 10px; /* Add some spacing between items */
+  transition: transform 0.3s, box-shadow 0.3s;
 }
+
+/* On smaller screens, adjust the width to take 50% of the container's width */
+@media (max-width: 1024px) {
+  .single-package-item {
+    flex-basis: calc(33.33% - 40px); /* Each item takes 33.33% of the container's width, minus the margin */
+  }
+}
+
+/* On even smaller screens, adjust the width to take 100% of the container's width */
+@media (max-width: 768px) {
+  .single-package-item {
+    flex-basis: calc(50% - 40px); /* Each item takes 50% of the container's width, minus the margin */
+  }
+}
+
 
 .single-package-item:hover {
   transform: scale(1.15);
@@ -256,7 +271,7 @@
 
 .single-package-item img {
   display: block;
-  width: 20em;
+  width: 100%; /* Make the image responsive */
   height: auto;
   border-radius: 0;
   margin-bottom: 10px;
@@ -274,6 +289,7 @@
   background-color: #ff69b4;
   color: #fff;
 }
+
 
 /* ---------------------------------------------------- */
 
@@ -330,6 +346,7 @@
 /* section-3 */
 
 .gallery {
+  margin-bottom: 5em;
   margin-top: 5em;
   padding: 50px 0;
 }
@@ -364,7 +381,6 @@
   display: block;
   width: 100%;
   height: auto;
-  
 }
 
 .item-title {
@@ -402,93 +418,52 @@
 /* ------------------------------------------------------------ */
 /* section-5 */
 
-.client-review {
-  padding: 50px 0;
-}
-
+/* ... Your other CSS rules ... */
 .review-container {
   background-color: thistle;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 50px 0;
+  margin-top: 4em;
 }
 
 .review-title {
   text-align: center;
   margin-bottom: 30px;
 }
+/* ... Your other CSS rules ... */
 
 .review-content {
-  overflow-x: hidden; 
-  white-space: nowrap;  
-  /* background-color: #ff69b4; */
-  background-color: #a97abf; 
+  background-color: #a97abf;
   display: flex;
-  overflow-y: hidden;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 5em;
-}
-/* ... Your previous CSS styles ... */
-
-/* ... Your previous CSS styles ... */
-
-.carousel-wrapper {
-  /* ... Your previous styles ... */
-  overflow: hidden; /* Add overflow: hidden to hide the overflowed slides */
-  position: relative;
-}
-
-.carousel {
-  /* ... Your previous styles ... */
-  display: flex;
-  gap: 20px;
-  transition: transform 0.3s;
-  position: relative;
-  left: 0; /* Initialize the starting position of the carousel */
-}
-
-.carousel input[type="radio"] {
-  position: absolute;
-  visibility: hidden;
-}
-
-.carousel input[type="radio"]:checked ~ .carousel {
-  /* Update the translation value to move the carousel to the left */
-  transform: translateX(calc(-100% - 20px)); /* Account for the gap between slides */
-}
-
-.slider-dot-control {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.slider-dot-control label {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #bbb;
-  cursor: pointer;
-  margin: 0 5px;
-  transition: background-color 0.3s;
-}
-
-.carousel input[type="radio"]:checked ~ .slider-dot-control label {
-  background-color: #555;
+  padding: 20px;
+  margin: 0 auto; /* Center the content horizontally */
 }
 
 .review-item {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 300px;
-}
-
-.review-item{
+  width: calc(20% - 30px); /* Each item takes 20% of the container's width, minus the margin */
+  margin: 20px; /* Add some spacing between items */
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
+
+/* On screens between 1000px and 1050px */
+@media (min-width: 1000px) and (max-width: 1250px) {
+  .review-content {
+    justify-content: space-between; /* Distribute items evenly */
+    margin: 0; /* Remove horizontal margin */
+  }
+  
+  .review-item {
+    width: calc(25% - 30px); /* Each item takes 25% of the container's width, minus the margin */
+  }
+}
+
 
 .review-item-img {
   width: 120px;
@@ -508,7 +483,7 @@
   text-align: center;
 }
 
-#scroll-top-button{
+#scroll-top-button {
   border-radius: 50px;
   border: none;
   align-items: right;
@@ -519,37 +494,15 @@
   margin: 1.5em;
 }
 
-#scroll-top-button:hover{
+#scroll-top-button:hover {
   background-color: yellow;
   color: black;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media (max-width: 768px) {
+  .review-item {
+    width: calc(50% - 40px); /* Each item takes 50% of the container's width, minus the margin */
+  }
+}
 
 

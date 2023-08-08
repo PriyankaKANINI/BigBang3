@@ -33,12 +33,12 @@ namespace Tour_packages.Services
         {
             try
             {
-                var doc = await Get(key);
-                if (doc != null)
+                var pack = await Get(key);
+                if (pack != null)
                 {
-                    _context.Packages.Remove(doc);
+                    _context.Packages.Remove(pack);
                     await _context.SaveChangesAsync();
-                    return doc;
+                    return pack;
                 }
             }
             catch (Exception ex)
@@ -52,8 +52,8 @@ namespace Tour_packages.Services
         {
             try
             {
-                var doc = await _context.Packages.FirstOrDefaultAsync(i => i.PackageId == key);
-                return doc;
+                var pack = await _context.Packages.FirstOrDefaultAsync(i => i.PackageId == key);
+                return pack;
             }
             catch (Exception ex)
             {
@@ -66,9 +66,9 @@ namespace Tour_packages.Services
         {
             try
             {
-                var doc = await _context.Packages.ToListAsync();
-                if (doc.Count > 0)
-                    return doc;
+                var pack = await _context.Packages.ToListAsync();
+                if (pack.Count > 0)
+                    return pack;
             }
             catch (Exception ex)
             {
@@ -81,24 +81,24 @@ namespace Tour_packages.Services
         {
             try
             {
-                var existingDoctor = await _context.Packages.FindAsync(item.PackageId);
-                if (existingDoctor != null)
+                var existingPackage = await _context.Packages.FindAsync(item.PackageId);
+                if (existingPackage != null)
                 {
-                    existingDoctor.TravelAgencyName = item.TravelAgencyName;
-                    existingDoctor.PackageName = item.PackageName;
-                    existingDoctor.Description = item.Description;
-                    existingDoctor.Rate = item.Rate;
-                    existingDoctor.Destination = item.Destination;
-                    existingDoctor.DeparturePoint = item.DeparturePoint;
-                    existingDoctor.ArrivalPoint = item.ArrivalPoint;
-                    existingDoctor.AvailablityCount = item.AvailablityCount;
-                    existingDoctor.TotalDays = item.TotalDays;
-                    existingDoctor.Transportation = item.Transportation;
+                    existingPackage.TravelAgencyName = item.TravelAgencyName;
+                    existingPackage.PackageName = item.PackageName;
+                    existingPackage.Description = item.Description;
+                    existingPackage.Rate = item.Rate;
+                    existingPackage.Destination = item.Destination;
+                    existingPackage.DeparturePoint = item.DeparturePoint;
+                    existingPackage.ArrivalPoint = item.ArrivalPoint;
+                    existingPackage.AvailablityCount = item.AvailablityCount;
+                    existingPackage.TotalDays = item.TotalDays;
+                    existingPackage.Transportation = item.Transportation;
 
 
                     await _context.SaveChangesAsync();
 
-                    return existingDoctor;
+                    return existingPackage;
                 }
             }
             catch (Exception ex)

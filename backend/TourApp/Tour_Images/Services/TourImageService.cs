@@ -17,7 +17,7 @@ namespace Tour_Images.Services
             _tourImageRepo = tourImageRepo;
         }
 
-        public async Task<TourImage> AddTourImage(int packageId, IFormFile image, string name)
+        public async Task<TourImage> AddTourImage(int packageId, IFormFile image, string name)  
         {
             // Connect to Azurite Blob Storage
             string connectionString = "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:8888/devstoreaccount1;"; 
@@ -53,10 +53,13 @@ namespace Tour_Images.Services
         {
             return await _tourImageRepo.GetAll();
         }
-
-        public async Task<TourImage> GetTourImage(int id)
+        public async Task<TourImage> GetTourImage(int packageId)
         {
-            return await _tourImageRepo.Get(id);
+            TourImage tourImage = await _tourImageRepo.Get(packageId);
+
+            // Return the retrieved tour image
+            return tourImage;
         }
+
     }
 }

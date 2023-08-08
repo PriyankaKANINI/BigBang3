@@ -1,34 +1,11 @@
 {
   "Version": 1,
-  "Hash": "gfa6bq4MoL5vW3HNY80gTIHnFs/QIwTXbvWnh9eMEpM=",
+  "Hash": "mRZAewi77t18rVlWFS2wSRGeOv8wfQdC86EGDAuHp/8=",
   "Source": "Tour_Booking",
   "BasePath": "_content/Tour_Booking",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [
-    {
-      "Identity": "D:\\TourWebsite\\backend\\TourApp\\Tour_packages\\Tour_packages.csproj",
-      "Version": 2,
-      "Source": "Tour_packages",
-      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
-      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
-    },
-    {
-      "Identity": "D:\\TourWebsite\\backend\\TourApp\\TourTravelers\\Tour_LoginRegister.csproj",
-      "Version": 2,
-      "Source": "Tour_LoginRegister",
-      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
-      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
-    }
-  ],
+  "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
   "Assets": []
 }

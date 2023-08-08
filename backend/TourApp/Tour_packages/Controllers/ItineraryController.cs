@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Tour_packages.Interfaces;
 using Tour_packages.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Tour_packages.Controllers
 {
@@ -9,22 +11,24 @@ namespace Tour_packages.Controllers
     [ApiController]
     public class ItineraryController : ControllerBase
     {
-        private readonly IRepo<int, Itinerary> _itineraryRepo;
+        private readonly IItineraryService _itineraryService;
 
-        public ItineraryController(IRepo<int, Itinerary> itineraryRepo)
+        public ItineraryController(IItineraryService itineraryService)
         {
-            _itineraryRepo = itineraryRepo;
+            _itineraryService = itineraryService;
         }
+
         [HttpPost("createItinerary")]
         public async Task<ActionResult<Itinerary>> AddItinerary(Itinerary itinerary)
         {
-            var addedItinerary = await _itineraryRepo.Add(itinerary);
+            var addedItinerary = await _itineraryService.AddItinerary(itinerary);
             if (addedItinerary != null)
             {
                 return Ok(addedItinerary);
             }
             return BadRequest("Failed to add itinerary.");
         }
+
         [HttpPut("updateItinerary")]
         public async Task<ActionResult<Itinerary>> UpdateItinerary(int id, Itinerary itinerary)
         {
@@ -33,17 +37,18 @@ namespace Tour_packages.Controllers
                 return BadRequest("Itinerary ID mismatch.");
             }
 
-            var updatedItinerary = await _itineraryRepo.Update(itinerary);
+            var updatedItinerary = await _itineraryService.UpdateItinerary(itinerary);
             if (updatedItinerary != null)
             {
                 return Ok(updatedItinerary);
             }
             return NotFound("Itinerary not found.");
         }
+
         [HttpDelete("deleteItinerary")]
         public async Task<ActionResult<Itinerary>> DeleteItinerary(int id)
         {
-            var deletedItinerary = await _itineraryRepo.Delete(id);
+            var deletedItinerary = await _itineraryService.DeleteItinerary(id);
             if (deletedItinerary != null)
             {
                 return Ok(deletedItinerary);
@@ -54,7 +59,7 @@ namespace Tour_packages.Controllers
         [HttpGet("getItineraryById")]
         public async Task<ActionResult<Itinerary>> GetItinerary(int id)
         {
-            var itinerary = await _itineraryRepo.Get(id);
+            var itinerary = await _itineraryService.GetItineraryById(id);
             if (itinerary != null)
             {
                 return Ok(itinerary);
@@ -65,7 +70,7 @@ namespace Tour_packages.Controllers
         [HttpGet("getAllItinerary")]
         public async Task<ActionResult<IEnumerable<Itinerary>>> GetAllItineraries()
         {
-            var itineraries = await _itineraryRepo.GetAll();
+            var itineraries = await _itineraryService.GetAllItineraries();
             if (itineraries != null && itineraries.Count > 0)
             {
                 return Ok(itineraries);

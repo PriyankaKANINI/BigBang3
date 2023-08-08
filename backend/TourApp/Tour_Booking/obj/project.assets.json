@@ -888,44 +888,6 @@
             "rid": "win"
           }
         }
-      },
-      "Tour_LoginRegister/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.14",
-          "Microsoft.EntityFrameworkCore": "6.0.14",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.14",
-          "Swashbuckle.AspNetCore": "6.2.3"
-        },
-        "compile": {
-          "bin/placeholder/Tour_LoginRegister.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Tour_LoginRegister.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
-      "Tour_packages/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.14",
-          "Microsoft.EntityFrameworkCore": "6.0.14",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.14",
-          "Swashbuckle.AspNetCore": "6.2.3"
-        },
-        "compile": {
-          "bin/placeholder/Tour_packages.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Tour_packages.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
       }
     }
   },
@@ -2299,16 +2261,6 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "Tour_LoginRegister/1.0.0": {
-      "type": "project",
-      "path": "../TourTravelers/Tour_LoginRegister.csproj",
-      "msbuildProject": "../TourTravelers/Tour_LoginRegister.csproj"
-    },
-    "Tour_packages/1.0.0": {
-      "type": "project",
-      "path": "../Tour_packages/Tour_packages.csproj",
-      "msbuildProject": "../Tour_packages/Tour_packages.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2317,9 +2269,7 @@
       "Microsoft.EntityFrameworkCore >= 6.0.14",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.14",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.14",
-      "Swashbuckle.AspNetCore >= 6.2.3",
-      "Tour_LoginRegister >= 1.0.0",
-      "Tour_packages >= 1.0.0"
+      "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
   "packageFolders": {
@@ -2354,14 +2304,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "D:\\TourWebsite\\backend\\TourApp\\TourTravelers\\Tour_LoginRegister.csproj": {
-              "projectPath": "D:\\TourWebsite\\backend\\TourApp\\TourTravelers\\Tour_LoginRegister.csproj"
-            },
-            "D:\\TourWebsite\\backend\\TourApp\\Tour_packages\\Tour_packages.csproj": {
-              "projectPath": "D:\\TourWebsite\\backend\\TourApp\\Tour_packages\\Tour_packages.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

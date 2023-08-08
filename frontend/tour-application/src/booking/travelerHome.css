@@ -1,0 +1,39 @@
+.agentPabeNav-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3751b5;
+    padding: 20px 20px;
+  }
+  
+  .agentPabeNav-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .agentPabeNav-nav li {
+    font-size: 18px;
+  }
+  
+  .agentPabeNav-nav a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .agentPabeNav-nav a:hover {
+    /* text-decoration: none; */
+    background-color: #59046a;
+    padding: 10px;
+  }
+  .agentPabeNav-nav li:last-child {
+    margin-left: auto;
+  }
+  .agentPabeNav-nav h2{
+    float: right;
+    color: #ffffff;
+    font-size: 22px;
+  }
+  

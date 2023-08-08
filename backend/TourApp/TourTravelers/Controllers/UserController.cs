@@ -80,5 +80,65 @@ namespace Tour_LoginRegister.Controllers
                 return BadRequest($"An error occurred during login: {ex.Message}");
             }
         }
+        [HttpPut("approve")]
+        [ProducesResponseType(typeof(ActionResult<AgentDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<AgentDTO>> ApproveAgent(AgentDTO agentStatus)
+        {
+            try
+            {
+                var result = await _manageUser.ApprovedAgent(agentStatus);
+
+                if (result != null)
+                    return Ok(result);
+
+                return BadRequest("Unable to approve agent");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"An error occurred during agent approval: {ex.Message}");
+            }
+        }
+
+        [HttpPut("disapprove")]
+        [ProducesResponseType(typeof(ActionResult<AgentDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<AgentDTO>> DisapproveAgent(AgentDTO agentStatus)
+        {
+            try
+            {
+                var result = await _manageUser.DisapproveAgent(agentStatus);
+
+                if (result != null)
+                    return Ok(result);
+
+                return BadRequest("Unable to disapprove agent");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"An error occurred during agent disapproval: {ex.Message}");
+            }
+        }
+       
+
+        [HttpGet("allAgents")]
+        [ProducesResponseType(typeof(ICollection<Agent>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<ICollection<Agent>>> GetAllAgents()
+        {
+            try
+            {
+                var agents = await _manageUser.GetAllAgents();
+
+                if (agents != null && agents.Count > 0)
+                    return Ok(agents);
+
+                return BadRequest("No agents found");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"An error occurred while fetching agents: {ex.Message}");
+            }
+        }
     }
 }

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Tour_packages.Interfaces;
 using Tour_packages.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Tour_packages.Controllers
 {
@@ -9,17 +11,17 @@ namespace Tour_packages.Controllers
     [ApiController]
     public class ContactDetailsController : ControllerBase
     {
-        private readonly IRepo<int, ContactDetails> _contactDetailsRepo;
+        private readonly IContactService _contactDetailsService;
 
-        public ContactDetailsController(IRepo<int, ContactDetails> contactDetailsRepo)
+        public ContactDetailsController(IContactService contactDetailsService)
         {
-            _contactDetailsRepo = contactDetailsRepo;
-
+            _contactDetailsService = contactDetailsService;
         }
+
         [HttpPost("createContact")]
         public async Task<ActionResult<ContactDetails>> AddContactDetails(ContactDetails contactDetails)
         {
-            var result = await _contactDetailsRepo.Add(contactDetails);
+            var result = await _contactDetailsService.AddContactDetails(contactDetails);
             if (result != null)
             {
                 return Ok(result);
@@ -27,7 +29,7 @@ namespace Tour_packages.Controllers
             return BadRequest("Failed to add contact details.");
         }
 
-        [HttpPut("updateItinerary")]
+        [HttpPut("updateContact")]
         public async Task<ActionResult<ContactDetails>> UpdateContactDetails(int id, ContactDetails contactDetails)
         {
             if (id != contactDetails.ContactId)
@@ -35,7 +37,7 @@ namespace Tour_packages.Controllers
                 return BadRequest("ContactDetails ID mismatch.");
             }
 
-            var result = await _contactDetailsRepo.Update(contactDetails);
+            var result = await _contactDetailsService.UpdateContactDetails(contactDetails);
             if (result != null)
             {
                 return Ok(result);
@@ -43,10 +45,10 @@ namespace Tour_packages.Controllers
             return NotFound("ContactDetails not found.");
         }
 
-        [HttpDelete("deleteItinerary")]
+        [HttpDelete("deleteContact")]
         public async Task<ActionResult<ContactDetails>> DeleteContactDetails(int id)
         {
-            var result = await _contactDetailsRepo.Delete(id);
+            var result = await _contactDetailsService.DeleteContactDetails(id);
             if (result != null)
             {
                 return Ok(result);
@@ -54,10 +56,10 @@ namespace Tour_packages.Controllers
             return NotFound("ContactDetails not found.");
         }
 
-        [HttpGet("getItineraryById")]
+        [HttpGet("getContactById")]
         public async Task<ActionResult<ContactDetails>> GetContactDetails(int id)
         {
-            var result = await _contactDetailsRepo.Get(id);
+            var result = await _contactDetailsService.GetContactDetailsById(id);
             if (result != null)
             {
                 return Ok(result);
@@ -65,10 +67,10 @@ namespace Tour_packages.Controllers
             return NotFound("ContactDetails not found.");
         }
 
-        [HttpGet("getAllItinerary")]
+        [HttpGet("getAllContact")]
         public async Task<ActionResult<IEnumerable<ContactDetails>>> GetAllContactDetails()
         {
-            var result = await _contactDetailsRepo.GetAll();
+            var result = await _contactDetailsService.GetAllContactDetails();
             if (result != null)
             {
                 return Ok(result);

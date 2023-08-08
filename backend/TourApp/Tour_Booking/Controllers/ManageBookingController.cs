@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging; 
 using Tour_Booking.Models;
-using Tour_Booking.Services;
 using System;
 using System.Collections.Generic;
 using Tour_Booking.Interfaces;
@@ -13,146 +13,30 @@ namespace Tour_Booking.Controllers
     public class ManageBookingController : ControllerBase
     {
         private readonly IManageBooking _manageBookingService;
+        private readonly ILogger<ManageBookingController> _logger; 
 
-        public ManageBookingController(IManageBooking manageBookingService)
+        public ManageBookingController(IManageBooking manageBookingService, ILogger<ManageBookingController> logger)
         {
             _manageBookingService = manageBookingService;
+            _logger = logger;
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Booking))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<Booking>> AddBooking(Booking booking)
+        public IActionResult CalculateTotal([FromBody] Booking booking)
         {
             try
             {
-                var result = await _manageBookingService.AddBooking(booking);
-                if (result != null)
-                {
-                    return Ok(result);
-                }
-                else
-                {
-                    return BadRequest("Failed to add booking.");
-                }
+                double totalAmount = _manageBookingService.CalculateTotalAmount(booking.Amount, booking.AddTravelerCount);
+
+                return Ok(new { TotalAmount = totalAmount });
             }
             catch (Exception ex)
             {
-                return BadRequest($"An error occurred during doctor registration: {ex.Message}");
-            }
-        }
-
-        [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Booking))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<Booking>> UpdateBooking(int id, Booking booking)
-        {
-            try
-            {
-                if (id != booking.BookingId)
-                {
-                    return BadRequest("Invalid booking ID.");
-                }
-
-                var existingBooking = await _manageBookingService.GetById(id);
-                if (existingBooking == null)
-                {
-                    return NotFound();
-                }
-
-                var result = await _manageBookingService.UpdateBooking(booking);
-                if (result != null)
-                {
-                    return Ok(result);
-                }
-                else
-                {
-                    return BadRequest("Failed to update booking.");
-                }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"An error occurred during doctor registration: {ex.Message}");
-            }
-        }
-
-        [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Booking))]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<Booking>> DeleteBooking(int id)
-        {
-            try
-            {
-                var existingBooking = await _manageBookingService.GetById(id);
-                if (existingBooking == null)
-                {
-                    return NotFound();
-                }
-
-                var result = await _manageBookingService.DeleteBooking(id);
-                if (result != null)
-                {
-                    return Ok(result);
-                }
-                else
-                {
-                    return BadRequest("Failed to delete booking.");
-                }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"An error occurred during doctor registration: {ex.Message}");
-            }
-        }
-
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ICollection<Booking>))]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ICollection<Booking>>> GetAllBookings()
-        {
-            try
-            {
-                var bookings = await _manageBookingService.GetAll();
-                if (bookings != null)
-                {
-                    return Ok(bookings);
-                }
-                else
-                {
-                    return NotFound();
-                }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"An error occurred during doctor registration: {ex.Message}");
-            }
-        }
-
-        [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Booking))]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<Booking>> GetBooking(int id)
-        {
-            try
-            {
-                var booking = await _manageBookingService.GetById(id);
-                if (booking != null)
-                {
-                    return Ok(booking);
-                }
-                else
-                {
-                    return NotFound();
-                }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"An error occurred during doctor registration: {ex.Message}");
+                _logger.LogError(ex, "An error occurred while calculating total amount.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
             }
         }
     }

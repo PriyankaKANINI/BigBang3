@@ -4,6 +4,7 @@
   background: linear-gradient(thistle, #a96fa7);
   background-attachment: fixed; /* Keep the background fixed in the viewport */
   padding: 20px;
+  height:70em;
 }
 
 .login-item {

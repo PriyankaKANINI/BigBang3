@@ -19,7 +19,7 @@ namespace Tour_Images.Controllers
         }
 
         [HttpGet("GettingImages")]
-        public async Task<ActionResult<IEnumerable<TourImage>>> GetTourImages()
+        public async Task<ActionResult<IEnumerable<TourImage>?>?> GetTourImages()
         {
             var tourImages = await _tourImageService.GetAllTourImage();
             return Ok(tourImages);
@@ -44,6 +44,26 @@ namespace Tour_Images.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpGet("GetTourImageByPackageId")]
+        public async Task<ActionResult<TourImage>> GetTourImage(int packageId)
+        {
+            try
+            {
+                TourImage tourImage = await _tourImageService.GetTourImage(packageId);
+
+                if (tourImage == null)
+                {
+                    return NotFound(); 
+                }
+
+                return Ok(tourImage); 
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
     }
 }

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Tour_packages.Interfaces;
 using Tour_packages.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Tour_packages.Controllers
 {
@@ -9,17 +11,17 @@ namespace Tour_packages.Controllers
     [ApiController]
     public class PackageController : ControllerBase
     {
-        private readonly IRepo<int, Package> _packageRepo;
+        private readonly IPackageService _packageService;
 
-        public PackageController(IRepo<int, Package> packagRepo)
+        public PackageController(IPackageService packageService)
         {
-            _packageRepo = packagRepo;
+            _packageService = packageService;
         }
 
         [HttpPost("packageCreate")]
         public async Task<ActionResult<Package>> AddTourPackage(Package tourPackage)
         {
-            var result = await _packageRepo.Add(tourPackage);
+            var result = await _packageService.AddPackage(tourPackage);
             if (result != null)
             {
                 return Ok(result);
@@ -35,7 +37,7 @@ namespace Tour_packages.Controllers
                 return BadRequest("TourPackage ID mismatch.");
             }
 
-            var result = await _packageRepo.Update(tourPackage);
+            var result = await _packageService.UpdatePackage(tourPackage);
             if (result != null)
             {
                 return Ok(result);
@@ -46,7 +48,7 @@ namespace Tour_packages.Controllers
         [HttpDelete("deletePackage")]
         public async Task<ActionResult<Package>> DeleteTourPackage(int id)
         {
-            var result = await _packageRepo.Delete(id);
+            var result = await _packageService.DeletePackage(id);
             if (result != null)
             {
                 return Ok(result);
@@ -57,7 +59,7 @@ namespace Tour_packages.Controllers
         [HttpGet("getPackageById")]
         public async Task<ActionResult<Package>> GetTourPackage(int id)
         {
-            var result = await _packageRepo.Get(id);
+            var result = await _packageService.GetPackageById(id);
             if (result != null)
             {
                 return Ok(result);
@@ -68,7 +70,7 @@ namespace Tour_packages.Controllers
         [HttpGet("getAllPackages")]
         public async Task<ActionResult<IEnumerable<Package>>> GetAllTourPackages()
         {
-            var result = await _packageRepo.GetAll();
+            var result = await _packageService.GetAllPackages();
             if (result != null)
             {
                 return Ok(result);

@@ -76,20 +76,19 @@ const LandingPage = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="#gallery" className="nav-link">
-                  Destinations
+                <Link to="package" className="nav-link">
+                  Package
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="#packages" className="nav-link">
-                  Travel Packages
+                <Link to="adminhome" className="nav-link">
+                  Admin
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="#reviews" className="nav-link">
-                  Testimonials
+              {/* <li className="nav-item">
+                <Link to="" className="nav-link">
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link to="feedback" className="nav-link">
                   Feedback
@@ -335,129 +334,120 @@ const LandingPage = () => {
       </section>
 
       {/* section-4 */}
-      <section id="packages" className="contact-section py-5">
+      <section id="packages" className="contact-section">
         <div id="pack" className="packages">
-          <div className="container">
-            <div className="gallary-header text-center">
-              <h2>special packages</h2>
-              <p>
-                Duis aute irure dolor in velit esse cillum dolore eu fugiat
-                nulla.
-              </p>
+          <div className="gallery-header text-center">
+            <h2>special packages</h2>
+            <p>
+              Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
+            </p>
+          </div>
+          <div className="row1">
+            <div className="single-package-item">
+              <img src={imageSrc1} alt="service-icon" />
+
+              <div className="single-package-item-txt">
+                <h3>
+                  italy <span className="pull-right">$499</span>
+                </h3>
+                <div className="packages-para">
+                  <p>
+                    <span>
+                      <i className="fa fa-angle-right"></i> 5 days 6 nights
+                    </span>
+                    <i className="fa fa-angle-right"></i> 5 star accommodation
+                  </p>
+                  <p>
+                    <span>
+                      <i className="fa fa-angle-right"></i> transportation
+                    </span>
+                    <i className="fa fa-angle-right"></i> food facilities
+                  </p>
+                </div>
+                <div className="packages-review">
+                  <p>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>2544 reviews</span>
+                  </p>
+                </div>
+                <div className="about-btn">
+                  <button className="about-view packages-btn">book now</button>
+                </div>
+              </div>
             </div>
-            <div className="row1">
-              <div className="single-package-item">
-                <img src={imageSrc1} alt="service-icon" />
+            <div className="single-package-item">
+              <img src={imageSrc1} alt="service-icon" />
 
-                <div className="single-package-item-txt">
-                  <h3>
-                    italy <span className="pull-right">$499</span>
-                  </h3>
-                  <div className="packages-para">
-                    <p>
-                      <span>
-                        <i className="fa fa-angle-right"></i> 5 days 6 nights
-                      </span>
-                      <i className="fa fa-angle-right"></i> 5 star accommodation
-                    </p>
-                    <p>
-                      <span>
-                        <i className="fa fa-angle-right"></i> transportation
-                      </span>
-                      <i className="fa fa-angle-right"></i> food facilities
-                    </p>
-                  </div>
-                  <div className="packages-review">
-                    <p>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <span>2544 reviews</span>
-                    </p>
-                  </div>
-                  <div className="about-btn">
-                    <button className="about-view packages-btn">
-                      book now
-                    </button>
-                  </div>
+              <div className="single-package-item-txt">
+                <h3>
+                  england <span className="pull-right">$1499</span>
+                </h3>
+                <div className="packages-para">
+                  <p>
+                    <span>
+                      <i className="fa fa-angle-right"></i> 5 days 6 nights
+                    </span>
+                    <i className="fa fa-angle-right"></i> 5 star accommodation
+                  </p>
+                  <p>
+                    <span>
+                      <i className="fa fa-angle-right"></i> transportation
+                    </span>
+                    <i className="fa fa-angle-right"></i> food facilities
+                  </p>
+                </div>
+                <div className="packages-review">
+                  <p>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>2544 reviews</span>
+                  </p>
+                </div>
+                <div className="about-btn">
+                  <button className="about-view packages-btn">book now</button>
                 </div>
               </div>
-              <div className="single-package-item">
-                <img src={imageSrc1} alt="service-icon" />
+            </div>
+            <div className="single-package-item">
+              <img src={imageSrc1} alt="service-icon" />
 
-                <div className="single-package-item-txt">
-                  <h3>
-                    england <span className="pull-right">$1499</span>
-                  </h3>
-                  <div className="packages-para">
-                    <p>
-                      <span>
-                        <i className="fa fa-angle-right"></i> 5 days 6 nights
-                      </span>
-                      <i className="fa fa-angle-right"></i> 5 star accommodation
-                    </p>
-                    <p>
-                      <span>
-                        <i className="fa fa-angle-right"></i> transportation
-                      </span>
-                      <i className="fa fa-angle-right"></i> food facilities
-                    </p>
-                  </div>
-                  <div className="packages-review">
-                    <p>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <span>2544 reviews</span>
-                    </p>
-                  </div>
-                  <div className="about-btn">
-                    <button className="about-view packages-btn">
-                      book now
-                    </button>
-                  </div>
+              <div className="single-package-item-txt">
+                <h3>
+                  england <span className="pull-right">$1499</span>
+                </h3>
+                <div className="packages-para">
+                  <p>
+                    <span>
+                      <i className="fa fa-angle-right"></i> 5 days 6 nights
+                    </span>
+                    <i className="fa fa-angle-right"></i> 5 star accommodation
+                  </p>
+                  <p>
+                    <span>
+                      <i className="fa fa-angle-right"></i> transportation
+                    </span>
+                    <i className="fa fa-angle-right"></i> food facilities
+                  </p>
                 </div>
-              </div>
-              <div className="single-package-item">
-                <img src={imageSrc1} alt="service-icon" />
-
-                <div className="single-package-item-txt">
-                  <h3>
-                    england <span className="pull-right">$1499</span>
-                  </h3>
-                  <div className="packages-para">
-                    <p>
-                      <span>
-                        <i className="fa fa-angle-right"></i> 5 days 6 nights
-                      </span>
-                      <i className="fa fa-angle-right"></i> 5 star accommodation
-                    </p>
-                    <p>
-                      <span>
-                        <i className="fa fa-angle-right"></i> transportation
-                      </span>
-                      <i className="fa fa-angle-right"></i> food facilities
-                    </p>
-                  </div>
-                  <div className="packages-review">
-                    <p>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <span>2544 reviews</span>
-                    </p>
-                  </div>
-                  <div className="about-btn">
-                    <button className="about-view packages-btn">
-                      book now
-                    </button>
-                  </div>
+                <div className="packages-review">
+                  <p>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>2544 reviews</span>
+                  </p>
+                </div>
+                <div className="about-btn">
+                  <button className="about-view packages-btn">book now</button>
                 </div>
               </div>
             </div>
@@ -476,78 +466,59 @@ const LandingPage = () => {
             </p>
           </div>
           <div className="review-content">
-            <div className="carousel-wrapper">
-              <div className="carousel">
-                <div className="review-item">
-                  <div className="review-item-img">
-                    <img src={imageSrc1} alt="profile-image" />
-                  </div>
-                  <div className="review-item-text">
-                    <p>
-                      Duis aute irure dolor in velit esse cillum dolore eu
-                      fugiat nulla.
-                    </p>
-                  </div>
-                </div>
-                <div className="review-item">
-                  <div className="review-item-img">
-                    <img src={imageSrc1} alt="profile-image" />
-                  </div>
-                  <div className="review-item-text">
-                    <p>
-                      Duis aute irure dolor in velit esse cillum dolore eu
-                      fugiat nulla.
-                    </p>
-                  </div>
-                </div>
-                <div className="review-item">
-                  <div className="review-item-img">
-                    <img src={imageSrc1} alt="profile-image" />
-                  </div>
-                  <div className="review-item-text">
-                    <p>
-                      Duis aute irure dolor in velit esse cillum dolore eu
-                      fugiat nulla.
-                    </p>
-                  </div>
-                </div>
-                <div className="review-item">
-                  <div className="review-item-img">
-                    <img src={imageSrc1} alt="profile-image" />
-                  </div>
-                  <div className="review-item-text">
-                    <p>
-                      Duis aute irure dolor in velit esse cillum dolore eu
-                      fugiat nulla.
-                    </p>
-                  </div>
-                </div>
-                <div className="review-item">
-                  <div className="review-item-img">
-                    <img src={imageSrc1} alt="profile-image" />
-                  </div>
-                  <div className="review-item-text">
-                    <p>
-                      Duis aute irure dolor in velit esse cillum dolore eu
-                      fugiat nulla.
-                    </p>
-                  </div>
-                </div>
+            <div className="review-item">
+              <div className="review-item-img">
+                <img src={imageSrc1} alt="profile-image" />
               </div>
-              <div class="slider-prev-next-control">
-                <label for="slide1"></label>
-                <label for="slide2"></label>
-                <label for="slide3"></label>
-                <label for="slide4"></label>
-                <label for="slide5"></label>
+              <div className="review-item-text">
+                <p>
+                  Duis aute irure dolor in velit esse cillum dolore eu fugiat
+                  nulla.
+                </p>
               </div>
-
-              <div class="slider-dot-control">
-                <label for="slide1"></label>
-                <label for="slide2"></label>
-                <label for="slide3"></label>
-                <label for="slide4"></label>
-                <label for="slide5"></label>
+            </div>
+            {/* <div className="review-item">
+                  <div className="review-item-img">
+                    <img src={imageSrc1} alt="profile-image" />
+                  </div>
+                  <div className="review-item-text">
+                    <p>
+                      Duis aute irure dolor in velit esse cillum dolore eu
+                      fugiat nulla.
+                    </p>
+                  </div>
+                </div> */}
+            {/* <div className="review-item">
+              <div className="review-item-img">
+                <img src={imageSrc1} alt="profile-image" />
+              </div>
+              <div className="review-item-text">
+                <p>
+                  Duis aute irure dolor in velit esse cillum dolore eu fugiat
+                  nulla.
+                </p>
+              </div>
+            </div> */}
+            <div className="review-item">
+              <div className="review-item-img">
+                <img src={imageSrc1} alt="profile-image" />
+              </div>
+              <div className="review-item-text">
+                <p>
+                  Duis aute irure dolor in velit esse cillum dolore eu fugiat
+                  nulla.
+                </p>
+              </div>
+            </div>
+            <div className="review-item">
+              <div className="review-item-img">
+                <img src={imageSrc1} alt="profile-image" />
+              </div>
+              <div className="review-item-text">
+                <p>
+                  Duis aute irure dolor in velit esse cillum dolore eu fugiat
+                  nulla.
+                </p>
               </div>
             </div>
           </div>

@@ -57,6 +57,9 @@ namespace Tour_packages
             builder.Services.AddScoped<IRepo<int, Itinerary>, ItineraryRepo>();
             builder.Services.AddScoped<IRepo<int, Package>, PackageRepo>();
             builder.Services.AddScoped<IRepo<int, ContactDetails>, ContactDetailsRepo>();
+            builder.Services.AddScoped<IContactService,ContactDetailsService>();
+            builder.Services.AddScoped<IItineraryService,ItineraryService>();
+            builder.Services.AddScoped<IPackageService,PackageService>();
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                           .AddJwtBearer(options =>

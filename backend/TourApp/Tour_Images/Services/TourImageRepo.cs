@@ -18,11 +18,6 @@ namespace Tour_Images.Services
             return item;
         }
 
-        public Task<TourImage?> Delete(TourImage item)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<TourImage?> Get(int id)
         {
             return await _context.TourImages.FindAsync(id);
@@ -31,11 +26,6 @@ namespace Tour_Images.Services
         public async Task<ICollection<TourImage>?> GetAll()
         {
             return await _context.TourImages.ToListAsync();
-        }
-
-        public Task<TourImage?> Update(TourImage item)
-        {
-            throw new NotImplementedException();
         }
     }
 }

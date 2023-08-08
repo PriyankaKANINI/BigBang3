@@ -1,0 +1,25 @@
+.agents-table {
+    width: 100%;
+    margin: 3em;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+  }
+  
+  .agents-table th,
+  .agents-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  
+  .agents-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .agents-table tr:hover {
+    background-color: #f0f0f0; 
+    cursor: pointer;
+  }
+  

@@ -33,12 +33,12 @@ namespace Tour_packages.Services
         {
             try
             {
-                var doc = await Get(key);
-                if (doc != null)
+                var contact = await Get(key);
+                if (contact != null)
                 {
-                    _context.Contacts.Remove(doc);
+                    _context.Contacts.Remove(contact);
                     await _context.SaveChangesAsync();
-                    return doc;
+                    return contact;
                 }
             }
             catch (Exception ex)
@@ -52,8 +52,8 @@ namespace Tour_packages.Services
         {
             try
             {
-                var doc = await _context.Contacts.FirstOrDefaultAsync(i => i.ContactId == key);
-                return doc;
+                var contact = await _context.Contacts.FirstOrDefaultAsync(i => i.PackageId == key);
+                return contact;
             }
             catch (Exception ex)
             {
@@ -66,9 +66,9 @@ namespace Tour_packages.Services
         {
             try
             {
-                var doc = await _context.Contacts.ToListAsync();
-                if (doc.Count > 0)
-                    return doc;
+                var contact = await _context.Contacts.ToListAsync();
+                if (contact.Count > 0)
+                    return contact;
             }
             catch (Exception ex)
             {
@@ -82,17 +82,17 @@ namespace Tour_packages.Services
 
             try
             {
-                var existingDoctor = await _context.Contacts.FindAsync(item.ContactId);
-                if (existingDoctor != null)
+                var existingContact = await _context.Contacts.FindAsync(item.ContactId);
+                if (existingContact != null)
                 {
-                    existingDoctor.TravelAgentName = item.TravelAgentName;
-                    existingDoctor.Email = item.Email;
-                    existingDoctor.Phone = item.Phone;
+                    existingContact.TravelAgentName = item.TravelAgentName;
+                    existingContact.Email = item.Email;
+                    existingContact.Phone = item.Phone;
 
 
                     await _context.SaveChangesAsync();
 
-                    return existingDoctor;
+                    return existingContact;
                 }
             }
             catch (Exception ex)
