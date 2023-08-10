@@ -1,10 +1,10 @@
 import React from "react";
 import "../adminHome/adminHome.css";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify"; // Import the toast function
+import { toast } from "react-toastify";
 
 const AdminHome = () => {
-  const navigate = useNavigate(); // Add parentheses here
+  const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.clear();
     navigate("/");
@@ -19,28 +19,30 @@ const AdminHome = () => {
     });
   };
   return (
-    <nav className="adminPabeNav-nav">
-      <ul>
-        <li>
-          <Link to="/" className="adminPageNavAA">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/request">Request</Link>
-        </li>
-        <li>
-          <Link to="/status">Status</Link>
-        </li>
-        <li>
-          <a href="#" onClick={handleLogout}>
-            Log Out
-          </a>
-        </li>
-      </ul>
+    <div className="adminHome-main">
+      <nav className="adminPabeNav-nav">
+        <ul>
+          <li>
+            <Link to="/" className="adminPageNavAA">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/request">Request</Link>
+          </li>
+          <li>
+            <Link to="/status">Status</Link>
+          </li>
+          <li>
+            <a href="#" onClick={handleLogout}>
+              Log Out
+            </a>
+          </li>
+        </ul>
 
-      <h2 id="welcome-admin">Welcome Back, Admin</h2>
-    </nav>
+        <h2 id="welcome-admin">Welcome Back, Admin</h2>
+      </nav>
+    </div>
   );
 };
 

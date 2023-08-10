@@ -3,13 +3,13 @@ body {
   padding: 0;
 }
 
-.register-item h2{
+.register-item-agent h2{
   color: #ffffff;
   font-size: 3em;
 }
 
-.register-leftright{
-  margin-top: 1em;
+.register-leftright-agent{
+  margin-top: 4em;
   display: flex;
   background-color: #ffffff;
   justify-content: center;
@@ -19,14 +19,14 @@ body {
   width: 65em;
 }
 
-.register-container {
+.register-container-agent {
   justify-content: center;
   align-items: center;
   background: linear-gradient( thistle, #a96fa7); 
   min-height: 100vh;
 }
 
-.register-item {
+.register-item-agent {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,20 +34,28 @@ body {
   padding: 20px;
 }
 
-.register-item .register-image img {
+.register-item-agent .register-image-agent img {
   width: 32.5em;
-  height: 35em;
+  height: 35.2em;
   margin-right: 20px;
   object-fit: cover;
 }
-.register-inputs{
+
+.register-item-agent .register-image-traveler img {
+  width: 32.5em;
+  height: 45em;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.register-inputs-agent{
   padding: 10px;
   margin-top: 2em;
 }
 
-.register-leftright input,
-.register-leftright select,
-.register-leftright textarea {
+.register-leftright-agent input,
+.register-leftright-agent select,
+.register-leftright-agent textarea {
 width: 25em;
 padding: 8px;
 border: 1px solid #ccc;
@@ -59,7 +67,7 @@ select {
   appearance: none;
 }
 
-.register-item-button {
+.register-item-button-agent {
   padding: 10px 20px;
   background-color: #ff69b4;
   color: #fff;
@@ -72,7 +80,7 @@ select {
   transition: background-color 0.3s, color 0.1s;
 }
 
-.register-item-button:hover {
+.register-item-button-agent:hover {
   background-color: #ff1493;
 }
 
@@ -80,35 +88,35 @@ select {
   resize: none;
 }
  @media (max-width: 1024px) {
-  .register-leftright {
+  .register-leftright-agent {
     flex-direction: column;
     max-width: 100%;
   }
 
-  .register-item .register-image img {
+  .register-item-agent .register-image-agent img {
     margin-right: 0;
     margin-bottom: 20px;
     width: 100%;
     height: auto;
   }
 
-  .register-leftright input,
-  .register-leftright select,
-  .register-leftright textarea {
+  .register-leftright-agent input,
+  .register-leftright-agent select,
+  .register-leftright-agent textarea {
     width: 100%;
   }
 
-  .register-item-button {
+  .register-item-button-agent {
     width: 100%;
   }
 
-  .register-item h2 {
+  .register-item-agent h2 {
     font-size: 2em;
   }
 }
 
 @media (max-width: 768px) {
-  .register-item h2 {
+  .register-item-agent h2 {
     font-size: 1.5em;
   }
 }

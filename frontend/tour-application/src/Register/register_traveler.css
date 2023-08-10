@@ -3,12 +3,12 @@ body {
   padding: 0;
 }
 
-.register-item h2 {
+.register-item-traveler h2 {
   color: #ffffff;
   font-size: 3em;
 }
 
-.register-leftright {
+.register-leftright-traveler {
   margin-top: 4em;
   width: 56em;
   display: flex;
@@ -19,7 +19,7 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
 }
 
-.input-row {
+.input-row-traveler {
   display: flex;
   gap: 2em;
   width: 100%;
@@ -28,27 +28,33 @@ body {
   align-items: center;
 }
 
-.register-container {
+.register-container-traveler {
   justify-content: center;
   align-items: center;
   background: linear-gradient(thistle, #a96fa7);
   min-height: 100vh; /* Set the minimum height to cover the entire viewport */
 }
 
-.register-item {
+.register-item-traveler {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.register-item .register-image img {
+.register-item-traveler .register-image-traveler img {
   width: 27em;
   height: 36em;
   object-fit: cover;
 }
 
-.register-inputs {
+.register-item-traveler .register-image-traveler img {
+  width: 27em;
+  height: 36em;
+  object-fit: cover;
+}
+
+.register-inputs-traveler {
   padding: 10px;
   margin-right: 2em;
 }
@@ -57,8 +63,8 @@ body {
   resize: none;
 }
 
-.register-leftright input,
-.register-leftright select
+.register-leftright-traveler input,
+.register-leftright-traveler select
  {
   padding: 8px;
   border: 1px solid #ccc;
@@ -66,20 +72,20 @@ body {
   margin: 0.5em 0;
 }
 
-.input-row {
+.input-row-traveler {
   gap: 2em;
   display: flex;
   flex-wrap: wrap;
 }
 
-.input-row input[type="text"],
-.input-row input[type="number"],
-.input-row select {
+.input-row-traveler input[type="text"],
+.input-row-traveler input[type="number"],
+.input-row-traveler select {
   gap: 1em;
   width: 12em;
 }
 
-.input-row input[type="date"] {
+.input-row-traveler input[type="date"] {
   gap: 1em;
   width: 12em;
 }
@@ -88,7 +94,7 @@ select {
   appearance: none;
 }
 
-.register-item-button {
+.register-item-button-traveler {
   padding: 10px 20px;
   background-color: #ff69b4;
   color: #fff;
@@ -100,48 +106,48 @@ select {
   transition: background-color 0.3s, color 0.1s;
 }
 
-.register-item-button:hover {
+.register-item-button-traveler:hover {
   background-color: #ff1493;
 }
 
-.register-leftright input[type="email"],
-.register-leftright input[type="password"] {
+.register-leftright-traveler input[type="email"],
+.register-leftright-traveler input[type="password"] {
   width: 26em;
 }
 
-.input-row-next textarea {
+.input-row-next-traveler textarea {
   resize:none;
   width: 26em;
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
-  .register-item h2 {
+  .register-item-traveler h2 {
     font-size: 2em;
   }
 
-  .register-item .register-image img {
+  .register-item-traveler .register-image-traveler img {
     max-width: 100%;
     height: auto;
   }
 
-  .input-row input[type="text"],
-  .input-row input[type="number"],
-  .input-row select,
-  .input-row input[type="date"] {
+  .input-row-traveler input[type="text"],
+  .input-row-traveler input[type="number"],
+  .input-row-traveler select,
+  .input-row-traveler input[type="date"] {
     max-width: 100%;
   }
 
-  .register-leftright input[type="email"],
-  .register-leftright input[type="password"] {
+  .register-leftright-traveler input[type="email"],
+  .register-leftright-traveler input[type="password"] {
     max-width: 100%;
   }
-  .input-row-next textarea {
+  .input-row-next-traveler textarea {
     resize: none;
     width: 100%;
   }
 
-  .register-item-button {
+  .register-item-button-traveler {
     max-width: 100%;
   }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./login.css";
-import { toast } from "react-toastify"; // Import the toast function
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import imageSrc1 from "../images/impressed-by-views-town_329181-13895.avif";
@@ -39,7 +39,6 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    // Check if email and password are not empty
     if (!loginData.userEmail || !loginData.passwordClear) {
       alert("Please enter your email and password");
       return;
@@ -64,20 +63,7 @@ const Login = () => {
             progress: undefined,
           });
 
-          // .then(async (response) => {
-          //   if (response.status == 200) {
-          //     alert("Logged In Successfully");
           const data = await response.json();
-          //     console.log(data);
-          //     localStorage.setItem("token", data.token);
-          //     localStorage.setItem("email", data.userEmail);
-
-          //     setLoginData((prevLoginData) => ({
-          //       ...prevLoginData,
-          //       userRole: data.userRole,
-          //     }));
-
-          // Redirect based on user role
 
           if (data.userRole === "Admin") {
             navigate("/adminHome");
@@ -91,7 +77,6 @@ const Login = () => {
           localStorage.setItem("email", data.userEmail);
           localStorage.setItem("role", data.userRole);
         } else {
-          // Handle unsuccessful login
           const errorData = await response.json();
           if (response.status === 401) {
             toast.error(`Unauthorized: ${errorData.message}`);

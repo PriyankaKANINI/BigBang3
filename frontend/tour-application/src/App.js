@@ -14,7 +14,6 @@ import Feedback from "./feedback/feedback";
 import BookingMain from "./booking/bookingMain";
 import { ToastContainer, toast } from "react-toastify";
 import BookNow from "./booking/bookNow";
-// import ImageCheck from "./imageCheck/imagecheck";
 import Package from "./agentPackage/package";
 import Itinerary from "./agentPackage/Itinerary";
 import ContactDetailsPage from "./agentPackage/contactDetailsPage";
@@ -82,25 +81,14 @@ function App() {
             }
           />
 
-          {/* <Route path="bookNow" element={<BookNow />} /> */}
-
-          {/* <Route path="feedback" element={<Feedback />} /> */}
-          {/* <Route path="bookingMain" element={<BookingMain />} /> */}
-          {/* <Route path="request" element={<Request />} /> */}
-          {/* <Route path="status" element={<Status />} /> */}
-          {/* <Route path="travelerHome" element={<TravelerHome />} /> */}
-          {/* <Route path="agentHome" element={<AgentHome />} /> */}
-          {/* <Route path="travelerHome" element={<TravelerHome />} /> */}
-          {/* <Route path="bookNow" element={<BookNow />} /> */}
-
-          {/* <Route
+          <Route
             path="bookNow"
             element={
               <BookNowProtected token={token}>
                 <BookNow />
               </BookNowProtected>
             }
-          /> */}
+          />
 
           <Route path="/bookNow/:packageId" element={<BookNow />} />
 
@@ -117,7 +105,6 @@ function App() {
             path="/packageDetails/:packageId"
             element={<PackageDetails />}
           />
-          {/* <Route path="/bookNow/:packageId" component={BookNow} /> */}
 
           <Route
             path="adminhome"

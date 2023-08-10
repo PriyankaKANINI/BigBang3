@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./contactDetailsForm.css";
 import { useParams, useNavigate } from "react-router-dom";
 import AgentHome from "./agentHome";
-import Modal from "react-modal"; // Import the react-modal library
+import Modal from "react-modal";
 
 const ContactDetailsForm = () => {
   const { packageId } = useParams();
@@ -13,11 +13,11 @@ const ContactDetailsForm = () => {
     phone: "",
     email: "",
   });
-  const [modalIsOpen, setModalIsOpen] = useState(false); // Add this state for modal
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log("handleChange:", name, value); // Add this line
+    console.log("handleChange:", name, value);
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
 
@@ -50,7 +50,6 @@ const ContactDetailsForm = () => {
       .then((data) => {
         console.log("Contact details submitted:", data);
 
-        // Open the modal after successful contact details submission
         setModalIsOpen(true);
       })
       .catch((error) => {
@@ -59,7 +58,6 @@ const ContactDetailsForm = () => {
       });
   };
   const handleModalClose = () => {
-    // Close the modal and navigate to the itinerary page
     setModalIsOpen(false);
     navigate(`/Itinerary/${packageId}`);
   };

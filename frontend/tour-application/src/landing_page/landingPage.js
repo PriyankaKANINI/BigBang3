@@ -17,6 +17,7 @@ import About from "../about/about";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Feedback from "../feedback/feedback";
 import BookingMain from "../booking/bookingMain";
+import { colors } from "@mui/material";
 
 const LandingPage = () => {
   const scrollToTop = () => {
@@ -37,17 +38,32 @@ const LandingPage = () => {
   const userRole = localStorage.getItem("userRole");
 
   const handleLogout = () => {
-    localStorage.clear();
-    toast.success("Successfully Logged Out", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-    navigate("");
+    const userRole = localStorage.getItem("userRole");
+
+    if (!userRole) {
+      toast.info("You are already logged out.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      localStorage.clear();
+      toast.success("Successfully Logged Out", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+
+    navigate("landingPage");
   };
 
   const [images, setImages] = useState([]);
@@ -160,13 +176,16 @@ const LandingPage = () => {
                       About Us
                     </Link>
                   </li>
+                  <li
+                    id="nav-item-logout-color"
+                    className="nav-item-logout"
+                    style={{ color: "black !important" }}
+                  >
+                    <Link to="/" className="nav-link" onClick={handleLogout}>
+                      Logout
+                    </Link>
+                  </li>
                 </ul>
-              </li>
-
-              <li className="nav-item">
-                <Link to="logout" className="nav-link" onClick={handleLogout}>
-                  Logout
-                </Link>
               </li>
             </ul>
           </div>
@@ -180,7 +199,7 @@ const LandingPage = () => {
             <button className="explore-now">explore now</button>
             <button className="explore-now-login">
               <Link to="login" className="nav-link">
-                Sign-In
+                Sign-In/Login
               </Link>
             </button>
           </div>

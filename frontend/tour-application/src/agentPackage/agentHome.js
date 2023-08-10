@@ -20,7 +20,7 @@ const AgentHome = () => {
   };
 
   return (
-    <nav className="agentPabeNav-nav">
+    <nav className="agentPabeNav-nav-agent">
       <ul>
         <li>
           <Link to="#" className="agentPageNavAA">
@@ -28,10 +28,7 @@ const AgentHome = () => {
           </Link>
         </li>
         <li>
-          <Link to="/request">Request</Link>
-        </li>
-        <li>
-          <Link to="/status">Status</Link>
+          <Link to="/package">Package</Link>
         </li>
         <li>
           <a href="#" onClick={handleLogout}>

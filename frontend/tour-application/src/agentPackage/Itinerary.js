@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import "./Itinerary.css";
 import AgentHome from "./agentHome";
 import { useParams, useNavigate } from "react-router-dom";
-import Modal from "react-modal"; // Import the react-modal library
+import Modal from "react-modal";
 
 const Itinerary = () => {
   const { packageId } = useParams();
-  const navigate = useNavigate(); // Add useNavigate hook
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     dayandVisit: "",
     destinationName: "",
     destinationDescription: "",
-    images: [], // Store selected images in an array
+    images: [],
   });
-  const [modalIsOpen, setModalIsOpen] = useState(false); // Add this state for modal
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +43,6 @@ const Itinerary = () => {
     };
 
     try {
-      // Send itinerary details first
       const response = await fetch(
         "http://localhost:5202/api/Itinerary/createItinerary",
         {
@@ -60,7 +59,6 @@ const Itinerary = () => {
         throw new Error("Error submitting itinerary details.");
       }
 
-      // If itinerary details were submitted successfully, upload images
       const formDataToSend = new FormData();
       formDataToSend.append("packageId", packageId);
 
@@ -79,7 +77,6 @@ const Itinerary = () => {
       if (!imageUploadResponse.ok) {
         throw new Error("Error uploading images.");
       }
-      // Clear the form after successful submission
 
       setModalIsOpen(true);
       setFormData({
@@ -95,7 +92,7 @@ const Itinerary = () => {
   };
   const handleModalClose = () => {
     setModalIsOpen(false);
-    navigate("/"); // Navigate to the landing pa  };
+    navigate("/");
   };
 
   return (

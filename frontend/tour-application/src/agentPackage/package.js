@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ContactDetailsPage from "./contactDetailsPage";
-import Modal from "react-modal"; // Import the react-modal library
+import Modal from "react-modal";
 import AgentHome from "./agentHome";
 
 const Package = () => {
@@ -325,8 +325,6 @@ const Package = () => {
           <button onClick={handleModalClose}>Next</button>
         </Modal>
       </div>
-
-      {/* {submitted && packageId && <ContactDetailsPage packageId={packageId} />} */}
     </div>
   );
 };

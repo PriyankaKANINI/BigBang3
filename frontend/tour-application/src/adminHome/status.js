@@ -5,7 +5,7 @@ import AdminHome from "./adminHome";
 const Status = () => {
   const [agents, setAgents] = useState([]);
   const [displayAgents, setDisplayAgents] = useState([]);
-  const [filterStatus, setFilterStatus] = useState("all"); // "all", "approved", "notApproved"
+  const [filterStatus, setFilterStatus] = useState("all");
 
   useEffect(() => {
     fetch("http://localhost:5170/api/User/GetAllAgents/allAgents")

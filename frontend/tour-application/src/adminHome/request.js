@@ -20,15 +20,14 @@ const Request = () => {
   }, [agents]);
   const handleApprove = (agentID) => {
     fetch(`http://localhost:5170/api/User/ApproveAgent/approve`, {
-      method: "PUT", // Assuming you are using PUT
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ agentID }), // Include agentID in the request body
+      body: JSON.stringify({ agentID }),
     })
       .then((response) => response.json())
       .then(() => {
-        // Update the status of the approved agent
         const updatedAgents = agents.map((agent) =>
           agent.agentID === agentID
             ? { ...agent, isVerified: "Approved" }
@@ -43,15 +42,14 @@ const Request = () => {
 
   const handleDisapprove = (agentID) => {
     fetch(`http://localhost:5170/api/User/DisapproveAgent/disapprove`, {
-      method: "PUT", // Assuming you are using PUT
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ agentID }), // Include agentID in the request body
+      body: JSON.stringify({ agentID }),
     })
       .then((response) => response.json())
       .then(() => {
-        // Update the status of the disapproved agent
         const updatedAgents = agents.map((agent) =>
           agent.agentID === agentID
             ? { ...agent, isVerified: "Not Approved" }

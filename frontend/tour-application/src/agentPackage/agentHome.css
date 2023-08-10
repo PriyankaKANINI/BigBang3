@@ -1,4 +1,4 @@
-.agentPabeNav-nav {
+.agentPabeNav-nav-agent {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,7 +7,7 @@
     margin-bottom: 3em;
   }
   
-  .agentPabeNav-nav ul {
+  .agentPabeNav-nav-agent ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -15,24 +15,24 @@
     gap: 20px;
   }
   
-  .agentPabeNav-nav li {
+  .agentPabeNav-nav-agent li {
     font-size: 18px;
   }
   
-  .agentPabeNav-nav a {
+  .agentPabeNav-nav-agent a {
     color: white;
     text-decoration: none;
   }
   
-  .agentPabeNav-nav a:hover {
+  .agentPabeNav-nav-agent a:hover {
     /* text-decoration: none; */
     background-color: #c781c5;
     padding: 10px;
   }
-  .agentPabeNav-nav li:last-child {
+  .agentPabeNav-nav-agent li:last-child {
     margin-left: auto;
   }
-  .agentPabeNav-nav h2{
+  .agentPabeNav-nav-agent h2{
     float: right;
     color: #ffffff;
     font-size: 22px;

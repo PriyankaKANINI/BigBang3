@@ -30,7 +30,6 @@ const About = () => {
       description:
         "Elsa ensures smooth and seamless travel arrangements for our customers. With her expertise, every trip becomes a hassle-free and delightful experience.",
     },
-    // Add more team members here...
   ];
 
   return (
@@ -75,7 +74,6 @@ const About = () => {
             ))}
           </div>
         </div>
-
         <div className="about-sec-title-down">
           <h2>Our Tours</h2>
           <p>Explore the World with Us</p>
@@ -94,11 +92,7 @@ const About = () => {
             unforgettable adventures.
           </p>
         </div>
-        <div className="about-btn-box">
-          <Link to="/tours" className="about-theme-btn btn-style-one">
-            View All Tours
-          </Link>
-        </div>
+        <div className="about-btn-box"></div>
       </div>
     </section>
   );

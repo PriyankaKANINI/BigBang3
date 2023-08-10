@@ -10,7 +10,6 @@ const PackageDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch images for the selected package
         const imagesResponse = await fetch(
           `http://localhost:5234/api/TourImage/GetTourImageByPackageId?packageId=${selectedPackageId}`
         );
@@ -30,7 +29,6 @@ const PackageDetails = () => {
         const contactData = await contactResponse.json();
         setContactDetails(contactData);
 
-        // Fetch all itinerary items
         const itineraryResponse = await fetch(
           "http://localhost:5202/api/Itinerary/getAllItinerary"
         );

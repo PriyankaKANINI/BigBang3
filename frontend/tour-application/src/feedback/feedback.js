@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "../feedback/feedback.css";
 import { Modal, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Feedback = () => {
   const [rating, setRating] = useState(4);
   const [privacyChecked, setPrivacyChecked] = useState(false);
   const [researchGroupChecked, setResearchGroupChecked] = useState(false);
+  const [modalClosed, setModalClosed] = useState(false);
+  const navigate = useNavigate();
 
   const handleRatingChange = (selectedRating) => {
     let smileyValue = 0;
@@ -100,11 +103,37 @@ const Feedback = () => {
     }
   };
 
-  const handleSubmit1 = () => {
-    showThanksModal();
-  };
+  // const handleSubmit1 = () => {
+  //   showThanksModal();
+  // };
   const showThanksModal = () => {
     setShowModal(true);
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+    setModalClosed(true);
+    console.log("Modal closed");
+  };
+
+  const navigateToLanding = () => {
+    if (modalClosed) {
+      navigate("/");
+    }
+  };
+
+  const handleSubmit1 = () => {
+    if (!rating) {
+      alert("Please select a smiley rating.");
+      return;
+    }
+
+    if (!feedbackText.trim()) {
+      alert("Please provide feedback description.");
+      return;
+    }
+
+    showThanksModal();
   };
 
   const handleCancel = () => {};
@@ -166,6 +195,7 @@ const Feedback = () => {
           </div>
           <div className="cta">
             <div className="cancel-feedback" onClick={handleCancel}>
+              {" "}
               Cancel
             </div>
             <div className="submit-feedback" onClick={handleSubmit1}>
@@ -174,13 +204,17 @@ const Feedback = () => {
           </div>
         </div>
       </div>
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
+      <Modal
+        show={showModal}
+        onHide={handleModalClose}
+        onExited={navigateToLanding}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Thank you for your feedback!</Modal.Title>
         </Modal.Header>
         <Modal.Body>Your feedback has been successfully submitted.</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={() => setShowModal(false)}>
+          <Button variant="primary" onClick={handleModalClose}>
             Close
           </Button>
         </Modal.Footer>

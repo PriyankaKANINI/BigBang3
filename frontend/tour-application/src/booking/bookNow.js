@@ -1,23 +1,24 @@
 import "../booking/bookNow.css";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import Modal from "react-modal";
 Modal.setAppElement("#root");
 
 const BookNow = () => {
-  const [addTravelerCount, setAddTravelerCount] = useState(2);
+  const [addTravelerCount, setAddTravelerCount] = useState("");
   const [bookingName, setBookingName] = useState("");
   const [bookingMail, setBookingMail] = useState("");
   const [selectedPackageAmount, setSelectedPackageAmount] = useState(null);
   const [packageDetails, setPackageDetails] = useState(null);
   const [pdfDownloaded, setPdfDownloaded] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
+  const [nameError, setNameError] = useState("");
+  const [mailError, setMailError] = useState("");
   const packageId = parseInt(localStorage.getItem("selectedPackageId")) || 0;
-
+  const navigate = useNavigate();
   useEffect(() => {
-    // Fetch package details using the packageId
     const fetchPackageDetails = async () => {
       try {
         const response = await fetch(
@@ -53,6 +54,7 @@ const BookNow = () => {
 
   const handleModalClose = () => {
     setModalIsOpen(false);
+    navigate("/");
   };
 
   const handleDownloadPDF = () => {
@@ -65,7 +67,6 @@ const BookNow = () => {
 
     const apiUrl = "http://localhost:5085/api/ManageBooking";
 
-    // Prepare booking data for API request
     const bookingData = {
       packageId: packageId,
       addTravelerCount: addTravelerCount,
@@ -74,8 +75,18 @@ const BookNow = () => {
       amount: selectedPackageAmount,
       totalAmount: totalAmount,
     };
-
-    // Configure API request options
+    if (!bookingName) {
+      setNameError("Name is required");
+      return;
+    }
+    if (!bookingMail) {
+      setMailError("Email is required");
+      return;
+    }
+    if (!addTravelerCount) {
+      setMailError("Count is required");
+      return;
+    }
     const requestOptions = {
       method: "POST",
       headers: {
@@ -84,23 +95,32 @@ const BookNow = () => {
       body: JSON.stringify(bookingData),
     };
 
-    // Send POST request to API
     fetch(apiUrl, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log("Booking data saved:", data);
 
-        // Generate PDF and perform other actions as needed
         const doc = new jsPDF();
 
-        doc.text("Booking Details", 10, 10);
+        doc.setFontSize(16);
+        doc.text("Tours Co.", 10, 15);
         doc.setFontSize(12);
-        doc.text(`Package ID: ${bookingData.packageId}`, 10, 30);
-        doc.text(`Booking Name: ${userProvidedBookingName}`, 10, 40);
-        doc.text(`Booking Email: ${userProvidedBookingMail}`, 10, 50);
-        doc.text(`Amount: ${selectedPackageAmount.toFixed(2)}`, 10, 60);
-        doc.text(`Total Amount: ${totalAmount.toFixed(2)}`, 10, 70);
-        doc.text("Happy Travelling!", 10, 90);
+        doc.text("1234 Travel Street, Cityville", 10, 25);
+        doc.text("+1 (123) 456-7890", 10, 35);
+        doc.text("info@toursco.com", 10, 45);
+
+        doc.rect(5, 50, doc.internal.pageSize.getWidth() - 10, 200);
+
+        doc.setFontSize(14);
+        doc.text("Booking Details", 10, 65);
+        doc.setFontSize(12);
+        doc.text(`Package ID: ${bookingData.packageId}`, 10, 80);
+        doc.text(`Booking Name: ${userProvidedBookingName}`, 10, 95);
+        doc.text(`Booking Email: ${userProvidedBookingMail}`, 10, 110);
+        doc.text(`Amount: ${selectedPackageAmount.toFixed(2)}`, 10, 125);
+        doc.text(`Total Amount: ${totalAmount.toFixed(2)}`, 10, 140);
+        doc.text("Happy Travelling!", 10, 160);
+
         doc.save("booking-details.pdf");
       })
       .catch((error) => {
@@ -119,38 +139,50 @@ const BookNow = () => {
         <h2 className="booking-heading">Booking Details</h2>
         <form className="booking-form">
           <div className="input-group">
-            <label className="input-label">Additional Traveler Count:</label>
+            <label className="input-label"></label>
             <input
               type="number"
               value={addTravelerCount}
               onChange={handleAddTravelerCountChange}
               min="0"
               className="input-field"
+              required
+              placeholder="Additional Traveler Count"
             />
           </div>
           <div className="input-group">
-            <label className="input-label"> Name:</label>
+            <label className="input-label"> </label>
             <input
               type="text"
               value={bookingName}
-              onChange={(event) => setBookingName(event.target.value)}
+              onChange={(event) => {
+                setBookingName(event.target.value);
+                setNameError("");
+              }}
               className="input-field"
               required
+              placeholder="Name"
             />
+            {nameError && <p className="error-message">{nameError}</p>}
           </div>
           <div className="input-group">
-            <label className="input-label"> Mail:</label>
+            <label className="input-label"> </label>
             <input
               type="email"
               value={bookingMail}
-              onChange={(event) => setBookingMail(event.target.value)}
+              onChange={(event) => {
+                setBookingMail(event.target.value);
+                setMailError("");
+              }}
               className="input-field"
               required
+              placeholder="Mail"
             />
+            {mailError && <p className="error-message">{mailError}</p>}
           </div>
           <div className="input-group">
             <label className="input-label total-amount-label">
-              Total Amount:{" "}
+              Total Amount: ₹{" "}
               {selectedPackageAmount
                 ? (selectedPackageAmount + addTravelerCount * 20).toFixed(2)
                 : 0}
